@@ -1,0 +1,229 @@
+/**index.wxss**/
+
+page {
+  width: 100%;
+  font-family: '黑体';
+  background: url(http://image.didayundong.com/ee1caf0b-dbf6-4fd3-bf07-9b8a41fb3bfa) no-repeat fixed center;
+  background-size: 100% 100%;
+}
+
+.body {
+  margin: 0 15px;
+  padding-top: 70px;
+}
+
+.bHead {
+  height: 30px;
+  background-color: #009199;
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  z-index: -10;
+}
+
+.userHead {
+  background-color: #60dbea;
+  height: 100px;
+  border-radius: 10px;
+  background: url(http://image.didayundong.com/e1cd88d7-25a0-4fe7-9c23-78fcc331606d) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.user-img {
+  width: 29%;
+  text-align: center;
+  float: left;
+}
+
+.user-img image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-img-circle {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 4px;
+  margin: 10px 0 0 0;
+  border-radius: 50%;
+}
+
+.user-img text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0068b7;
+  text-align: center;
+  position: relative;
+  top: -2px;
+}
+
+.user-synopsis {
+  width: 63%;
+  color: #0068b7;
+  padding: 0;
+  float: left;
+}
+
+.user-synopsis-t {
+  height: 55px;
+  line-height: 65px;
+}
+
+.user-level {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.user-level-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.jiantou {
+  width: 8%;
+  line-height: 100px;
+  color: #0068b7;
+  font-weight: 900;
+  font-size: 20px;
+  float: left;
+}
+
+.user-synopsis-f {
+  height: 35px;
+  line-height: 35px;
+  font-size: 17px;
+}
+
+.qian-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+
+.left {
+  width: 48%;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+}
+
+.right {
+  width: 48%;
+  display: inline-block;
+  float: right;
+  overflow: hidden;
+}
+
+.challenge {
+  margin-top: 15px;
+  border-radius: 10px;
+  height: 250px;
+  background-color: #49cedf;
+  background: url(http://image.didayundong.com/d9f876f6-c672-4015-9c94-153adb7431f4) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.stacks {
+  margin-top: 15px;
+  border-radius: 10px;
+  height: 180px;
+  background: url(http://image.didayundong.com/f04d2d8a-2f92-461d-84a7-ca68c2533d62) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.upgrade {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 190px;
+  background: url(http://image.didayundong.com/84ec586c-c4b2-41f1-a09a-8f793ba37bba) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.ranking {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 90px;
+  background: url(http://image.didayundong.com/50f5bd30-f051-462a-a97d-ef4ad12c769a) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.bank {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 90px;
+  background: url(http://image.didayundong.com/0c9771ad-247b-4973-b4fd-81f3a5549457) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.set {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 60px;
+  background: url(http://image.didayundong.com/ad7214fe-e082-4f45-8400-6e0f763a44e1) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.lg {
+  font-size: 25px;
+  color: #fff;
+  text-shadow: 1px 2px 0 #000;
+}
+.wz1{
+  position: relative;
+  left: 13px;
+  top: 10px;
+}
+.wz2{
+  float: right;
+  position: relative;
+  right: 13px;
+  top: 10px;
+}
+.hongbao{
+  height: 60px;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  width: 52px;
+}
+.free{
+  height: 25px;
+  width: 77px;
+  border: none;
+  border-radius: 10px;
+  line-height: 24px;
+  font-size: 14px;
+  color: #458994;
+  position: absolute;
+  font-weight: 600;
+  bottom: 15px;
+  left: 13px;
+  padding: 0;
+}
+.img-right{
+  width: 10px;
+  height: 18px;
+}
+.bookname{
+  font-size: 17px;
+  font-weight: 600;
+  position: relative;
+  color: #ffffff;
+  left: 30px;
+  top: 25px;
+}
+.bookauther{
+  font-size: 12px;
+  position: relative;
+  color: #ffffff;
+  left: 30px;
+  top: 25px;
+}

@@ -1,0 +1,101 @@
+/* pages/library/library.wxss */
+page{
+  background: url(http://image.didayundong.com/b8952cd9-ab5a-4181-88b1-c3ccab59408e) no-repeat center;
+  background-size: 100% 100%;
+}
+.bHead {
+  height: 30px;
+  background-color: #009199;
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  z-index: -10;
+}
+.shujia{
+  height: 140px;
+  position: relative;
+}
+.shujia-b{
+  height: 15px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.shujia-m{
+  height: 7px;
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  z-index: -10;
+}
+.books{
+  height: 125px;
+  padding: 25px 0 0;
+  text-align: center;
+}
+.book{
+  height: 100px;
+  display: inline-block;
+  width: 74px;
+  margin-right: 10px;
+  box-shadow: 0px -1px 1px #CEF5F2;
+  background:#CEF5F2 url(http://image.didayundong.com/44106429-e96c-4967-b420-6f52e8c937ba) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.bookip5 .book{
+  margin-right: 2px;
+}
+.bookname{
+  position: absolute;
+  font-size: 14px;
+  color: #ffffff;
+  top:10px ;
+  width: 100%;
+  left: 0;
+  display: inline-block;
+  text-align: center;
+}
+.bookauther{
+  position: absolute;
+  font-size: 11px;
+  color: #ffffff;
+  bottom:10px ;
+  left: 0;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.bactive{
+  background:#0092BA url(http://image.didayundong.com/286ad443-1c4e-465b-a092-4f84b202f8a8) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.bactive:after{
+  content: '';
+  display: inline-block;
+  height: 30px;width: 30px;
+  background: url(http://image.didayundong.com/1b49158e-5850-458c-b4c3-881dc30606b1) no-repeat center;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bfinish{
+  background:#0092BA url(http://image.didayundong.com/fb2776db-2b67-4c9e-b2eb-35eb07070329) no-repeat center;
+  background-size: 100% 100%;
+}
+.bfinish:after{
+  content: '';
+  display: inline-block;
+  height: 30px;width: 30px;
+  background: url(http://image.didayundong.com/2c33b4d9-98be-46ad-a10c-0669f8133814) no-repeat center;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

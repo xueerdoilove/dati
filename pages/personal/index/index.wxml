@@ -1,0 +1,53 @@
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}"/>
+<view style="height:80px;"></view>
+<view class='p-circle'>
+  <view class='user-img-circle'>
+    <image src="{{userInfo.userimg}}"></image>
+  </view>
+  <view><text style='font-size:15px;font-weight: 600;color:#fff;'>{{userInfo.nickName}}</text></view>
+  <view style="margin-top:3px;"><text style='font-size:15px;font-weight:600;color:#09b5dd;'>{{userInfo.rankId}}</text></view>
+  <view class='user-synopsis-f'>
+    <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
+    <text style="margin-right:20px;">{{userInfo.coinCnt}}</text>
+    <text style="margin-right:8px;">得分:</text>
+    <text>{{userInfo.points}}</text>
+  </view>
+</view>
+<view class='p-tip'>
+  读过的书, 每一本都是精华
+</view>
+<view class='shujia' >
+  <view class='books'>
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook1}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this'>
+      <text class='bookname'>{{item.name}}</text>
+      <text class='bookauther'>{{item.authorName}}</text>
+    </view>
+  </view>
+  <image src='../../../images/shujia1.png' class='shujia-m'></image>
+  <image src='../../../images/shujia2.png' class='shujia-b'></image>
+</view>
+<view class='shujia' >
+  <view class='books'>
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook2}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this'>
+      <text class='bookname'>{{item.name}}</text>
+      <text class='bookauther'>{{item.authorName}}</text>
+    </view>
+  </view>
+  <image src='../../../images/shujia1.png' class='shujia-m'></image>
+  <image src='../../../images/shujia2.png' class='shujia-b'></image>
+</view>
+<view class='shujia' >
+  <view class='books'>
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook3}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this'>
+      <text class='bookname'>{{item.name}}</text>
+      <text class='bookauther'>{{item.authorName}}</text>
+    </view>
+  </view>
+  <image src='../../../images/shujia1.png' class='shujia-m'></image>
+  <image src='../../../images/shujia2.png' class='shujia-b'></image>
+</view>
+<view class='btm-btns'>
+  <button class='diy-btn1' style='margin-right:20px;'>分享给好友</button>
+  <button class='diy-btn1'>保存到相册</button>
+</view>

@@ -1,0 +1,91 @@
+<!--pages/challenge/game/game.wxml-->
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}" />
+<view animation="{{jiazai}}" style="padding-top:70px;" wx:if="{{donghuaView}}">
+  <view class='gamedonghua' >
+    <image src='../../../images/pic.png' class='img-b0'></image>
+    <image src='http://image.didayundong.com/5428010c-7e13-48a8-b955-24b43f3fa752' class='img-b1'></image>
+    <image src='http://image.didayundong.com/577f3076-5039-451b-a77a-975653597672' class='img-b2' animation="{{animationData1}}"></image>
+    <image src='http://image.didayundong.com/e57af867-54c7-48c9-830f-939ee422077f' class='img-b3' animation="{{animationData}}"></image>
+    <image src='http://image.didayundong.com/ee6b2985-e0c1-4a71-ad90-68412a84ed89' class='img-b4' animation="{{animationData1}}"></image>
+    <image src='http://image.didayundong.com/0e31c13d-d3b0-48d9-8175-3be900aa1c9d' class='img-b5' animation="{{animationData}}"></image>
+  </view>
+  <view class='donghua-wenzi'>
+    
+    <view><text style='font-size:19px;font-weight: 600;color:#fff;'>{{userInfo.nickName}}</text></view>
+    <view style="margin-top:6px;"><text style='font-size:17px;font-weight:600;color:#09b5dd;'>{{userInfo.rankId}}</text></view>
+    <view class='user-synopsis-f'>
+      <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
+      <text >{{userInfo.coinCnt}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{!donghuaView&&!datijieend}}" style='padding-top:80px;'>
+  <view class='donghua-bg' animation="{{bgmovie}}" style='transition: transform 200ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'></view>
+  <view class='donghua-bg-btm'></view>
+  <modalCircle  id="componentId" modal-num="{{10}}" modal-width="{{80}}"/>  
+  <view style='text-align:center;margin:13px 0 8px 0;'>
+    <text animation="{{indexmovie}}" class='question-index' style='opacity: 0;'>第{{timudetail.index}}题</text>
+  </view>
+  <import src="/template/progress/progress.wxml" />
+  <view style="padding:0 25px;">
+    <template is="progress1" data="{{proData:proData}}" />
+  </view>
+  <view class='question-text'>
+    <text animation="{{timumovie}}"  style='opacity: 0;'>{{timudetail.q}}</text>
+  </view>
+  
+  <button class='option {{btnstate.a1}}' data-ans='{{timudetail.a1}}' data-index="a1" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a1}}</button>
+  <button class='option {{btnstate.a2}}' data-ans='{{timudetail.a2}}' data-index="a2" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a2}}</button>
+  <button class='option {{btnstate.a3}}' wx-if="timudetail.a3.length>0" data-ans='{{timudetail.a3}}' data-index="a3" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a3}}</button>
+  <button class='option {{btnstate.a4}}' wx-if="timudetail.a4.length>0" data-ans='{{timudetail.a4}}' data-index="a4" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a4}}</button>
+</view>
+
+<view class='enddati' wx:if="{{datijieend}}">
+  <view style='overflow:hidden;'>
+    <view class='endimgview'>
+      <image src="{{yssurl}}" class='{{ysscss}}' animation="{{endimgmovie}}"></image>
+       <image src="{{tssurl}}" class='hengtiao' animation="{{endimgmovie1}}" style='transition: transform 300ms ease-in-out 0ms, opacity; transform: scale(2, 2); transform-origin: 50% 50% 0px; opacity: 0;'></image> 
+      <view class='endimgzz'></view>
+    </view>
+  </view>
+  <view style='text-align:center'>
+    <text class='daduijiti'>答对 {{daduijiti}} 题</text>
+    <view class='user-synopsis-f' style="margin-top:10px;">
+      <image class='qian-icon' src="../../../images/index/jinbi.png" style="width:30px;height:30px;top:8px;"></image>
+      <text >+100</text>
+    </view>
+    <view style="height:0px;width:80%;margin-left:10%;margin-top:20px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
+    <view class='user-synopsis-f' style="margin-top:10px;">
+      <text style="font-size:20px;">得分: </text>
+      <text >+100</text>
+    </view>
+    <view style="height:0px;width:80%;margin-left:10%;margin-top:10px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
+    <view style='margin-top:15px;'>
+      <button class='btn-mid' style="background-color:#b3d465">继续挑战</button>
+    </view>
+    <view style='margin-top:10px;' wx:if="{{fxzj}}">
+      <button class='btn-mid' style="background-color:#f06262">分享战绩</button>
+    </view>
+    <view style='margin-top:5px;'  wx:if="{{fxzj}}">
+      <text style='color:#ffffff;font-size:12px;'>分享战绩可得1</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:4px;margin-right:0;"></image>
+    </view>
+  </view>
+  <view style="height:60px;"></view>
+  <view class='chakandaan'>
+    <view class='banyuan' animation="{{chakandn}}" bindtap='gotodaan'>
+      <view class='user-synopsis-f' style="text-align:center;">
+        <view>
+          <text style="font-size:14px;">花费1</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:3px;margin-right:0;"></image>
+        </view>
+        <text style="font-size:14px;">看答案解释</text>
+      </view>
+    </view>
+  </view>
+</view>
+  <image src="http://image.didayundong.com/3ddbb780-d786-4a0d-95e9-f48b1dfd6ae2" style='display:none' s></image>  
+  <image src="http://image.didayundong.com/94a23aa9-7e91-406b-a359-d869da121aa4" style='display:none'></image> 
+
+  <image src="http://image.didayundong.com/00590b3d-50b4-475b-a88a-fe6d7e6962fe" style='display:none' y></image>  
+  <image src="http://image.didayundong.com/a5513882-a7e4-4eb1-9892-06318262c5a4" style='display:none'></image> 

@@ -1,0 +1,21 @@
+<!--pages/bank/bank.wxml-->
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}" />
+<view style="height:70px;"></view>
+<view class='yuer'>
+  <text>账户余额:</text>
+  <image src='../../images/index/jinbi.png' style='width:30px;height:30px;'></image>
+  <text>100</text>
+</view>
+<view class='jinbicontent'>
+  <view class='jinbiitem' wx:for="{{cionlist}}" wx:key="*this">
+    <text class='geshu'>{{item.name}}</text>
+    <view><image src="../../images/index/jinbi.png" class='jinbiicon'></image></view>
+    <text class='jiage'>{{item.cost}}</text>
+  </view>
+  <view style='color:#c51f1f;font-size:14px;text-align:center;'>注:每天答10道题即可领5金币</view>
+</view>
+<view style='text-align:center;'>
+  <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:25px;margin-bottom:10px;">免费领金币</button>
+  <text style="font-size:15px;color:#ffffff;">每天答10道题 即可领金币</text>
+</view>

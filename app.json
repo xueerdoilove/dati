@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bank/bank",
+    "pages/charts/charts",
+    "pages/library/library",
+    "pages/challenge/answer/answer",
+    "pages/challenge/game/game",
+    "pages/challenge/list/list",
+    "pages/personal/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "#ffffff",
+    "navigationBarBackgroundColor": "#009199",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 50,
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

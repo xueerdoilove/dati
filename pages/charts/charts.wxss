@@ -1,0 +1,132 @@
+/* pages/charts/charts.wxss */
+.bHead {
+  height: 30px;
+  background-color: #009199;
+  position: fixed;
+  top: 128px;
+  left: 0px;
+  width: 100%;
+  z-index: -10;
+  overflow: hidden;
+}
+.booktop {
+  height: 60px;
+  position: fixed;
+  top: 69px;
+  left: 0;
+  right: 0;
+  background-color: #009199 ;
+  z-index: 100;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+.lantiaoshang{
+  width: 91%;
+  height: 12px;
+  position: absolute;
+  top: -6px;
+  left: 4.5%;
+  border-radius: 9px;
+  background-color: #0068b7;
+}
+.lantiaoxia{
+  width: 91%;
+  height: 12px;
+  position: absolute;
+  bottom: -6px;
+  left: 4.5%;
+  border-radius: 9px;
+  background-color: #0068b7;
+}
+.chartlist{
+  height: 90px;
+  width: 86%;
+  margin: 5px auto;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px rgba(120, 120, 120, 0.5);
+  background: linear-gradient(#5FDBEA, #06AFC3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.chartlistactive{
+  background: linear-gradient(#5FDBEA, #046BB9);
+}
+.chartlist::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  display: block;
+  border-style: solid;
+  border-color: rgba(0,160,233,.5);
+  border-width: 22px;
+  border-left-width: 25px;
+  border-right-width: 25px;
+  border-right-color: rgba(0,0,0,0);
+  border-bottom-color: rgba(0,0,0,0)
+}
+.chartimg{
+  height: 55px;
+  width: 55px;
+  border: 5px solid #00ffff;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-left: 30px;
+}
+.chartimg image{
+  height: 55px;
+  width: 55px;
+}
+.chartright{
+  height: 90px;
+  width:100%;
+}
+.crtop{
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid #00ffff;
+  color: #ffffff;
+  padding-left: 10px;
+  font-size: 18px;
+  padding-top:14px;
+}
+.crbtm{
+  height: 34px;
+  width: 100%;
+  border-top: 1px solid #00ffff;
+  color: #00ffff;
+  padding-left: 10px;
+  font-size: 16px;
+  padding-top:10px;
+  position: relative;
+}
+.defen{
+  width: 40%;
+  height: 23px;
+  border-radius: 13px;
+  color: #fff100;
+  font-size: 15px;
+  text-align: center;
+  line-height: 22px;
+  background-color: #0068b7;
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+}
+.tabr{
+  display: flex;
+  height: 60px;
+}
+.tabli{
+  width: 50%;
+  height: 30px;
+  padding-top:10px;
+  color:#6bbabe;
+  font-weight: 600;
+  font-size: 20px;
+}
+.tactive{
+  color:#ffffff;
+}

@@ -1,0 +1,8 @@
+<!--template/model/progressCircle.wxml-->
+<view class='progress_box' style="width:{{width}}px;height:{{width}}px;margin:0 auto;">
+  <canvas class="progress_bg" canvas-id="gd"></canvas>
+  <canvas class="progress_canvas" canvas-id="sd"></canvas>
+  <view class="progress_text">
+    <text class='progress_info'>{{progress_txt}}</text>
+  </view>
+</view>

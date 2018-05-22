@@ -1,0 +1,49 @@
+/* pages/bank/bank.wxss */
+page{
+  background-color: #009199;
+}
+.yuer{
+  color: #ffffff;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+.yuer image{
+  position: relative;
+  top: 8px;
+  margin:0 5px 0 10px;
+}
+.jinbicontent{
+  width: 80%;
+  height: 294px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin: 20px auto;
+  padding: 0 5%;
+}
+.jinbiitem{
+  float: left;
+  width: 33%;
+  height: 125px;
+  text-align: center;
+  padding: 5px 0;
+}
+.geshu{
+  color: #ec6941;
+  font-size: 15px;
+}
+.jinbiicon{
+  height: 50px;
+  width: 50px;
+  margin-top: 5px;
+}
+.jiage{
+  color: #ffffff;
+  display: inline-block;
+  height: 24px;
+  width: 60px;
+  border-radius: 10px;
+  line-height: 24px;
+  background-color: #ec6941;
+  font-size: 15px;
+  margin-top: 5px;
+}

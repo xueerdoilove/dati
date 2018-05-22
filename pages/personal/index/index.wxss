@@ -1,0 +1,130 @@
+page{
+  font-family: '黑体';
+  background:#123162 url(http://image.didayundong.com/91317512-1d88-4892-a4c8-7c683598ed2b) no-repeat fixed center;
+  background-size: 100% 100%;
+}
+.p-circle{
+  height: 140px;
+  width: 140px;
+  border:2px dotted rgba(255,255,255,.5);
+  border-radius: 50%;
+  margin: 0 auto 0;
+  text-align: center;
+}
+.p-circle view{
+  position: relative;
+  top:-30px;
+  
+}
+.user-img-circle{
+  display: inline-block;
+  width:50px;
+  height: 50px;
+  border: 1px solid rgba(255,255,255,.6);
+  padding:4px;
+  margin:10px 0 0 0;
+  border-radius: 50%;
+  
+
+}
+.user-img-circle image{
+  width:50px;
+  border-radius: 50%;
+  height: 50px;
+}
+.user-synopsis-f{
+  margin-top:3px;
+  font-size: 12px;
+  font-weight: 600;
+  width: 170px;
+  color: #fff;
+  left: -15px;
+}
+.qian-icon{
+  width: 20px;height: 20px;
+  margin-right: 5px;
+  border-radius: 50%;
+  position: relative;
+  top:4px;
+}
+.p-tip{
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.shujia{
+  height: 115px;
+  position: relative;
+}
+.shujia-b{
+  height: 15px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.shujia-m{
+  height: 7px;
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  z-index: -10;
+}
+.books{
+  height: 100px;
+  padding: 15px 10px 0;
+  text-align: center;
+}
+.book{
+  height: 85px;
+  display: inline-block;
+  width: 60px;
+  margin-right: 10px;
+  box-shadow: 0px -1px 1px #0C5FA5;
+  background:#0F5487 url(http://image.didayundong.com/a9c77df4-0377-4a48-90c9-b3deed7aed7e) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.bookname{
+  position: absolute;
+  font-size: 14px;
+  color: #ffffff;
+  top:10px ;
+  width: 100%;
+  left: 0;
+  display: inline-block;
+  text-align: center;
+}
+.bookauther{
+  position: absolute;
+  font-size: 11px;
+  color: #ffffff;
+  bottom:10px ;
+  left: 0;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.bactive{
+  background:#0092BA url(http://image.didayundong.com/cb092e13-8dd3-464d-89ea-d62ba519a2f1) no-repeat center;
+  background-size: 100% 100%;
+}
+.btm-btns{
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+.diy-btn1{
+  border-radius: 5px;
+  border: 2px solid #7ecef4;
+  width: 120px;
+  height: 40px;
+  display: inline-block;
+  background-color: rgba(255,255,255,0);
+  line-height: 36px;
+  color: #7ecef4;
+}

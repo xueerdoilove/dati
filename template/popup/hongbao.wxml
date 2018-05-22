@@ -1,0 +1,5 @@
+<template name="honghao">
+  <view class='honghao' >
+    <view class='zhezhao' bind:tap='fangzhimaopao'></view>
+  </view>
+</template> 

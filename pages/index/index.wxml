@@ -1,0 +1,66 @@
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}" />
+ <import src="/template/popup/hongbao.wxml" />
+<!-- <template is="honghao" />  -->
+<view class='bHead'></view>
+<view class='body'>
+  <view class='userHead' bindtap='gotopage1'>
+    <view class='user-img'>
+        <view class='user-img-circle'>
+          <image src="../../images/pic.png"></image>
+        </view>
+        <view>
+          <text>{{userInfo.nickName}}</text>
+        </view>
+    </view>
+    <view class='user-synopsis'>
+      <view class='user-synopsis-t'>
+        <text class='user-level'>等级</text>
+        <text class='user-level-text'>{{userInfo.rankId}}</text>
+      </view>
+      <view class='user-synopsis-f'>
+        <image src="../../images/index/jinbi.png" class='qian-icon'></image>
+        <text style='margin-right:20px;'>{{userInfo.coinCnt}}</text>
+        <text>得分: </text>
+        <text>{{userInfo.points}}</text>
+      </view>
+    </view>
+    <view class='jiantou' style="transform: rotate(180deg);">
+      <text class='icon icon-left' ></text>
+    </view>
+  </view>
+  <view>
+    <view class='left'>
+      <view class='challenge' bindtap='gotopage'>
+        <text class='lg wz1'>周挑战赛</text>
+        <view>
+          <text class='bookname'>{{hotbook.name}}</text>
+        </view>
+        <view>
+          <text class='bookauther'>{{hotbook.authorName}}</text>
+        </view>
+      </view>
+      <view class='upgrade'>
+        <text class='lg wz2'>知识升级</text>
+      
+      </view>
+    </view>
+    <view class='right'>
+      <view class='stacks' bindtap='gotoshuku'>
+        <text class='lg wz1'>答题书库</text>
+      </view>
+      <view class='ranking' bindtap='gotopaihang'>
+        <text class='lg wz2'>排行榜</text>
+      
+      </view>
+      <view class='bank' bindtap='gotobank'>
+        <text class='lg wz1'>银行</text>
+        <button class='free'>免费领取</button>
+      </view>
+      <view class='set'>
+        <image src='../../images/index/hongbao.png' class='hongbao'></image>
+      </view>
+    
+    </view>
+  </view>
+</view>

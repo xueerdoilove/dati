@@ -1,0 +1,20 @@
+<template name="progress1">
+  <view class='progress1' >
+    <view class='pro-back' >
+      <view class='jindu' style="width:{{proData.value}}%;" animation="{{proData.animation}}">
+
+      </view>
+    </view>
+    <view class='pro-val' animation="{{proData.animation1}}">
+    {{proData.showValue}}
+    </view>
+  </view>
+
+</template>
+
+<template name="progress2">
+  <view class='progress2' >
+    
+  </view>
+
+</template>

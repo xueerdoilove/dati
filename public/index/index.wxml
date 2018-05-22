@@ -1,0 +1,4 @@
+<!--public/index/index.wxml-->
+<import src="/template/information/index/figure.wxml" />
+<view bindtap="clickMe">
+  <template is="figure" data="{{display:'display_block'}}" /> </view>

@@ -1,0 +1,37 @@
+<!--pages/charts/charts.wxml-->
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}" />
+<view class='booktop'>
+  <view class='tabr'>
+    <view class='tabli' style='border-right:1px solid #ffffff'>
+      <text class='tactive'>周排行</text>
+    </view>
+    <view class='tabli'>
+      <text class=''>总排行</text>
+    </view>
+  </view>
+  <view class='lantiaoxia'></view>
+</view>
+<view class='bHead'>
+  <view class='lantiaoshang'></view>
+</view>
+<scroll-view scroll-y  >
+  <view style='height:124px;'></view>
+  <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-item="ph">
+    <view class='chartimg'>
+      <image src="../../images/pic.png"></image>
+    </view>
+    <view class='chartright'>
+      <view class='crtop'>
+        <text>{{ph.nickName}}</text>
+      </view>
+      <view class='crbtm'>
+        <text>{{ph.rankName}}</text>
+        <view class='defen'>
+          得分: {{ph.points}}
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+  

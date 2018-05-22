@@ -1,0 +1,15 @@
+<!--pages/challenge/answer/answer.wxml-->
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}" />
+<view class='bHead'></view>
+<view style='height:70px;'></view>
+<view style="margin-bottom:10px;"  wx:for="{{list}}" wx:key>
+  <view class='timu' data-index="{{index}}" catchtap='showjieshi'>
+    <text>{{item.title}}</text>
+    <text class='icon icon-up white' style='float:right;padding:0;font-size:20px; transform: rotate(-90deg); transform-origin: 50% 50% 0px;' animation="{{item.jiantoumovie}}"></text>
+  </view>
+  <view class='jieshi {{item.active}}' style="{{item.xialamovie}}" >
+    <text style="{{item.wenzimovie}}">{{item.jieshi}}</text>
+  </view>
+</view>
+  

@@ -1,0 +1,48 @@
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}"/>
+<view class='bHead'></view>
+<scroll-view scroll-y  >
+  <view class='booktop'>
+    <view style='padding-top:22px;'>
+      <text style='font-size:25px;'>{{bookdetail.name}}</text>
+    </view>
+    <view style='padding-top:4px;'>
+      <text style='font-size:16px;'>{{bookdetail.authorName}}</text>
+    </view>
+    <!-- <view style='padding-top:6px;'>
+      <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
+      <text style="font-size:14px;margin:0 10px;position: relative;top:-5px;">100</text>
+    </view> -->
+  </view>
+  <view class='booktop-after'>
+
+  </view>
+  <view class='zhanwei'></view>
+
+  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
+    <view class='level-img'>
+      <image class='level-img-bg' src='http://image.didayundong.com/1bc0ba4c-c964-40bd-a7e1-596c4ef3e92b'></image>
+      <view class='level-img-num'>
+         <text class='level-img-num1' >{{idx+1}}</text> 
+      </view>
+    </view>
+    <view>
+      <view class='level-top'>
+        <text class='dengji-name'>{{dif.name}}</text>
+        <view class='qian-xiaofei'>
+          <image src='../../../images/index/jinbi.png' class='qian-icon'></image>
+          <text class='qian-num'>{{dif.costCoin}}</text>
+        </view>
+      </view>
+      <view class='level-bottom'>
+        <text class='qian-dedao'>奖金：{{dif.awardCoin}}</text>
+        <view class='stage' wx-if="{{bookdetail.difficultyId>=dif.id}}">
+          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} ' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
+            <view class='qizi-zd1'></view>
+            <view class='qizi-zd2'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

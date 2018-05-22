@@ -1,0 +1,38 @@
+/* pages/challenge/answer/answer.wxss */
+.bHead {
+  height: 30px;
+  background-color: #009199;
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  z-index: -10;
+}
+.timu{
+  background-color: #14446a;
+  border-radius: 10px;height: 50px;
+  line-height: 50px;
+  color: #ffffff;
+  margin: 0 16px;
+  padding: 0 10px;
+  font-size: 15px;
+  z-index:10;
+
+}
+.jieshi{
+  background-color: #a5c7d7;
+  color: #14446a;
+  height: 0;
+  margin:0 25px;
+  font-size: 14px;
+  box-sizing: border-box;
+  position: relative;
+  z-index:-10;
+}
+.active{
+  padding: 10px 15px;
+}
+.jieshi text{
+  opacity: 0;
+}
+

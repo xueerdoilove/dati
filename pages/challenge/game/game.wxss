@@ -1,0 +1,268 @@
+/* pages/challenge/game/game.wxss */
+
+page {
+  background-color: #009199;
+}
+.donghua-wenzi{
+  text-align: center;
+  padding-top: 310px;
+}
+.donghua-bg{
+  background: url(http://image.didayundong.com/4b61437a-e8a0-4004-a058-248acded07c4) no-repeat center;
+  background-size: 375px 84px;
+  position: absolute;
+  top: 70px;
+  z-index: -1;
+  width: 100%;
+  height: 100px;
+}
+.donghua-bg-btm{
+  background: url(http://image.didayundong.com/8f15c28d-733a-4e15-bebc-dead3225ac2f) no-repeat center bottom;
+  background-size: 100% 103px;
+  position: absolute;
+  bottom: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 120px;
+}
+.user-synopsis-f{
+  margin-top:6px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+}
+.qian-icon{
+  width: 20px;height: 20px;
+  margin-right: 5px;
+  border-radius: 50%;
+  position: relative;
+  top:4px;
+}
+
+.gamedonghua {
+  text-align: center;
+  position: relative;
+  width: 50%;
+  margin-left: 50%;
+  
+}
+.img-b0{
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  z-index: 10;
+  left: -36px;
+  top: 117px;
+}
+.img-b1 {
+  width: 114px;
+  height: 114px;
+  position: absolute;
+  z-index: 1;
+  left: -57px;
+  top: 93px;
+}
+
+.img-b2 {
+  width: 149px;
+  height: 149px;
+  position: absolute;
+  z-index: 1;
+  left: -74.5px;
+  top: 75.5px;
+}
+
+.img-b3 {
+  width: 205px;
+  height: 205px;
+  position: absolute;
+  z-index: 1;
+  left: -102.5px;
+  top: 47.5px;
+}
+.img-b4 {
+  width: 232px;
+  height: 232px;
+  position: absolute;
+  z-index: 1;
+  left: -116px;
+  top: 34px;
+}
+.img-b5 {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  z-index: 1;
+  left: -150px;
+  top: 0;
+}
+.progress-y {
+  height: 30px;
+  width: 300px;
+  border-radius: 30px;
+}
+
+.question-index{
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+  padding: 0 30px;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #004986;
+  border-radius: 15px;
+}
+.question-text{
+  font-size: 19px;
+  text-align: center;
+  color: #ffffff;
+  margin: 4% 15px;
+  height: 75px;
+  overflow: hidden;
+  line-height: 25px;
+}
+.progress_box {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.progress_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.progress_canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.progress_text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress_info {
+  font-size: 36rpx;
+  letter-spacing: 2rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.option {
+  height: 60px;
+  width: 84%;
+  margin-left: 8%;
+  border-radius: 25px;
+  color: #000;
+  background-color: #ffffff;
+  line-height: 60px;
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  margin-top:3%;
+}
+
+.correct {
+  background-color: #00ffff;
+}
+
+.correct::before {
+  content: ' ';
+  display: block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  position: absolute;
+  left: 90%;
+  top: 21px;
+}
+.wrong {
+  background-color: #FF4D63;
+}
+.wrong::before {
+  font-family: 'iconfont';
+  content: '\e683';
+  display: block;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 90%;
+  top: 0px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.endimgview{
+  height: 300px;
+  width: 100%;
+  position: relative;
+  left: 50%;
+}
+.hengtiao{
+  height: 72px;
+  width: 305px;
+  position: absolute;
+  bottom: 0;
+  left: -152.5px;
+  z-index: 100;
+}
+.victoryimg{
+  height: 192px;
+  width: 180px;
+  position: absolute;
+  bottom: -192px;
+  left: -90px;
+  z-index: 10;
+}
+
+.lostimg{
+  height: 189px;
+  width: 190px;
+  position: absolute;
+  bottom: -192px;
+  left: -95px;
+  z-index: 10;
+}
+.endimgzz{
+  height: 30px;
+  width: 305px;
+  position: absolute;
+  bottom: 0;
+  left: -152.5px;
+  z-index: 20;
+  background-color: #009199;
+}
+.daduijiti{
+  font-size: 16px;
+  color: #ffffff;
+}
+.chakandaan{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  left: 50%;
+  bottom: 0;
+}
+.banyuan{
+  border:5px solid #00b7ee;
+  background-color: #14446a;
+  color: #fff;
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  left: -65px;
+  bottom: -140px;
+  border-radius: 50%;
+}
