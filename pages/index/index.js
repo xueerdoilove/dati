@@ -24,7 +24,6 @@ Page({
     // app.getUserInfo()
     this.fangzhimaopao()
   },
-  
   onShow: function () {
     setTimeout(function () {
       this.setData({
@@ -83,7 +82,7 @@ Page({
     
     var that = this;
     api.get({
-      url: api.get_booklist(1,1),
+      url: api.get_booklist(2,1),
       callback:function(res){
         that.setData({
           hotbook: res.items[0]

@@ -10,7 +10,7 @@ Page({
    */
   data: {
     nav: { isback: true, text: '周挑战赛', backcolor: '#01919A' },
-    daduijiti:3,// 答对几题
+    daduijiti:0,// 答对几题
     animationData: {},//正转动画
     animationData1: {},//倒转动画
     bgmovie:{},//倒计时 背景动画
@@ -41,7 +41,10 @@ Page({
     taotiId:0,
     timudetail: { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 200, ans: '3', topicId: '0'},
     timuindex:-1,
-    userInfo:{}
+    userInfo:{},
+    answerList:[],//传送给服务器的 数据
+    zuihoudefen:0,//最终得分
+    huodejinbi:0,
   },
 
   /**
@@ -55,6 +58,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
     var animation = wx.createAnimation({
       duration: 20000,
       timingFunction: 'linear',
@@ -71,6 +75,7 @@ Page({
       this.setData({
         animationData: animation.export(),
         animationData1: animation1.export(),
+        huodejinbi:this.options.huodejinbi,// url 参数中 带入的 获得金币数目
       })
     }.bind(this), 300);
     setTimeout(function () {
@@ -291,19 +296,28 @@ Page({
     }.bind(this), 3000)
   },
   datijieshu:function(){// 答题结束
+
     this.setData({
       datijieend:true
     })
     this.endimgdonghua()
   },
   defen: function (event){//答题 得分
+    // {
+    //   topicId: 123, -> 题目id
+    //   answer: 2, -> 用户选择的选项
+    //   seconds: 7, -> 用户答题用时间
+    //   points: 120 -> 用户得分
+    // }
     if (!this.data.datikaiguan){return}
     this.data.datikaiguan = false;
     clearTimeout(this.data.datichaoshi)
     var ans = event.target.dataset.ans
     var btnindex = event.target.dataset.index
 
-    if (ans == this.data.timudetail.ans){
+    if (ans == this.data.timudetail.ans){// 答对了
+
+      var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: this.stopTime() * this.data.timudetail.fenzhi / 10}
       this.data.daduijiti++
       var bb = 'btnstate.' + btnindex
       //proData: { showValue: 0, value: 0, animation: {}, animation1: {} },
@@ -311,9 +325,11 @@ Page({
       var b = this.stopTime() * 2 + this.data.proData.value
       this.setprogress(b,a)
       this.setData({
-        [bb]:'correct'
+        [bb]:'correct',
+        zuihoudefen:a,
       })
-    }else{
+    } else {// 答错了
+      var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: 0 }
       var bb = 'btnstate.' + btnindex
       for(var key in this.data.timudetail){
         if(key=='ans') continue
@@ -330,6 +346,7 @@ Page({
       })
       this.stopTime()
     }
+    this.data.answerList.push(JSON.parse(JSON.stringify(asr)))
     setTimeout(function(){
       this.nexttimu()
     }.bind(this),2000)
@@ -337,13 +354,20 @@ Page({
   },
   nexttimu: function () {// 下一道题目 
     this.data.timuindex++
+    var that = this;
     if(this.data.timuindex>4){ 
       this.datijieshu()
+      // 答题结束  上传 分数 成绩
+      api.post({
+        url: api.post_defen(that.data.taotiId),
+        data: JSON.stringify({'answerList':that.data.answerList}),
+        callback:function(res){
+          
+        }
+      })
       return;
     }
-    this.setData({
-      timudetail:this.data.timu[this.data.timuindex]
-    })
+    
     this.initTime()
     this.btnhidden()
     this.timuhide()
@@ -354,6 +378,9 @@ Page({
       'btnstate.a4':''
     })
     setTimeout(function () {
+      this.setData({
+        timudetail: this.data.timu[this.data.timuindex]
+      })
       this.indexdonghua()//第一题 显现 变大变小
       setTimeout(function () {
         this.timushow()
@@ -369,7 +396,7 @@ Page({
         ysscss:'victoryimg',
         tssurl:'http://image.didayundong.com/a5513882-a7e4-4eb1-9892-06318262c5a4',
         fxzj: true,
-        daduijiti: this.data.daduijiti
+        daduijiti: this.data.daduijiti,
       })
     }else{
 
@@ -378,7 +405,8 @@ Page({
         ysscss: 'lostimg',
         tssurl: 'http://image.didayundong.com/94a23aa9-7e91-406b-a359-d869da121aa4',
         fxzj:false,
-        daduijiti: this.data.daduijiti
+        daduijiti: this.data.daduijiti,
+        huodejinbi:0
       })
     }
     

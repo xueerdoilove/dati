@@ -19,7 +19,7 @@
   </view>
   <view class='zhanwei'></view>
 
-  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
+  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
     <view class='level-img'>
       <image class='level-img-bg' src='http://image.didayundong.com/1bc0ba4c-c964-40bd-a7e1-596c4ef3e92b'></image>
       <view class='level-img-num'>
@@ -37,7 +37,7 @@
       <view class='level-bottom'>
         <text class='qian-dedao'>奖金：{{dif.awardCoin}}</text>
         <view class='stage' wx-if="{{bookdetail.difficultyId>=dif.id}}">
-          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} ' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
+          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} {{bookdetail.difficultyId>dif.id?"active":""}}' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
             <view class='qizi-zd1'></view>
             <view class='qizi-zd2'></view>
           </view>
@@ -45,4 +45,9 @@
       </view>
     </view>
   </view>
+    <image src='http://image.didayundong.com/5428010c-7e13-48a8-b955-24b43f3fa752'  style='display:none'></image>
+    <image src='http://image.didayundong.com/577f3076-5039-451b-a77a-975653597672' style='display:none' ></image>
+    <image src='http://image.didayundong.com/e57af867-54c7-48c9-830f-939ee422077f' style='display:none' ></image>
+    <image src='http://image.didayundong.com/ee6b2985-e0c1-4a71-ad90-68412a84ed89' style='display:none' ></image>
+    <image src='http://image.didayundong.com/0e31c13d-d3b0-48d9-8175-3be900aa1c9d' style='display:none' ></image>
 </scroll-view>

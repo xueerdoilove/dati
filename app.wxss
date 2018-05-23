@@ -104,7 +104,7 @@ page {
   top:5px;
 }
 .pro-val{
-  width: 3rem;
+  width: 4rem;
   font-size: 22px;
   font-weight: 600;
   color: #fff;

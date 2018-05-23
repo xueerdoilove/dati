@@ -16,7 +16,7 @@
     <view class='user-synopsis'>
       <view class='user-synopsis-t'>
         <text class='user-level'>等级</text>
-        <text class='user-level-text'>{{userInfo.rankId}}</text>
+        <text class='user-level-text'>{{userInfo.rankName}}</text>
       </view>
       <view class='user-synopsis-f'>
         <image src="../../images/index/jinbi.png" class='qian-icon'></image>

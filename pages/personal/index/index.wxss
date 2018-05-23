@@ -119,6 +119,7 @@ page{
   width: 100%;
 }
 .diy-btn1{
+  font-size:16px;
   border-radius: 5px;
   border: 2px solid #7ecef4;
   width: 120px;

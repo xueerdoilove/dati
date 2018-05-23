@@ -63,7 +63,7 @@ Page({
     }else{
       if (app.globalData.userInfo.coinCnt > event.currentTarget.dataset.coin){
         wx.navigateTo({
-          url: "../game/game?bookId=" + this.options.bookId + '&difid=' + difid
+          url: "../game/game?bookId=" + this.options.bookId + '&difid=' + difid + '&huodejinbi=' + event.currentTarget.dataset.jinbi
         })
       }else{
         wx.showModal({

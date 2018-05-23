@@ -13,7 +13,7 @@
   <view class='donghua-wenzi'>
     
     <view><text style='font-size:19px;font-weight: 600;color:#fff;'>{{userInfo.nickName}}</text></view>
-    <view style="margin-top:6px;"><text style='font-size:17px;font-weight:600;color:#09b5dd;'>{{userInfo.rankId}}</text></view>
+    <view style="margin-top:6px;"><text style='font-size:17px;font-weight:600;color:#09b5dd;'>{{userInfo.rankName}}</text></view>
     <view class='user-synopsis-f'>
       <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
       <text >{{userInfo.coinCnt}}</text>
@@ -36,10 +36,10 @@
     <text animation="{{timumovie}}"  style='opacity: 0;'>{{timudetail.q}}</text>
   </view>
   
-  <button class='option {{btnstate.a1}}' data-ans='{{timudetail.a1}}' data-index="a1" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a1}}</button>
-  <button class='option {{btnstate.a2}}' data-ans='{{timudetail.a2}}' data-index="a2" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a2}}</button>
-  <button class='option {{btnstate.a3}}' wx-if="timudetail.a3.length>0" data-ans='{{timudetail.a3}}' data-index="a3" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a3}}</button>
-  <button class='option {{btnstate.a4}}' wx-if="timudetail.a4.length>0" data-ans='{{timudetail.a4}}' data-index="a4" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a4}}</button>
+  <button class='option {{btnstate.a1}}' data-ans='{{timudetail.a1}}' data-index="a1" bindtap='defen' animation="{{btnmovie}}" data-idx="1" data-topicid="{{timudetail.topicId}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a1}}</button>
+  <button class='option {{btnstate.a2}}' data-ans='{{timudetail.a2}}' data-index="a2" bindtap='defen' animation="{{btnmovie}}" data-idx="2" data-topicid="{{timudetail.topicId}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a2}}</button>
+  <button class='option {{btnstate.a3}}' wx:if="{{timudetail.a3.length>0}}" data-ans='{{timudetail.a3}}' data-index="a3" data-idx="3" data-topicid="{{timudetail.topicId}}" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a3}}</button>
+  <button class='option {{btnstate.a4}}' wx:if="{{timudetail.a4.length>0}}" data-ans='{{timudetail.a4}}' data-index="a4" data-idx="4" data-topicid="{{timudetail.topicId}}" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a4}}</button>
 </view>
 
 <view class='enddati' wx:if="{{datijieend}}">
@@ -54,12 +54,12 @@
     <text class='daduijiti'>答对 {{daduijiti}} 题</text>
     <view class='user-synopsis-f' style="margin-top:10px;">
       <image class='qian-icon' src="../../../images/index/jinbi.png" style="width:30px;height:30px;top:8px;"></image>
-      <text >+100</text>
+      <text >+{{huodejinbi}}</text>
     </view>
     <view style="height:0px;width:80%;margin-left:10%;margin-top:20px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
     <view class='user-synopsis-f' style="margin-top:10px;">
       <text style="font-size:20px;">得分: </text>
-      <text >+100</text>
+      <text >+{{zuihoudefen}}</text>
     </view>
     <view style="height:0px;width:80%;margin-left:10%;margin-top:10px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
     <view style='margin-top:15px;'>

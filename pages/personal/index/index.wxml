@@ -6,7 +6,7 @@
     <image src="{{userInfo.userimg}}"></image>
   </view>
   <view><text style='font-size:15px;font-weight: 600;color:#fff;'>{{userInfo.nickName}}</text></view>
-  <view style="margin-top:3px;"><text style='font-size:15px;font-weight:600;color:#09b5dd;'>{{userInfo.rankId}}</text></view>
+  <view style="margin-top:3px;"><text style='font-size:15px;font-weight:600;color:#09b5dd;'>{{userInfo.rankName}}</text></view>
   <view class='user-synopsis-f'>
     <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
     <text style="margin-right:20px;">{{userInfo.coinCnt}}</text>

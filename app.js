@@ -19,7 +19,7 @@ App({
     //当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
     console.log(msg)
   },
-  mytoken:'6b8eedfedefd4808aa9a43898218fea0f87c87662a7f4a46bb6003e4f22f3f4f',
+  mytoken:'0f5dd0e357f04b7786710efe1b597ceeb6eb741e55354cc49c45f069d0a685c3',
   getUserInfo:function(cb){
     var that = this
     if(this.globalData.userInfo){
@@ -45,7 +45,7 @@ App({
   getuserdata:function(){
     var that  = this;
     wx.request({
-      url: 'http://localhost:8080/qamini/api/myInfo',
+      url: 'http://localhost:8080/qamini/api/myProfile',
       header: {
         'content-type': 'application/json',
         Authorization: this.mytoken,

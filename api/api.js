@@ -58,12 +58,15 @@ function get_dati(bookId,difId){
 function get_mybook(){
   return _host +'myBook'
 }
-
+function post_defen(topicSetId){
+  return _host + 'topicSet/' + topicSetId+'/answer'
+}
 module.exports = {
   get_booklist: get_booklist,//书库列表
   get_bookdefi: get_bookdefi,//某本书的难度等级
   get_dati: get_dati,//获得答题套题
   get_mybook: get_mybook,
+  post_defen: post_defen,// 上传成绩
   get: wxget,
   post: wxpost,
   put: wxput,
