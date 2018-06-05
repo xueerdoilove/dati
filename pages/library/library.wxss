@@ -3,15 +3,7 @@ page{
   background: url(http://image.didayundong.com/b8952cd9-ab5a-4181-88b1-c3ccab59408e) no-repeat center;
   background-size: 100% 100%;
 }
-.bHead {
-  height: 30px;
-  background-color: #009199;
-  position: fixed;
-  top: 70px;
-  left: 0px;
-  width: 100%;
-  z-index: -10;
-}
+
 .shujia{
   height: 140px;
   position: relative;

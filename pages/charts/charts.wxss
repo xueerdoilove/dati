@@ -78,6 +78,8 @@
 .chartimg image{
   height: 55px;
   width: 55px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .chartright{
   height: 90px;

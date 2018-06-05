@@ -19,7 +19,7 @@
   <view style='height:124px;'></view>
   <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-item="ph" wx:key="*this">
     <view class='chartimg'>
-      <image src="../../images/pic.png"></image>
+      <image src="{{ph.portrait}}"></image>
     </view>
     <view class='chartright'>
       <view class='crtop'>

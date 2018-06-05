@@ -5,17 +5,33 @@
 <view class='yuer'>
   <text>账户余额:</text>
   <image src='../../images/index/jinbi.png' style='width:30px;height:30px;'></image>
-  <text>100</text>
+  <text>{{userInfo.coinCnt}}</text>
 </view>
 <view class='jinbicontent'>
   <view class='jinbiitem' wx:for="{{cionlist}}" wx:key="*this">
     <text class='geshu'>{{item.name}}</text>
     <view><image src="../../images/index/jinbi.png" class='jinbiicon'></image></view>
     <text class='jiage'>{{item.cost}}</text>
+    <view class='jbtapzz' bindtap='showjinbibao' data-detail="{{item.bundleCoinCnt+item.coinCnt}}" data-cost="{{item.cost}}" data-name="{{item.name}}" data-coinid="{{item.id}}"></view>
   </view>
   <view style='color:#c51f1f;font-size:14px;text-align:center;'>注:每天答10道题即可领5金币</view>
 </view>
-<view style='text-align:center;'>
-  <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:25px;margin-bottom:10px;">免费领金币</button>
+<view class='zhezhao' hidden="{{jibbishou}}">
+  <view class='jbts' animation="{{jibbibao}}" style='transition: transform 200ms linear 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>
+    <view class='closex' bindtap='closejinbibao'>×</view>
+    <view class='jbimg'><image src="../../images/index/jinbi.png"></image></view>
+    <view class='jbname'>
+      {{jbname}}
+    </view>
+    <view class='jbdetail'>
+      您可以获得{{jbdetail}}个金币
+    </view>
+    <view style='position:absolute;bottom:30px;width:100%;'>
+      <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:20px;margin-bottom:10px;width:160px;" bindtap='goumai'>￥{{jbjg}} 购买</button>
+    </view>
+  </view>
+</view>
+<view style='text-align:center;' wx:if="{{!qiandao}}">
+  <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:25px;margin-bottom:10px;" bindtap='pqiandao'>免费领金币</button>
   <text style="font-size:15px;color:#ffffff;">每天答10道题 即可领金币</text>
 </view>

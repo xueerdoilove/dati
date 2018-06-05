@@ -4,7 +4,7 @@
 <scroll-view scroll-y  >
   <view class='booktop'>
     <view style='padding-top:22px;'>
-      <text style='font-size:25px;'>{{bookdetail.name}}</text>
+      <text style='display:inline-block;max-height:2.4em;overflow:hidden;padding:0 1em;line-height:1.2em;font-size:1.2em;'>{{bookdetail.name}}</text>
     </view>
     <view style='padding-top:4px;'>
       <text style='font-size:16px;'>{{bookdetail.authorName}}</text>
@@ -37,7 +37,7 @@
       <view class='level-bottom'>
         <text class='qian-dedao'>奖金：{{dif.awardCoin}}</text>
         <view class='stage' wx-if="{{bookdetail.difficultyId>=dif.id}}">
-          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} {{bookdetail.difficultyId>dif.id?"active":""}}' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
+          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} {{bookdetail.bookState==2?"active":""}} {{bookdetail.difficultyId>dif.id?"active":""}}' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
             <view class='qizi-zd1'></view>
             <view class='qizi-zd2'></view>
           </view>

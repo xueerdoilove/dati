@@ -2,16 +2,24 @@
 
 var root_path = "../../";
 var api = require(root_path + 'api/api.js');
+
 var app = getApp();
 Page({
   data: {
-    userInfo: { userimg:'../../images/pic.png'},
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    ysq:true,
+    userInfo: {},
     nav: { isback: false, text: '以书会友', backcolor: '#009199'},
-    hotbook: { id: 0, authorName: "11", name: "11", introduction: "" },
+    hotbook: { id: 0, authorName: "", name: "", introduction: "" },
   },
   onShareAppMessage: function () {
     // return custom share data when user share.
-    console.log('页面分享按钮')
+    // console.log('页面分享按钮')
+  },
+  bindGetUserInfo: function (e) {
+    wx.redirectTo({
+      url: 'index'
+    })
   },
   onPullDownRefresh: function () {
     console.log('onPullDownRefresh', new Date())
@@ -22,23 +30,24 @@ Page({
   onReady: function () {
     // app.getusercode()
     // app.getUserInfo()
-    this.fangzhimaopao()
+    
   },
   onShow: function () {
-    setTimeout(function () {
-      this.setData({
-        userInfo: app.globalData.userInfo
+    var self = this;
+    app.getusercode(this.getbooklist, function () {
+      self.setData({
+        ysq: false,
       })
-    }.bind(this), 100)
+    })//获取热门书籍
   },
   onHide:function(){
     console.log('页面隐藏 跳转到下一页面时触发了')
   },
   onTabItemTap: function (item){
-    console.log(item.index)
-    console.log(item.pagePath)
-    console.log(item.text)
-    console.log('ontabitemtap  当前是 tab 页时，点击 tab 时触发')
+    // console.log(item.index)
+    // console.log(item.pagePath)
+    // console.log(item.text)
+    // console.log('ontabitemtap  当前是 tab 页时，点击 tab 时触发')
     //可以用于刷新数据, 返回顶部,等 一些特殊操作 要求功能
   },
   onPageScroll:function(obj){
@@ -78,11 +87,15 @@ Page({
       url: "../bank/bank"
     })
   },
-  fangzhimaopao: function () {
-    
+  getbooklist: function () {
     var that = this;
+    var eee = app.globalData.userInfo 
+    this.setData({// 展示用户 信息
+      userInfo: eee
+    })
     api.get({
-      url: api.get_booklist(2,1),
+      url: api.get_bookf(),
+      // url: api.get_booklist(2,1),
       callback:function(res){
         that.setData({
           hotbook: res.items[0]

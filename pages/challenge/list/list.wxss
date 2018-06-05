@@ -6,16 +6,6 @@ page {
   height: 100%;
 }
 
-.bHead{
-  height: 30px;
-  background-color:#009199;
-  position: fixed;
-  top:70px;
-  left: 0px;
-  width:100%;
-  z-index: -10;
-}
-
 .booktop {
   height: 130px;
   position: fixed;
@@ -41,7 +31,7 @@ page {
 .booktop-after {
   height: 10px;
   position: fixed;
-  top: 199px;
+  top: 198px;
   /* top: 148px; */
   left: 15px;
   right: 15px;
@@ -161,7 +151,6 @@ page {
   border-top-left-radius: 6px;
   margin-top: 2px;
   position: relative;
-  overflow: hidden;
   justify-content: center;
   align-items: center;
   margin: 2px 5px 0;

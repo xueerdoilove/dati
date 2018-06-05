@@ -1,6 +1,6 @@
 page{
   font-family: '黑体';
-  background:#123162 url(http://image.didayundong.com/91317512-1d88-4892-a4c8-7c683598ed2b) no-repeat fixed center;
+   background:#123162 url(http://image.didayundong.com/91317512-1d88-4892-a4c8-7c683598ed2b) no-repeat fixed center; 
   background-size: 100% 100%;
 }
 .p-circle{
@@ -27,10 +27,12 @@ page{
   
 
 }
-.user-img-circle image{
+.user-img-circle open-data{
   width:50px;
   border-radius: 50%;
   height: 50px;
+  overflow: hidden;
+  display: inline-block;
 }
 .user-synopsis-f{
   margin-top:3px;

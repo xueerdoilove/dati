@@ -2,7 +2,8 @@
 "use strict";
 
 var app = getApp();
-
+var root_path = "../../";
+var api = require(root_path + 'api/api.js');
 Page({
 
   /**
@@ -13,7 +14,19 @@ Page({
     bookiphone5:'',
     booklist:[]
   },
-
+  gotopage: function (event) {
+    var bookid = event.target.dataset.bookid
+    if(bookid==undefined){
+      wx.showToast({
+        title: '错误101',
+        icon:'none'
+      })
+      return
+    }
+    wx.navigateTo({
+      url: "/pages/challenge/list/list?bookId=" + bookid
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,26 +47,29 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     var that = this;
-    wx.request({
-      url: 'http://localhost:8080/qamini/api/book?page=1&pageSize=16', //仅为示例，并非真实的接口地址
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
+    api.get({
+      url: api.get_booklist(1, 16),
+      callback: function (res) {
         var d = []
         var f = []
         var c = 0
-        for(var i=0;i<res.data.items.length;i++){
-          if(d.length==4){
+        for (var i = 0; i < res.items.length; i++) {
+          if (d.length == 4) {
             f.push(d)
-            d=[]
-            d.push(res.data.items[i])
-          }else{
-            d.push(res.data.items[i])
+            d = []
+            d.push(res.items[i])
+          } else {
+            d.push(res.items[i])
           }
-          
         }
         f.push(d)
         that.setData({
@@ -61,13 +77,6 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
   },
 
   /**

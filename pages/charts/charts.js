@@ -31,10 +31,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
     var that = this;
     api.get({
-      url: 'http://localhost:8080/qamini/api/weekRank?weekNo=0',
+      url: api.get_weekrank(0),
       callback:function(res){
         that.setData({
           paihanglist: res.items

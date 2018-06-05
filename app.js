@@ -10,7 +10,6 @@ App({
   onShow: function (options) {
     // Do something when show.当小程序启动，或从后台进入前台显示，会触发 onShow
     // console.log(options)
-    this.getuserdata()//获得用户 信息
   },
   onHide: function () {
     // Do something when hide.当小程序从前台进入后台，会触发 onHide
@@ -19,68 +18,98 @@ App({
     //当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
     console.log(msg)
   },
-  mytoken:'0f5dd0e357f04b7786710efe1b597ceeb6eb741e55354cc49c45f069d0a685c3',
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      // wx.login({
-      //   success: function () {
-      //     wx.getUserInfo({
-      //       success: function (res) {
-      //         console.log(res)
-      //         that.globalData.userInfo = res.userInfo
-      //         typeof cb == "function" && cb(that.globalData.userInfo)
-      //       }
-      //     })
-      //   }
-      // })
-    }
+  mytoken:'',
+  myId:'',
+  checksessionkey:function(){
+    wx.checkSession({
+      success: function () {
+        //session_key 未过期，并且在本生命周期一直有效
+      },
+      fail: function () {
+        // session_key 已经失效，需要重新执行登录流程
+        wx.login() //重新登录
+      }
+    })
   },
   globalData:{
     userInfo:null
   },
-  getuserdata:function(){
+  getuserdata: function (callbackd){//从自己的 服务器获取用户信息
     var that  = this;
     wx.request({
-      url: 'http://localhost:8080/qamini/api/myProfile',
+      url: 'https://doushu.kaipai.com/qamini/api/myProfile',
+      // url: 'https://localhost:8080/qamini/api/myProfile',
       header: {
         'content-type': 'application/json',
         Authorization: this.mytoken,
       },
       success:function(res){
-        that.globalData.userInfo = res.data.item
+        if (res.statusCode==401){// token 过期
+          that.mytoken = ''
+          that.getusercode()
+        }else{
+          that.globalData.userInfo = res.data.item
+          if (!!callbackd) { callbackd() }
+        }
+      },
+      fail:function(res){
+        console.log(res)
       }
     })
-    // wx.getSetting({
-    //   success(res) {
-    //     console.log(res)
-    //     if (!res.authSetting['scope.record']) {
-    //       wx.authorize({
-    //         scope: 'scope.record',
-    //         success() {
-    //           // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-    //           wx.startRecord()
-
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
-  getusercode:function(){
+  wxapost:function(json) {//自定义 post
+    wx.request({
+      url: json.url,
+      method: 'POST',
+      data: json.data,
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function (res) {
+        json.callback(res.data)
+      },
+      fail:function(res){
+        console.log(res)
+      }
+    })
+  },
+  getusercode: function (callbackd, fallcallback){
+    var self = this;
+    // return
+    if(this.mytoken.length>0){
+      self.getuserdata(callbackd)
+    }else{
+      wx.login({
+        success: function (res) {
+          if (res.code) {// 如果 微信的 登陆成功
+            var code = res.code
+            wx.getUserInfo({// 获取 用户信息 得到 data 和 iv
+              header: { withCredentials: true },
+              success: function (resd) {
 
-    // wx.login({
-    //   success: function (res) {
-    //     if (res.code) {
-    //       //发起网络请求
-    //       console.log(res)
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // });
+                self.wxapost({
+                  // url: 'https://localhost:8080/qamini/api/user',
+                  url: 'https://doushu.kaipai.com/qamini/api/user',
+                  data: JSON.stringify({ code: code, encryptedData: resd.encryptedData,iv:resd.iv }),
+                  callback: function (dd) {
+                    self.mytoken = dd.item.token
+                    self.myId = dd.item.userId
+                    self.getuserdata(callbackd)
+                    
+                  }
+                })
+                
+              },
+              fail:function(resd){
+                fallcallback()
+              }
+            })
+            
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      });
+    }
   }
 })

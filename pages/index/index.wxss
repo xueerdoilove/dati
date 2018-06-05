@@ -12,16 +12,27 @@ page {
   padding-top: 70px;
 }
 
-.bHead {
-  height: 30px;
-  background-color: #009199;
+.shouquan{
   position: fixed;
-  top: 70px;
-  left: 0px;
-  width: 100%;
-  z-index: -10;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #009199;
+  z-index: 100;
+  padding-top: 200px;
 }
-
+.sqbtn{
+  width: 200px;
+}
+.sqtxt{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
+  color: #fff;
+  
+}
 .userHead {
   background-color: #60dbea;
   height: 100px;
@@ -34,12 +45,15 @@ page {
   width: 29%;
   text-align: center;
   float: left;
+  border-radius: 50%;
 }
 
-.user-img image {
+.user-img open-data {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .user-img-circle {
@@ -50,6 +64,7 @@ page {
   padding: 4px;
   margin: 10px 0 0 0;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .user-img text {
@@ -213,12 +228,17 @@ page {
   height: 18px;
 }
 .bookname{
-  font-size: 17px;
+  font-size: 0.9em;
   font-weight: 600;
   position: relative;
   color: #ffffff;
   left: 30px;
   top: 25px;
+  display: inline-block;
+  width: 6em;
+  max-height: 5.3em;
+  line-height: 1.1em;
+  overflow: hidden;
 }
 .bookauther{
   font-size: 12px;

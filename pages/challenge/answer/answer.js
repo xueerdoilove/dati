@@ -2,6 +2,8 @@
 // pages/challenge/answer/answer.js
 "use strict";
 var app = getApp();
+var root_path = "../../../";
+var api = require(root_path + 'api/api.js');
 Page({
 
   /**
@@ -11,40 +13,40 @@ Page({
     nav: { isback: true, text: '知识升级', backcolor: '#01919A' },
     list:[
       {
-        title: '儒林外史 有几个章节',
-        jieshi:'我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦',
+        title: '',
+        jieshi:'',
         active:'',
         jiantoumovie:{},
         xialamovie:'',
         wenzimovie:''
       },
       {
-        title: '儒林外史 有几个章节',
-        jieshi: '我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦',
+        title: '',
+        jieshi: '',
         active: '',
         jiantoumovie: {},
         xialamovie: '',
         wenzimovie: ''
       },
       {
-        title: '儒林外史 有几个章节',
-        jieshi: '我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦',
+        title: '',
+        jieshi: '',
         active: '',
         jiantoumovie: {},
         xialamovie: '',
         wenzimovie: ''
       },
       {
-        title: '儒林外史 有几个章节',
-        jieshi: '我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦',
+        title: '',
+        jieshi: '',
         active: '',
         jiantoumovie: {},
         xialamovie: '',
         wenzimovie: ''
       },
       {
-        title: '儒林外史 有几个章节',
-        jieshi: '我有好多各章节的 哦 ,你猜猜啊啊 啦啦啦',
+        title: '',
+        jieshi: '',
         active: '',
         jiantoumovie: {},
         xialamovie: '',
@@ -58,7 +60,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
+    var that = this;
+    var topicsetid = that.options.topicsetid
+    api.get({
+      url: api.get_myTopicSet(topicsetid),
+      callback:function(res){
+        var arr = res.item.topicList;
+        var arr1  = []
+        for(var i=0;i<arr.length;i++){
+          var a1 = {
+            'title': arr[i].title,
+            'jieshi': arr[i].answerExplanation,
+            'active':'',
+            'jiantoumovie':{},
+            'xialamovie':'',
+            'wenzimovie':'',
+          }
+          arr1.push(a1)
+        }
+        that.setData({
+          list:arr1
+        })
+      }
+    })
   },
 
   /**

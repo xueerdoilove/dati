@@ -23,8 +23,9 @@ Page({
     app.getuserdata()
     var that = this;
     api.get({
-      url: api.get_bookdefi(this.options.bookId),
+      url: api.get_bookdefi(that.options.bookId),
       callback: function (res) {
+        console.log(res)
         that.setData({
           bookdetail: res.item
         })

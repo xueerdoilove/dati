@@ -32,26 +32,36 @@ Page({
     datijieend:false,//答题结束后 的 页面 显示控制器
     fxzj:true,//分享战绩 按钮  显示 开关
     timu:[
-      { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 200, ans: '3', topicId: '0'},
-      { q: '1+1=', a1: '1', a2: '2', a3: '3', a4: '4', index: '二', fenzhi: 200, ans: '2', topicId: '0'},
-      { q: '1+3=', a1: '1', a2: '2', a3: '3', a4: '4', index: '三', fenzhi: 200, ans: '4', topicId: '0'},
-      { q: '1+4=', a1: '1', a2: '2', a3: '3', a4: '5', index: '四', fenzhi: 200, ans: '5', topicId: '0'},
-      { q: '1+5=', a1: '1', a2: '2', a3: '3', a4: '6', index: '五', fenzhi: 200, ans: '6', topicId: '0'},
+      { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId: '0'},
+      { q: '1+1=', a1: '1', a2: '2', a3: '3', a4: '4', index: '二', fenzhi: 20, ans: '2', topicId: '0'},
+      { q: '1+3=', a1: '1', a2: '2', a3: '3', a4: '4', index: '三', fenzhi: 20, ans: '4', topicId: '0'},
+      { q: '1+4=', a1: '1', a2: '2', a3: '3', a4: '5', index: '四', fenzhi: 20, ans: '5', topicId: '0'},
+      { q: '1+5=', a1: '1', a2: '2', a3: '3', a4: '6', index: '五', fenzhi: 20, ans: '6', topicId: '0'},
     ],
-    taotiId:0,
-    timudetail: { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 200, ans: '3', topicId: '0'},
+    taotiId:0,// 本套题的 id
+    timudetail: { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId: '0'},
     timuindex:-1,
     userInfo:{},
     answerList:[],//传送给服务器的 数据
     zuihoudefen:0,//最终得分
-    huodejinbi:0,
+    huodejinbi:0,// 获得金币
+    cionxf:1,// 购买题 需花多少金币
+    yimaidaan:false,// 初始设置 还没买过题
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var self = this;
+    api.get({
+      url: api.get_goumaiti(),
+      callback:function(res){
+        self.setData({
+          cionxf: res.item.configValue
+        })
+      }
+    })
   },
 
   /**
@@ -67,8 +77,8 @@ Page({
       duration: 20000,
       timingFunction: 'linear',
     })
-    this.animation = animation
-    this.animation1 = animation
+    // this.animation = animation
+    // this.animation1 = animation
     setTimeout(function () {
       animation.rotate(1020).step()
       animation1.rotate(-1020).step()
@@ -94,7 +104,7 @@ Page({
       callback:function(res){
         that.data.taotiId = res.item.id;
 
-        var a = { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 200, ans: '3', topicId:'0'}
+        var a = { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId:'0'}
         var list = []
         var b = res.item.topicList
         for (var i = 0; i < b.length;i++){
@@ -139,10 +149,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.getuserdata()
-    this.setData({
-      userInfo: app.globalData.userInfo
+    var that = this;
+    app.getuserdata(function(){
+      that.setData({
+        userInfo: app.globalData.userInfo
+      })
     })
+    
   },
 
   /**
@@ -176,13 +189,67 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '我在以书会友答题中获得了' + this.data.zuihoudefen +'分',
+      path: '/pages/index/index'
+    }
+  },
+  centinue:function(){//继续答题
+    wx.navigateBack({
+      delta: 1
+    })
   },
   gotodaan:function(){
-    wx.navigateTo({
-      url: '../answer/answer',
-    })
+
+    var id = this.data.taotiId;
+    var myjinbi 
+    var self = this;
+    if (self.data.yimaidaan){
+      
+      wx.navigateTo({
+        url: '../answer/answer?topicsetid=' + id,
+      })
+    }else{
+      app.getuserdata(function () {
+        myjinbi = app.globalData.userInfo.coinCnt - self.data.cionxf
+        if (myjinbi > 0) {// 如果 余额大于 支付 金币
+          api.post({
+            url: api.post_maiti(id),
+            callback: function (res) {
+              self.setData({
+                yimaidaan:true
+              })
+              wx.navigateTo({
+                url: '../answer/answer?topicsetid=' + id,
+              })
+            }
+          })
+
+        } else {
+          wx.showModal({
+            title: '金币不足,需要购买金币吗',
+            content: '当前金币为' + app.globalData.userInfo.coinCnt + ',还需' + (-1 * myjinbi) + '金币',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/bank/bank',
+                })
+              } else if (res.cancel) {
+
+              }
+            }
+          })
+        }
+      })
+    }
+    
+   
+    
   },
   setprogress: function (val, showVal) {// 得分进度 动画
     var animation = wx.createAnimation({
@@ -355,6 +422,9 @@ Page({
   nexttimu: function () {// 下一道题目 
     this.data.timuindex++
     var that = this;
+    if (this.data.timuindex > this.data.answerList.length) {
+      this.data.answerList.push({ topicId: '0', answer: '0', seconds: '0', points: '0' })
+    }
     if(this.data.timuindex>4){ 
       this.datijieshu()
       // 答题结束  上传 分数 成绩
@@ -381,6 +451,7 @@ Page({
       this.setData({
         timudetail: this.data.timu[this.data.timuindex]
       })
+      
       this.indexdonghua()//第一题 显现 变大变小
       setTimeout(function () {
         this.timushow()

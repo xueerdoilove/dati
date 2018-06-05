@@ -26,6 +26,7 @@ page{
   height: 125px;
   text-align: center;
   padding: 5px 0;
+  position: relative;
 }
 .geshu{
   color: #ec6941;
@@ -46,4 +47,64 @@ page{
   background-color: #ec6941;
   font-size: 15px;
   margin-top: 5px;
+}
+.jbtapzz{
+  position: absolute;
+  top: 0;left: 0;
+  width: 100%;
+  height: 100%;
+}
+.zhezhao{
+  position: fixed;
+  left: 0;top: 0;bottom: 0;
+  right: 0;
+  background-color: rgba(40,40,40,.5)
+}
+.jbts{
+  width:260px;
+  height: 320px;
+  background-color: #ffffff;
+  margin: 150px auto 0;
+  border-radius: 20px;
+  padding-top:1px;
+  position: relative;
+}
+.jbimg{
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  top:-30px;
+  border:5px solid #ffffff;
+  margin: 0 auto;
+}
+.jbimg image{
+  width: 50px;
+  height: 50px;
+}
+.closex{
+  position: absolute;
+  top: 0;right: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #009199;
+  text-align: center;
+  font-weight: 600;
+}
+.jbname{
+  height: 50px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #009199;
+  line-height: 50px;
+  text-align: center;
+}
+.jbdetail{
+  font-size: 16px;
+  padding:20px;
+  text-align: center;
+  color: #000000;
 }

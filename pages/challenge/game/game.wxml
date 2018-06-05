@@ -36,10 +36,10 @@
     <text animation="{{timumovie}}"  style='opacity: 0;'>{{timudetail.q}}</text>
   </view>
   
-  <button class='option {{btnstate.a1}}' data-ans='{{timudetail.a1}}' data-index="a1" bindtap='defen' animation="{{btnmovie}}" data-idx="1" data-topicid="{{timudetail.topicId}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a1}}</button>
-  <button class='option {{btnstate.a2}}' data-ans='{{timudetail.a2}}' data-index="a2" bindtap='defen' animation="{{btnmovie}}" data-idx="2" data-topicid="{{timudetail.topicId}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a2}}</button>
-  <button class='option {{btnstate.a3}}' wx:if="{{timudetail.a3.length>0}}" data-ans='{{timudetail.a3}}' data-index="a3" data-idx="3" data-topicid="{{timudetail.topicId}}" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a3}}</button>
-  <button class='option {{btnstate.a4}}' wx:if="{{timudetail.a4.length>0}}" data-ans='{{timudetail.a4}}' data-index="a4" data-idx="4" data-topicid="{{timudetail.topicId}}" bindtap='defen' animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'>{{timudetail.a4}}</button>
+  <view class='option {{btnstate.a1}}'  animation="{{btnmovie}}"   style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;font-size:{{timudetail.a1.length>10?"16px":"18px"}};' ><text data-topicid="{{timudetail.topicId}}" data-idx="1" data-ans='{{timudetail.a1}}' data-index="a1" bindtap='defen'>{{timudetail.a1}}</text></view>
+  <view class='option {{btnstate.a2}}'  animation="{{btnmovie}}"  style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;font-size:{{timudetail.a2.length>10?"16px":"18px"}};'><text data-idx="2" data-topicid="{{timudetail.topicId}}" data-ans='{{timudetail.a2}}' data-index="a2" bindtap='defen'>{{timudetail.a2}}</text></view>
+  <view class='option {{btnstate.a3}}' wx:if="{{timudetail.a3.length>0}}"  animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;font-size:{{timudetail.a3.length>10?"16px":"18px"}};'><text data-ans='{{timudetail.a3}}' data-index="a3" data-idx="3" data-topicid="{{timudetail.topicId}}" bindtap='defen'>{{timudetail.a3}}</text></view>
+  <view class='option {{btnstate.a4}}' wx:if="{{timudetail.a4.length>0}}" animation="{{btnmovie}}" style='transition: transform 500ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;font-size:{{timudetail.a4.length>10?"16px":"18px"}};'><text  data-ans='{{timudetail.a4}}' data-index="a4" data-idx="4" data-topicid="{{timudetail.topicId}}" bindtap='defen'>{{timudetail.a4}}</text></view>
 </view>
 
 <view class='enddati' wx:if="{{datijieend}}">
@@ -63,10 +63,10 @@
     </view>
     <view style="height:0px;width:80%;margin-left:10%;margin-top:10px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
     <view style='margin-top:15px;'>
-      <button class='btn-mid' style="background-color:#b3d465">继续挑战</button>
+      <button class='btn-mid' style="background-color:#b3d465" bindtap='centinue'>继续挑战</button>
     </view>
     <view style='margin-top:10px;' wx:if="{{fxzj}}">
-      <button class='btn-mid' style="background-color:#f06262">分享战绩</button>
+      <button class='btn-mid' style="background-color:#f06262" open-type="share" >分享战绩</button>
     </view>
     <view style='margin-top:5px;'  wx:if="{{fxzj}}">
       <text style='color:#ffffff;font-size:12px;'>分享战绩可得1</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:4px;margin-right:0;"></image>
@@ -76,8 +76,11 @@
   <view class='chakandaan'>
     <view class='banyuan' animation="{{chakandn}}" bindtap='gotodaan'>
       <view class='user-synopsis-f' style="text-align:center;">
-        <view>
-          <text style="font-size:14px;">花费1</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:3px;margin-right:0;"></image>
+        <view wx:if="{{!yimaidaan}}">
+          <text style="font-size:14px;">花费{{cionxf}}</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:3px;margin-right:0;"></image>
+        </view>
+        <view wx:if="{{yimaidaan}}">
+          <text style="font-size:14px;">已购买</text>
         </view>
         <text style="font-size:14px;">看答案解释</text>
       </view>

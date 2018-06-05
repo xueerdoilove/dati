@@ -160,17 +160,23 @@ page {
 }
 
 .option {
+  text-align: center;
+  display:table; 
   height: 60px;
   width: 84%;
   margin-left: 8%;
   border-radius: 25px;
   color: #000;
   background-color: #ffffff;
-  line-height: 60px;
   font-weight: 600;
   font-size: 18px;
   position: relative;
   margin-top:3%;
+}
+.option text{
+  display: table-cell;  
+  vertical-align:middle;   
+  padding: 0 30px;
 }
 
 .correct {
@@ -199,7 +205,7 @@ page {
   width: 15px;
   position: absolute;
   left: 90%;
-  top: 0px;
+  top: 21px;
   font-size: 20px;
   color: #fff;
 }
