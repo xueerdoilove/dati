@@ -21,7 +21,7 @@ page {
   z-index: 100;
   text-align: center;
   color: #ffffff;
-  text-shadow: 2px 2px 0px rgba(0,0,0,.75);
+  text-shadow: 1px 1px 0px rgba(0,0,0,.75);
 }
 .qian-icon{
   width: 18px;

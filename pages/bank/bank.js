@@ -10,6 +10,7 @@ Page({
    */
   data: {
     nav: { isback: true, text: '银行', backcolor: '#009199' },
+    showjinbi:true,
     cionlist: [],
     userInfo:{},
     coinid:0,
@@ -19,6 +20,7 @@ Page({
     jbdetail:'',
     jbjg:'',
     qiandao:true,
+    duoshaoti:0
   },
 
   /**
@@ -32,7 +34,20 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.system.match('iOS')) {
+            that.setData({
+              showjinbi: true
+            })
+        }else{
+          that.setData({
+            showjinbi: false
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -42,11 +57,12 @@ Page({
     var that = this;
 
     api.get({
-      url: api.get_qiandao(),
+      url: api._myCoinTask(),
       callback:function(res){
         console.log(res)
         that.setData({
-          qiandao: res.item.isSignIn
+          qiandao: res.item.isQualify,// true 领过了 false 没领过
+          duoshaoti: res.item.topicSetCnt
         })
       }
     })
@@ -66,19 +82,19 @@ Page({
   },
   pqiandao:function(){// 签到领金币
   var thatt = this;
+  if (thatt.data.duoshaoti>=10){
     api.post({
-      url: api.post_qiandao(),
-      callback:function(res){
+      url: api._myCoinTask(),
+      callback: function (res) {
         wx.showModal({
-          title: '领取成功',
-          content: '您领取了' + res.item.coinCnt +'个金币',
+          title: '恭喜答够10套题领取金币',
+          content: '您领取了' + res.item.coinCnt + '个金币',
           success: function (resd) {
-
             if (resd.confirm) {
-              app.getuserdata(function(){
+              app.getuserdata(function () {
                 thatt.setData({
                   userInfo: app.globalData.userInfo,
-                  qiandao:true,
+                  qiandao: true,
                 })
               })
             } else if (resd.cancel) {
@@ -87,6 +103,16 @@ Page({
         })
       }
     })
+  }else{
+    wx.showModal({
+      title: '您今天还没有答够十套题',
+      content: '您已经答了' + thatt.data.duoshaoti +'套题',
+      success: function (resd) {
+        
+      }
+    })
+  }
+    
   },
   showjinbibao: function (event) {// 显示金币包 详情
     this.data.coinid = event.target.dataset.coinid;
@@ -197,11 +223,4 @@ Page({
   onReachBottom: function () {
   
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

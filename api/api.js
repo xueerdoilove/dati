@@ -142,7 +142,7 @@ function get_dati(bookId,difId){
   return _host + 'topicsetWithTopic?bookId=' + bookId +'&difficultyId='+difId;
 }
 function get_mybook(){
-  return _host +'myBook'
+  return _host +'myBook?page=1&pageSize=16'
 }
 function post_defen(topicSetId){
   return _host + 'topicSet/' + topicSetId+'/answer'
@@ -174,6 +174,16 @@ function post_qiandao(){
 function get_myTopicSet(id){
   return _host + 'myTopicSet/'+id
 }
+function get_mydaguodeti(bookid,page,pageSize){
+  return _host + 'book/'+bookid+'/myTopicSet?page='+page+'&pageSize='+pageSize
+}
+function post_fenxiang(){
+  return _host + 'sharewx'
+}
+
+function _myCoinTask(){
+  return _host +'myCoinTask'
+}
 module.exports = {
   get_booklist: get_booklist,//书库列表
   get_bookdefi: get_bookdefi,//某本书的难度等级
@@ -189,6 +199,9 @@ module.exports = {
   get_qiandao: get_qiandao,// 查看是否签到
   post_qiandao: post_qiandao,// 签到 领金币
   get_myTopicSet: get_myTopicSet,//查询我 刚购买的 题的 内容
+  get_mydaguodeti: get_mydaguodeti,//查询我 打过的 所有题 
+  post_fenxiang: post_fenxiang,//分享
+  _myCoinTask: _myCoinTask,// 领金币
   get: wxget,
   post: wxpost,
   put: wxput,

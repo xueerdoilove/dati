@@ -1,12 +1,13 @@
 /* pages/challenge/answer/answer.wxss */
 .timu{
+  position: relative;
   background-color: #14446a;
   border-radius: 10px;
   color: #ffffff;
   margin: 0 16px;
   padding:10px;
   font-size: 15px;
-  z-index:10;
+  z-index:101;
 }
 .tt{
   display: inline-block;
@@ -27,5 +28,9 @@
 }
 .jieshi text{
   opacity: 0;
+}
+.jieshi{
+  position: relative;
+  z-index: 100;
 }
 

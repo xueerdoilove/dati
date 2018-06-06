@@ -47,7 +47,7 @@
           <text class='bookauther'>{{hotbook.authorName}}</text>
         </view>
       </view>
-      <view class='upgrade'>
+      <view class='upgrade' bindtap='gotopage2'>
         <text class='lg wz2'>知识升级</text>
       
       </view>

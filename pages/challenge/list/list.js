@@ -15,9 +15,6 @@ Page({
   onReady: function () {
     
   },
-  onShareAppMessage: function () {
-    // console.log('页面分享按钮 这个方法 不能带参数 否则不识别 ')
-  },
   onShow: function () {
     // 页面显示
     app.getuserdata()

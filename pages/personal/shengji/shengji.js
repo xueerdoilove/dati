@@ -2,7 +2,7 @@
 "use strict";
 
 var app = getApp();
-var root_path = "../../";
+var root_path = "../../../";
 var api = require(root_path + 'api/api.js');
 Page({
 
@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '答题书库', backcolor: '#01919A' },
+    nav: { isback: true, text: '知识升级', backcolor: '#5FB882' },
     bookiphone5:'',
     booklist:[]
   },
@@ -24,7 +24,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: "/pages/challenge/list/list?bookId=" + bookid
+      url: "/pages/personal/sj/sj?bookId=" + bookid
     })
   },
   /**
@@ -57,7 +57,7 @@ Page({
   onShow: function () {
     var that = this;
     api.get({
-      url: api.get_booklist(1, 16),
+      url: api.get_mybook(),
       callback: function (res) {
         var d = []
         var f = []
@@ -106,6 +106,4 @@ Page({
   onReachBottom: function () {
   
   },
-
- 
 })

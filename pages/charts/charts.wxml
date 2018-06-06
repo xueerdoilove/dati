@@ -17,7 +17,8 @@
 </view>
 <scroll-view scroll-y  >
   <view style='height:124px;'></view>
-  <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-item="ph" wx:key="*this">
+  <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-index="aa" wx:for-item="ph" wx:key="*this">
+    <view class="shunxu">{{aa+1}}</view>
     <view class='chartimg'>
       <image src="{{ph.portrait}}"></image>
     </view>

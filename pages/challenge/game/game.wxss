@@ -180,9 +180,12 @@ page {
 }
 
 .correct {
-  background-color: #00ffff;
+  background-color: #B9F32D;
 }
 
+.checked {
+  background-color: #00ffff;
+}
 .correct::before {
   content: ' ';
   display: block;

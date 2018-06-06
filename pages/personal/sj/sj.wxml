@@ -10,6 +10,7 @@
   </view>
   <view class='jieshi {{item.active}}' style="{{item.xialamovie}}" >
     <text style="{{item.wenzimovie}}">{{item.jieshi}}</text>
+    <button data-topicsetid="{{item.topicSetId}}" data-topicid="{{item.topicid}}" wx:if="{{item.jieshi.length==0}}" data-page="{{item.page}}" bindtap='maiti' style="{{item.xialamovie}}">花{{cionxf}}金币查看答案解释</button>
   </view>
 </view>
   

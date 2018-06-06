@@ -4,7 +4,7 @@ var root_path = "../../../";
 var api = require(root_path + 'api/api.js');
 Page({
   data: {
-    nav: { isback: true, text: '以书会友', backcolor:'rgba(0,0,0,0)'},
+    nav: { isback: true, text: '斗书大会', backcolor:'rgba(0,0,0,0)'},
     userInfo: { userimg: '../../../images/pic.png' },
     mybook1: [{}, { }, {}, {}, {}],
     mybook2: [{}, { }, {}, {}, {}],
@@ -22,22 +22,28 @@ Page({
     api.get({
       url: api.get_mybook(),
       callback:function(res){
+        var aaa  = []
         for(var i=0;i<res.items.length;i++){
+          if (res.items[i].bookState==2){
+            aaa.push(res.items[i])
+          }
+        }
+        for (var i = 0; i < aaa.length;i++){
           if(i<5){
             var a = 'mybook1[' + i + ']'
             that.setData({
-              [a]:res.items[i]
+              [a]: aaa[i]
             })
             console.log(a)
           }else if(i<10){
             var a = 'mybook2[' + (i-5) + ']'
             that.setData({
-              [a]: res.items[i]
+              [a]: aaa[i]
             })
           }else if(i<15){
             var a = 'mybook3[' + (i - 10) + ']'
             that.setData({
-              [a]: res.items[i]
+              [a]: aaa[i]
             })
           }
         }
@@ -47,11 +53,52 @@ Page({
   onShow: function () {
     // this.drawimg()
   },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '快来斗书大会答题吧',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        api.post({
+          url: api.post_fenxiang(),
+          data: {},
+          callback: function (res) {
+            if (res.item.coinCnt > 0) {
+              wx.showToast({
+                title: '分享成功,获得' + res.item.coinCnt + '金币',
+                icon: 'none',
+                duration: 3000
+              })
+            } else {
+              wx.showToast({
+                title: '分享成功,分享任务每天只可获得一次金币',
+                icon: 'none',
+                duration: 4000
+              })
+            }
+
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+        wx.showToast({
+          title: '分享失败',
+          icon: 'none'
+        })
+      }
+    }
+  },
   onHide: function () {
-    // 页面隐藏
+    
   },
   onUnload: function () {
     // 页面关闭
+    
   },
   savetupian:function(){
     

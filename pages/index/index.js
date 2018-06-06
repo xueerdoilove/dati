@@ -9,12 +9,49 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     ysq:true,
     userInfo: {},
-    nav: { isback: false, text: '以书会友', backcolor: '#009199'},
+    nav: { isback: false, text: '斗书大会', backcolor: '#009199'},
     hotbook: { id: 0, authorName: "", name: "", introduction: "" },
   },
-  onShareAppMessage: function () {
-    // return custom share data when user share.
-    // console.log('页面分享按钮')
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '快来斗书大会答题吧',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        api.post({
+          url: api.post_fenxiang(),
+          data: {},
+          callback: function (res) {
+            
+            if (res.item.coinCnt > 0) {
+              wx.showToast({
+                title: '分享成功,获得' + res.item.coinCnt + '金币',
+                icon: 'none',
+                duration: 3000
+              })
+            } else {
+              wx.showToast({
+                title: '分享成功,分享任务每天只可获得一次金币',
+                icon: 'none',
+                duration: 4000
+              })
+            }
+
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+        wx.showToast({
+          title: '分享失败',
+          icon: 'none'
+        })
+      }
+    }
   },
   bindGetUserInfo: function (e) {
     wx.redirectTo({
@@ -70,6 +107,11 @@ Page({
   gotopage1: function (event) {
     wx.navigateTo({
       url: "../personal/index/index"
+    })
+  },
+  gotopage2: function (event) {
+    wx.navigateTo({
+      url: "../personal/shengji/shengji"
     })
   },
   gotopaihang: function (event) {

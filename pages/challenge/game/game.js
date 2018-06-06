@@ -10,6 +10,7 @@ Page({
    */
   data: {
     nav: { isback: true, text: '周挑战赛', backcolor: '#01919A' },
+    fanhui:false,
     daduijiti:0,// 答对几题
     animationData: {},//正转动画
     animationData1: {},//倒转动画
@@ -169,7 +170,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.data.fanhui = true;
   },
 
   /**
@@ -195,8 +196,38 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '我在以书会友答题中获得了' + this.data.zuihoudefen +'分',
-      path: '/pages/index/index'
+      title: '我在斗书大会答题中获得了' + this.data.zuihoudefen +'分',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        api.post({
+          url: api.post_fenxiang(),
+          data:{},
+          callback:function(res){
+            if (res.item.coinCnt>0){
+              wx.showToast({
+                title: '分享成功,获得' + res.item.coinCnt + '金币',
+                icon: 'none',
+                duration: 3000
+              })
+            }else{
+              wx.showToast({
+                title: '分享成功,分享任务每天只可获得一次金币',
+                icon: 'none',
+                duration: 4000
+              })
+            }
+              
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+        wx.showToast({
+          title: '分享失败',
+          icon: 'none'
+        })
+      }
     }
   },
   centinue:function(){//继续答题
@@ -353,7 +384,7 @@ Page({
   datikaishi:function(){// 开始 答题
     setTimeout(function(){
       this.btnshow()
-    }.bind(this),2500)
+    }.bind(this),2000)
     setTimeout(function () {
       this.data.datikaiguan = true;
       this.selectComponent("#componentId").countInterval()
@@ -381,7 +412,10 @@ Page({
     clearTimeout(this.data.datichaoshi)
     var ans = event.target.dataset.ans
     var btnindex = event.target.dataset.index
-
+    var yks = 'btnstate.' + btnindex
+    this.setData({
+      [yks]: 'checked',
+    })
     if (ans == this.data.timudetail.ans){// 答对了
 
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: this.stopTime() * this.data.timudetail.fenzhi / 10}
@@ -391,10 +425,13 @@ Page({
       var a = this.stopTime() * this.data.timudetail.fenzhi / 10 +this.data.proData.showValue;
       var b = this.stopTime() * 2 + this.data.proData.value
       this.setprogress(b,a)
-      this.setData({
-        [bb]:'correct',
-        zuihoudefen:a,
-      })
+      setTimeout(function(){
+        this.setData({
+          [bb]: 'correct',
+          zuihoudefen: a,
+        })
+      }.bind(this),300)
+      
     } else {// 答错了
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: 0 }
       var bb = 'btnstate.' + btnindex
@@ -405,13 +442,18 @@ Page({
           var dd = key
         }
       }
-      
       var cc = 'btnstate.' + dd
-      this.setData({
-        [bb]: 'wrong',
-        [cc]:'correct'
-      })
       this.stopTime()
+      setTimeout(function () {
+        this.setData({
+          [bb]: 'wrong',
+        })
+      }.bind(this), 300)
+      setTimeout(function () {
+        this.setData({
+          [cc]: 'correct'
+        })
+      }.bind(this), 600)
     }
     this.data.answerList.push(JSON.parse(JSON.stringify(asr)))
     setTimeout(function(){
@@ -420,6 +462,9 @@ Page({
 
   },
   nexttimu: function () {// 下一道题目 
+    if(this.data.fanhui){// 如果 进入之后闪退 结束 答题计时
+      return ;
+    }
     this.data.timuindex++
     var that = this;
     if (this.data.timuindex > this.data.answerList.length) {
