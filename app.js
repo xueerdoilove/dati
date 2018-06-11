@@ -20,6 +20,8 @@ App({
   },
   mytoken:'',
   myId:'',
+  myconfig:{},
+  
   checksessionkey:function(){
     wx.checkSession({
       success: function () {

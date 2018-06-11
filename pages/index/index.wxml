@@ -64,7 +64,7 @@
         <text class='lg wz1'>银行</text>
         <button class='free'>免费领取</button>
       </view>
-      <view class='set'>
+      <view class='set' bindtap='putmyconfig'>
         <image src='../../images/index/hongbao.png' class='hongbao'></image>
       </view>
     

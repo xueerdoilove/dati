@@ -69,7 +69,7 @@
       <button class='btn-mid' style="background-color:#f06262" open-type="share" >分享战绩</button>
     </view>
     <view style='margin-top:5px;'  wx:if="{{fxzj}}">
-      <text style='color:#ffffff;font-size:12px;'>分享战绩可得1</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:4px;margin-right:0;"></image>
+      <text style='color:#ffffff;font-size:12px;'>分享战绩可得{{fenxiangjinbi}}</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:4px;margin-right:0;"></image>
     </view>
   </view>
   <view style="height:60px;"></view>

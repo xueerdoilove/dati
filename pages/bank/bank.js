@@ -20,7 +20,8 @@ Page({
     jbdetail:'',
     jbjg:'',
     qiandao:true,
-    duoshaoti:0
+    duoshaoti:0,
+    datijinbi:0
   },
 
   /**
@@ -46,6 +47,14 @@ Page({
             showjinbi: false
           })
         }
+      }
+    })
+    api.get({
+      url: api.get_datijinbi(),
+      callback:function(resd){
+        that.setData({
+          datijinbi: resd.item.coinCnt
+        })
       }
     })
   },

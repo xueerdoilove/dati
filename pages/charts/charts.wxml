@@ -17,7 +17,7 @@
 </view>
 <scroll-view scroll-y  >
   <view style='height:124px;'></view>
-  <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-index="aa" wx:for-item="ph" wx:key="*this">
+  <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-index="aa" wx:for-item="ph" wx:key="*thisd">
     <view class="shunxu">{{aa+1}}</view>
     <view class='chartimg'>
       <image src="{{ph.portrait}}"></image>
@@ -35,4 +35,12 @@
     </view>
   </view>
 </scroll-view>
+<view class='myranks'>
+  <view class="lantiaoxia"></view>
+</view>
+<view class='myrank'>
+  <view class="lantiaoshang"></view>
+  <text wx:if="{{myrankno}}">我当前的排名 {{myrankno}}</text>
+  <text wx:if="{{!myrankno}}">暂无排名</text>
+</view>
   

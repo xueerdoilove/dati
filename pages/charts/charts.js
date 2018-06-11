@@ -10,7 +10,8 @@ Page({
    */
   data: {
     nav: { isback: true, text: '排行榜', backcolor: '#01919A' },
-    paihanglist:[]
+    paihanglist:[],
+    myrankno:'',
   },
 
   /**
@@ -38,8 +39,24 @@ Page({
         that.setData({
           paihanglist: res.items
         })
+        if(res.items.length>0){
+          api.get({
+            url: api.get_myrank(res.items[0].weekId),
+            callback: function (resd) {
+              that.setData({
+                myrankno: resd.item.ranking
+              })
+            }
+          })
+        }else{
+          that.setData({
+            myrankno: ''
+          })
+        }
+        
       }
     })
+    
    
   },
 

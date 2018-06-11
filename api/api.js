@@ -165,6 +165,13 @@ function post_maiti(topicSetId){
 function get_goumaiti(){
   return _host + 'baseConfig/1'
 }
+function get_datijinbi(){
+  return _host + 'coinTask/4'
+}
+
+function get_fenxiangjinbi(){
+  return _host + 'coinTask/3'
+}
 function get_qiandao(){
   return _host +'mySignIn'
 }
@@ -184,6 +191,18 @@ function post_fenxiang(){
 function _myCoinTask(){
   return _host +'myCoinTask'
 }
+function get_myrank(weekid){
+  return _host + 'myRanking?weekId='+weekid
+}
+///myRanking
+//{ item: { ranking: 3 } }
+
+function get_myconfig(){
+  return _host + 'myUserConfig'
+}
+function put_myconfig(id) {
+  return _host + 'userConfig/'+id
+}
 module.exports = {
   get_booklist: get_booklist,//书库列表
   get_bookdefi: get_bookdefi,//某本书的难度等级
@@ -202,6 +221,11 @@ module.exports = {
   get_mydaguodeti: get_mydaguodeti,//查询我 打过的 所有题 
   post_fenxiang: post_fenxiang,//分享
   _myCoinTask: _myCoinTask,// 领金币
+  get_myrank: get_myrank,// 我 的 排名
+  get_datijinbi: get_datijinbi,//查询 答题10道 给多少金币
+  get_myconfig: get_myconfig,// 查询自己的 配置
+  put_myconfig: put_myconfig,// 修改 自己的 配置
+  get_fenxiangjinbi: get_fenxiangjinbi,// 分享 获得 金币数
   get: wxget,
   post: wxpost,
   put: wxput,

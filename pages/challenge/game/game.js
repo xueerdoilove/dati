@@ -48,6 +48,7 @@ Page({
     huodejinbi:0,// 获得金币
     cionxf:1,// 购买题 需花多少金币
     yimaidaan:false,// 初始设置 还没买过题
+    fenxiangjinbi:0,//分享 获得 多少金币
   },
 
   /**
@@ -156,7 +157,14 @@ Page({
         userInfo: app.globalData.userInfo
       })
     })
-    
+    api.get({
+      url: api.get_fenxiangjinbi(),
+      callback: function (resd) {
+        that.setData({
+          fenxiangjinbi: resd.item.coinCnt
+        })
+      }
+    })
   },
 
   /**

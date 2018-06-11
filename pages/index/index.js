@@ -76,6 +76,25 @@ Page({
         ysq: false,
       })
     })//获取热门书籍
+    
+  },
+  getmyconfig: function () {
+    api.get({
+      url:api.get_myconfig(),
+      callback:function(res){
+        app.myconfig = res.item
+      }
+    })
+  },
+  putmyconfig:function(){
+    var self = this;
+    api.put({
+      url: api.put_myconfig(app.myconfig.id),
+      data: JSON.stringify({pushConfig: 0,musicConfig : 1}),
+      callback: function (res) {
+        self.getmyconfig()
+      }
+    })
   },
   onHide:function(){
     console.log('页面隐藏 跳转到下一页面时触发了')
@@ -144,5 +163,7 @@ Page({
         })
       }
     })
+    that.getmyconfig()
+    
   }
 });

@@ -20,7 +20,7 @@
 </view>
 <view class='shujia' >
   <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook1}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook1}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thisw' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -30,7 +30,7 @@
 </view>
 <view class='shujia' >
   <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook2}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook2}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thise' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -40,7 +40,7 @@
 </view>
 <view class='shujia' >
   <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook3}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*this' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook3}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thisr' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
