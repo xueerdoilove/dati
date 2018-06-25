@@ -1,0 +1,36 @@
+<!--pages/personal/sjlist/sjlist.wxml-->
+<import src="/template/navigation/nav.wxml" />
+<template is="navigation" data="{{nav:nav}}"/>
+<view class='bHead' style='background-color:#5FB882'></view>
+<scroll-view scroll-y  >
+  <view class='booktop'>
+    <view style='padding-top:22px;'>
+      <text style='display:inline-block;max-height:2.4em;overflow:hidden;padding:0 1em;line-height:1.2em;font-size:1.2em;'>{{bookdetail.name}}</text>
+    </view>
+    <view style='padding-top:4px;'>
+      <text style='font-size:16px;'>{{bookdetail.authorName}}</text>
+    </view>
+    <!-- <view style='padding-top:6px;'>
+      <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
+      <text style="font-size:14px;margin:0 10px;position: relative;top:-5px;">100</text>
+    </view> -->
+  </view>
+  <view class='booktop-after'>
+
+  </view>
+  <view class='zhanwei'></view>
+
+  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
+    <view class='level-img'>
+      <image class='level-img-bg' src='http://image.didayundong.com/1bc0ba4c-c964-40bd-a7e1-596c4ef3e92b'></image>
+      <view class='level-img-num'>
+         <text class='level-img-num1' >{{idx+1}}</text> 
+      </view>
+    </view>
+    <view>
+      <view class='level-top'>
+        <text class='dengji-name'>{{dif.name}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

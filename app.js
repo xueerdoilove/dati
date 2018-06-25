@@ -7,6 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
     
   },
+  bgmusic: '',//https://doushu.kaipai.com/dati/bj.mp3
   onShow: function (options) {
     // Do something when show.当小程序启动，或从后台进入前台显示，会触发 onShow
     // console.log(options)

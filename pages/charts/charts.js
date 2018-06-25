@@ -12,6 +12,9 @@ Page({
     nav: { isback: true, text: '排行榜', backcolor: '#01919A' },
     paihanglist:[],
     myrankno:'',
+    zhounumber:0,
+    page:1,
+    pageSize:100,
   },
 
   /**
@@ -31,15 +34,18 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  paihang:function(){
     var that = this;
+    that.setData({
+      zhounumber:0
+    })
     api.get({
-      url: api.get_weekrank(0),
-      callback:function(res){
+      url: api.get_weekrank(that.data.zhounumber, that.data.page,that.data.pageSize),
+      callback: function (res) {
         that.setData({
           paihanglist: res.items
         })
-        if(res.items.length>0){
+        if (res.items.length > 0) {
           api.get({
             url: api.get_myrank(res.items[0].weekId),
             callback: function (resd) {
@@ -48,15 +54,47 @@ Page({
               })
             }
           })
-        }else{
+        } else {
           that.setData({
             myrankno: ''
           })
         }
-        
+
       }
     })
+  },
+  spaihang: function () {
+    var that = this;
+    that.setData({
+      zhounumber: 1
+    })
+    api.get({
+      url: api.get_weekrank(that.data.zhounumber,that.data.page, that.data.pageSize),
+      callback: function (res) {
+        that.setData({
+          paihanglist: res.items
+        })
+        if (res.items.length > 0) {
+          api.get({
+            url: api.get_myrank(res.items[0].weekId),
+            callback: function (resd) {
+              that.setData({
+                myrankno: resd.item.ranking
+              })
+            }
+          })
+        } else {
+          that.setData({
+            myrankno: ''
+          })
+        }
+
+      }
+    })
+  },
+  onShow: function () {
     
+    this.paihang()
    
   },
 

@@ -24,7 +24,8 @@ Page({
       return
     }
     wx.navigateTo({
-      url: "/pages/personal/sj/sj?bookId=" + bookid
+      // url: "/pages/personal/sj/sj?bookId=" + bookid
+      url: "/pages/personal/sjlist/sjlist?bookId=" + bookid
     })
   },
   /**

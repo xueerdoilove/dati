@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '知识升级', backcolor: '#01919A' },
+    nav: { isback: true, text: '知识升级', backcolor: '#5FB882' },
     list:[],
     prelistindex:-1,
     cionxf:1,//该买套题需要的 金币数
@@ -31,6 +31,10 @@ Page({
           url: api.post_maiti(tagetid),//topicSetId
           callback: function (res) {
             self.getonebookti(page)
+            wx.showToast({
+              title: '消费' + self.data.cionxf +'金币',
+              icon:'none'
+            })
           }
         })
 
@@ -71,8 +75,9 @@ Page({
     var that = this;
     
     var bookId = that.options.bookId
+    var difficultyId = that.options.difficultyId
     api.get({
-      url: api.get_mydaguodeti(bookId, page,that.data.pageSize),
+      url: api.get_mydaguodeti(bookId, difficultyId,page,that.data.pageSize),
       callback: function (res) {
         if (that.data.page < page+1) {
           if(res.items.length>0){

@@ -16,6 +16,14 @@ Page({
     
   },
   onShow: function () {
+    wx.getStorage({
+      key: 'yinyue',
+      success: function (res) {
+        if (res.data) {
+          app.bgmusic.play()
+        }
+      }
+    })
     // 页面显示
     app.getuserdata()
     var that = this;

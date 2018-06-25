@@ -11,6 +11,106 @@ page {
   margin: 0 15px;
   padding-top: 70px;
 }
+.shezhi{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(100,100,100,.5);
+  z-index: 1001;
+
+}
+.shezhiv{
+  width: 70%;
+  height: 350px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin: 120px auto;
+  position: relative;
+  text-align: center;
+}
+.shezhihb{
+  width: 247px;
+  height: 395px;
+  background-color: #fff;
+  margin: 120px auto;
+  position: relative;
+  background: url(http://image.didayundong.com/aa9c5bb5-ae60-4eee-a39c-e31eee83d7b7) no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
+.hbjieshi{
+  padding:140px 30px 0;
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.hbdedao{
+  font-size: 30px;
+  text-align: center;
+  color: #fff67f;
+  margin-bottom: 8px;
+}
+.closed{
+  font-size: 35px;
+  position: relative;
+  bottom: -65px;
+  color: #fff;
+}
+.closedd{
+  font-size: 20px;
+  position: absolute;
+  color: #888;
+  top: -10px;
+  right: -2px;
+  padding: 10px;
+  display: inline-block;
+
+}
+.set-head{
+  padding-top: 20px;
+  font-size: 25px;
+  color: #0068b7;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.anniuzu{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.anniuzu text{
+  color:#0068b7;
+  font-size: 22px;
+  margin-right: 13px;
+  position: relative;
+  top: 3px;
+}
+.gonggao{
+  border: 1px solid #08BBA8;
+  border-radius: 15px;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 40px;
+  background-color: #B7F8F4;
+  height: 130px;
+  text-align: center;
+}
+.gonggao-title{
+  font-size: 23px;
+  color: #fff;
+  width: 80px;
+  text-align: center;
+  background-color: #08BBA8;
+  border-radius: 15px;
+  height: 30px;
+  line-height: 30px;
+  position: relative;
+  top: -15px;
+  display: inline-block;
+
+}
+
 
 .shouquan{
   position: fixed;
@@ -140,7 +240,7 @@ page {
   border-radius: 10px;
   height: 250px;
   background-color: #49cedf;
-  background: url(http://image.didayundong.com/d9f876f6-c672-4015-9c94-153adb7431f4) no-repeat center;
+  background: url(http://image.didayundong.com/b97a079c-4c57-4504-b390-64a98a91ca40) no-repeat center;
   background-size: 100% 100%;
 }
 
@@ -148,7 +248,7 @@ page {
   margin-top: 15px;
   border-radius: 10px;
   height: 180px;
-  background: url(http://image.didayundong.com/f04d2d8a-2f92-461d-84a7-ca68c2533d62) no-repeat center;
+  background: url(http://image.didayundong.com/7939efda-e97b-4698-9161-303001609b47) no-repeat center;
   background-size: 100% 100%;
 }
 
@@ -156,7 +256,7 @@ page {
   margin-top: 10px;
   border-radius: 10px;
   height: 190px;
-  background: url(http://image.didayundong.com/84ec586c-c4b2-41f1-a09a-8f793ba37bba) no-repeat center;
+  background: url(http://image.didayundong.com/e88c2c52-0a64-4410-8d1d-a70cfb38267c) no-repeat center;
   background-size: 100% 100%;
 }
 
@@ -164,7 +264,7 @@ page {
   margin-top: 10px;
   border-radius: 10px;
   height: 90px;
-  background: url(http://image.didayundong.com/50f5bd30-f051-462a-a97d-ef4ad12c769a) no-repeat center;
+  background: url(http://image.didayundong.com/51b41a91-927f-4d48-8d29-2b67114cd33d) no-repeat center;
   background-size: 100% 100%;
 }
 

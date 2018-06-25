@@ -97,7 +97,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.getStorage({
+      key: 'yinyue',
+      success: function (res) {
+        if (res.data) {
+          app.bgmusic.play()
+        }
+      }
+    })
   },
 
   /**

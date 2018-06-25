@@ -1,29 +1,28 @@
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
- <import src="/template/popup/hongbao.wxml" />
+<import src="/template/popup/hongbao.wxml" />
 <!-- <template is="honghao" />  -->
 <view class='bHead'></view>
 <view class='body'>
- 
-<view class='shouquan' wx:if="{{!ysq}}">
-  <!-- 需要使用 button 来授权登录 -->
-  <text class='sqtxt'>以书会友需要您的授权</text>
-  <button wx:if="{{canIUse}}" open-type="getUserInfo"  bindgetuserinfo="bindGetUserInfo" class='sqbtn' >授权登录</button>
-  <view wx:else>请升级微信版本</view>  
-</view>   
+  <view class='shouquan' wx:if="{{!ysq}}">
+    <!-- 需要使用 button 来授权登录 -->
+    <text class='sqtxt'>以书会友需要您的授权</text>
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='sqbtn'>授权登录</button>
+    <view wx:else>请升级微信版本</view>
+  </view>
   <view class='userHead' bindtap='gotopage1'>
     <view class='user-img'>
-        <view class='user-img-circle'>
-          <open-data type="userAvatarUrl"></open-data>
-        </view>
-        <view >
-          <text style='display:inline-block;height:1.2em;overflow:hidden;line-heigth:1em;'>{{userInfo.nickName}}</text>
-        </view>
+      <view class='user-img-circle'>
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view>
+        <text style='display:inline-block;height:1.2em;overflow:hidden;line-heigth:1em;'>{{userInfo.nickName}}</text>
+      </view>
     </view>
     <view class='user-synopsis'>
       <view class='user-synopsis-t' style='overflow:hidden;'>
         <text class='user-level'>等级</text>
-        <text class='user-level-text' >{{userInfo.rankName}}</text>
+        <text class='user-level-text'>{{userInfo.rankName}}</text>
       </view>
       <view class='user-synopsis-f'>
         <image src="../../images/index/jinbi.png" class='qian-icon'></image>
@@ -33,7 +32,29 @@
       </view>
     </view>
     <view class='jiantou' style="transform: rotate(180deg);">
-      <text class='icon icon-left' ></text>
+      <text class='icon icon-left'></text>
+    </view>
+  </view>
+  <view class='shezhi' wx:if="{{shezhishow}}">
+    <view class='shezhiv'>
+      <view class='set-head'>
+        设置
+      </view>
+      <view class="body-view">
+        <view class='anniuzu'>
+          <text>推送</text>
+          <switch checked="{{tsvalue}}" bindchange="tuisongset" width="100px;" color="#08BBA8" />
+        </view>
+        <view class='anniuzu'>
+          <text>音乐</text>
+          <switch checked="{{yyvalue}}" bindchange="yinyueset" width="100px;" color="#08BBA8" />
+        </view>
+      </view>
+      <view class='gonggao'>
+        <view class='gonggao-title'>公告</view>
+      </view>
+      <view><text class='closed icon icon-guanbi ' bindtap='closedsz'></text></view>
+      
     </view>
   </view>
   <view>
@@ -41,15 +62,15 @@
       <view class='challenge' bindtap='gotopage'>
         <text class='lg wz1'>周挑战赛</text>
         <view style='position:relative'>
-          <text class='bookname' >{{hotbook.name}}</text>
+          <text class='bookname'>{{hotbook.name}}</text>
         </view>
-        <view >
+        <view>
           <text class='bookauther'>{{hotbook.authorName}}</text>
         </view>
       </view>
       <view class='upgrade' bindtap='gotopage2'>
         <text class='lg wz2'>知识升级</text>
-      
+
       </view>
     </view>
     <view class='right'>
@@ -58,16 +79,27 @@
       </view>
       <view class='ranking' bindtap='gotopaihang'>
         <text class='lg wz2'>排行榜</text>
-      
+
       </view>
       <view class='bank' bindtap='gotobank'>
         <text class='lg wz1'>银行</text>
         <button class='free'>免费领取</button>
       </view>
-      <view class='set' bindtap='putmyconfig'>
-        <image src='../../images/index/hongbao.png' class='hongbao'></image>
+      <view class='set' bindtap='showshezhi' data-aa="putmyconfig">
+
       </view>
-    
+      <image wx:if="{{hbdata.id!=0}}" animation="{{animationData}}" src='../../images/index/hongbao.png' class='hongbao' bindtap='showhb'></image>
+    </view>
+  </view>
+  <view class='shezhi' wx:if="{{hongbaoshow}}">
+    <view class='shezhihb'>
+      <text class='closedd' bindtap='closedhb'>.</text>
+      <view class='hbjieshi'>
+        本周答题数量达到{{hbdata.packCnt}}即可瓜分<text style='color:#fff67f;font-size:20px;'>{{hbdata.amount}}元</text>红包
+      </view>
+      <view class='hbdedao'>恭喜你</view>
+      <view class='hbdedao'>获得红包</view>
+      <view style='margin-top:24px;'><button class='btn-mid' style="background-color:#fff67f;color:red;width:180px;font-size:23px;" bindtap='lingquhb'>领取红包</button></view>
     </view>
   </view>
 </view>

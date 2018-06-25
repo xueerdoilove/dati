@@ -32,6 +32,11 @@ Page({
     datikaiguan:false,
     datijieend:false,//答题结束后 的 页面 显示控制器
     fxzj:true,//分享战绩 按钮  显示 开关
+    rightyinyue: '',// 答对的音乐播放
+    falseyinyue:'',// 答对的音乐播放
+    slyinyue: '',// 胜利 音乐
+    sbyinyue:'',// 失败 音乐
+    sjyinyue:'',//升级
     timu:[
       { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId: '0'},
       { q: '1+1=', a1: '1', a2: '2', a3: '3', a4: '4', index: '二', fenzhi: 20, ans: '2', topicId: '0'},
@@ -71,6 +76,16 @@ Page({
    */
   onReady: function () {
 
+    this.data.rightyinyue = wx.createInnerAudioContext();
+    this.data.rightyinyue.src = 'https://doushu.kaipai.com/dati/zhengque.mp3'
+    this.data.falseyinyue = wx.createInnerAudioContext();
+    this.data.falseyinyue.src = 'https://doushu.kaipai.com/dati/cuowu.mp3'
+    this.data.slyinyue = wx.createInnerAudioContext();
+    this.data.slyinyue.src = 'https://doushu.kaipai.com/dati/guoguan.mp3'
+    this.data.sbyinyue = wx.createInnerAudioContext();
+    this.data.sbyinyue.src = 'https://doushu.kaipai.com/dati/mguoguan.mp3'
+    this.data.sjyinyue = wx.createInnerAudioContext();
+    this.data.sjyinyue.src = 'https://doushu.kaipai.com/dati/shengji.mp3'
     var animation = wx.createAnimation({
       duration: 20000,
       timingFunction: 'linear',
@@ -171,7 +186,11 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.data.rightyinyue.destroy()
+    this.data.falseyinyue.destroy()
+    this.data.slyinyue.destroy()
+    this.data.sbyinyue.destroy()
+    this.data.sjyinyue.destroy()
   },
 
   /**
@@ -179,6 +198,19 @@ Page({
    */
   onUnload: function () {
     this.data.fanhui = true;
+    this.data.rightyinyue.destroy()
+    this.data.falseyinyue.destroy()
+    this.data.slyinyue.destroy()
+    this.data.sbyinyue.destroy()
+    this.data.sjyinyue.destroy()
+    wx.getStorage({
+      key: 'yinyue',
+      success: function (res) {
+        if (res.data) {
+          app.bgmusic.play()
+        }
+      }
+    })
   },
 
   /**
@@ -425,7 +457,7 @@ Page({
       [yks]: 'checked',
     })
     if (ans == this.data.timudetail.ans){// 答对了
-
+      this.data.rightyinyue.play()
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: this.stopTime() * this.data.timudetail.fenzhi / 10}
       this.data.daduijiti++
       var bb = 'btnstate.' + btnindex
@@ -441,6 +473,7 @@ Page({
       }.bind(this),300)
       
     } else {// 答错了
+      this.data.falseyinyue.play()
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: 0 }
       var bb = 'btnstate.' + btnindex
       for(var key in this.data.timudetail){
@@ -470,6 +503,9 @@ Page({
 
   },
   nexttimu: function () {// 下一道题目 
+    this.data.rightyinyue.stop()
+    this.data.falseyinyue.stop()
+  
     if(this.data.fanhui){// 如果 进入之后闪退 结束 答题计时
       return ;
     }
@@ -515,6 +551,19 @@ Page({
   },
   endimgdonghua:function(){//挑战结果 胜败 动画
     if (this.data.daduijiti>=3){
+      app.bgmusic.pause()
+      this.data.slyinyue.play()
+      this.data.slyinyue.onEnded(() => {
+        wx.getStorage({
+          key: 'yinyue',
+          success: function (res) {
+            if (res.data){
+              app.bgmusic.play()
+            }
+          }
+        })
+        
+      })
       this.setData({
         yssurl:'http://image.didayundong.com/00590b3d-50b4-475b-a88a-fe6d7e6962fe',
         ysscss:'victoryimg',
@@ -523,7 +572,19 @@ Page({
         daduijiti: this.data.daduijiti,
       })
     }else{
+      app.bgmusic.pause()
+      this.data.sbyinyue.play()
+      this.data.sbyinyue.onEnded(() => {
+        wx.getStorage({
+          key: 'yinyue',
+          success: function (res) {
+            if (res.data) {
+              app.bgmusic.play()
 
+            }
+          }
+        })
+      })
       this.setData({
         yssurl: 'http://image.didayundong.com/3ddbb780-d786-4a0d-95e9-f48b1dfd6ae2',
         ysscss: 'lostimg',

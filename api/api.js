@@ -153,8 +153,8 @@ function get_bookf(){
 function get_bank(){
   return _host + 'coinPacket?page=1&pageSize=6'
 }
-function get_weekrank(no){
-  return _host + 'weekRank?weekNo='+no
+function get_weekrank(no,page,pageSize){
+  return _host + 'weekRank?page='+page+'&pageSize='+pageSize+'&weekNo='+no
 }
 function post_goumaijinbi(id){
   return _host + 'coinPacket/' + id +'/wxPrepay'
@@ -181,8 +181,8 @@ function post_qiandao(){
 function get_myTopicSet(id){
   return _host + 'myTopicSet/'+id
 }
-function get_mydaguodeti(bookid,page,pageSize){
-  return _host + 'book/'+bookid+'/myTopicSet?page='+page+'&pageSize='+pageSize
+function get_mydaguodeti(bookid, difficultyId,page,pageSize){
+  return _host + 'book/' + bookid + '/myTopicSet?difficultyId=' + difficultyId+'&page='+page+'&pageSize='+pageSize
 }
 function post_fenxiang(){
   return _host + 'sharewx'
@@ -202,6 +202,18 @@ function get_myconfig(){
 }
 function put_myconfig(id) {
   return _host + 'userConfig/'+id
+}
+function get_lastweek(){
+  return _host + 'latestWeek'
+}
+function get_hongbao(weekId){
+  return _host + 'weekRedPackAct/' + weekId
+}
+function post_hongbaozg(id){
+  return _host + 'redPackAct/'+id+'/userRedPack'
+}
+function put_hongbao(id){
+  return _host + 'userRedPack/'+id
 }
 module.exports = {
   get_booklist: get_booklist,//书库列表
@@ -226,6 +238,10 @@ module.exports = {
   get_myconfig: get_myconfig,// 查询自己的 配置
   put_myconfig: put_myconfig,// 修改 自己的 配置
   get_fenxiangjinbi: get_fenxiangjinbi,// 分享 获得 金币数
+  get_lastweek: get_lastweek,// 获得 本周 weekid
+  get_hongbao: get_hongbao,// 获取 某周期 的 红包活动
+  post_hongbaozg: post_hongbaozg,// 查询 领取红包 资格 注意id为红包活动的id
+  put_hongbao: put_hongbao,//领取 红包 奖金
   get: wxget,
   post: wxpost,
   put: wxput,

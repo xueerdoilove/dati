@@ -3,11 +3,11 @@
 <template is="navigation" data="{{nav:nav}}" />
 <view class='booktop'>
   <view class='tabr'>
-    <view class='tabli' style='border-right:1px solid #ffffff'>
-      <text class='tactive'>周排行</text>
+    <view class='tabli {{zhounumber==0?"tactive":""}}' bindtap='paihang' data-number='0' style='border-right:1px solid #ffffff'>
+      <text class=''>本周排行</text>
     </view>
-    <view class='tabli'>
-      <text class=''>总排行</text>
+    <view class='tabli {{zhounumber==1?"tactive":""}}' bindtap='spaihang' data-number='1'>
+      <text class=''>上周排行</text>
     </view>
   </view>
   <view class='lantiaoxia'></view>

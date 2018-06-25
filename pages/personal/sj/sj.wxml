@@ -1,7 +1,7 @@
 <!--pages/challenge/answer/answer.wxml-->
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
-<view class='bHead'></view>
+<view class='bHead' style='background-color:#5FB882'></view>
 <view style='height:70px;'></view>
 <view style="margin-bottom:10px;"  wx:for="{{list}}" wx:key>
   <view class='timu' data-index="{{index}}" catchtap='showjieshi'>

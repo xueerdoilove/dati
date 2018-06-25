@@ -3,6 +3,7 @@ navigator{
   height: 100%;
   width: 100%;
 }
+
 page {
   background-color: #c3e9ec;
   width: 100%;

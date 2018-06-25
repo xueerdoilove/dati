@@ -9,6 +9,7 @@
     "pages/challenge/list/list",
     "pages/personal/index/index",
     "pages/personal/shengji/shengji",
+    "pages/personal/sjlist/sjlist",
     "pages/personal/sj/sj"
   ],
   "window": {
