@@ -9,7 +9,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     ysq:true,//授权页面显示 
     userInfo: {},
-    nav: { isback: false, text: '斗书大会', backcolor: '#009199'},
+    nav: { isback: false, text: '斗书大会', backcolor: '#009199', isIphoneX:false},
     hotbook: { id: 0, authorName: "", name: "", introduction: "" },
     shezhishow:false,// 设置框 显示否
     tsvalue: true,// 推送值
@@ -18,9 +18,19 @@ Page({
     hongbaoshow:false,// 红包页面 显示开关
     animationData:{},//红包 动画 
     amount: 0,
+    hongbaomessage:'',
   },
   onReady: function () {
-
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
     // app.getusercode()
     // app.getUserInfo()
 
@@ -99,16 +109,6 @@ Page({
   },
   onPageScroll: function (obj) {
     // console.log(obj)
-  },
-  closedhb: function () {//关闭红包
-    this.setData({
-      hongbaoshow: false,
-    })
-  },
-  showhb: function () {// 打开红包
-    this.setData({
-      hongbaoshow: true,
-    })
   },
   closedsz:function(){//关闭设置
     this.setData({
@@ -206,6 +206,7 @@ Page({
               }
             }else{
               if (res.data) {
+                app.bgmusic.src = 'https://doushu.kaipai.com/dati/bj.mp3'
                 app.bgmusic.play()
               }
             }
@@ -307,26 +308,56 @@ Page({
     }.bind(this),1000)
   },
   lingquhb:function(){//领取红包
-
+  var self = this;
+    wx.showModal({
+      title: '领取红包成功',
+      content: '恭喜您领取' + this.data.amount +'元红包,已发放到您的余额',
+      color:'red',
+      success: function (res) {
+        if (res.confirm) {
+          self.closedhb()
+        } else if (res.cancel) {
+          self.closedhb()
+        }
+      }
+    })
+  },
+  closedhb: function () {//关闭红包
+    this.setData({
+      hongbaoshow: false,
+    })
   },
   gethongbaozg:function(){// 查询红包资格
     var self = this;
     api.post({
       url: api.post_hongbaozg(self.data.hbdata.id),
       callback:function(res){
+        console.log(res)
+        
         if(res.item){
           api.put({
             url: api.put_hongbao(res.item.id),
             callback: function (resd) {
-              self.setData({
-                amount: resd.item.amount
-              })
+              if(resd.item){
+                self.setData({
+                  hongbaoshow: true,
+                  amount: resd.item.amount
+                })
+              }else{
+                self.setData({
+                  hongbaoshow: true,
+                  amount: -1,
+                  hongbaomessage: '红包领取失败'
+                })
+              }
             }
           })
         }else{
+
           self.setData({
-            amount: 0,
-            
+            hongbaoshow: true,
+            amount: -1,
+            hongbaomessage: res.errorMessage
           })
         }
         

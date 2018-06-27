@@ -7,6 +7,54 @@ page {
   text-align: center;
   padding-top: 310px;
 }
+
+.shezhi{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(100,100,100,.5);
+  z-index: 1001;
+
+}
+.shezhihb{
+  width: 247px;
+  height: 295px;
+  background-color: #fff;
+  margin: 160px auto;
+  position: relative;
+  background: url(http://image.didayundong.com/b0816cd6-da13-42eb-90bf-5c3794eafbd4) no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
+.hbjieshi{
+  padding-top:130px;
+  color:#fff;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom:10px;
+
+}
+.closedd{
+  font-size: 20px;
+  position: absolute;
+  color: #888;
+  top: -10px;
+  right: -2px;
+  padding: 10px;
+  display: inline-block;
+
+}
+.padtop{
+  padding-top: 80px;
+}
+.hbdedao{
+  color:#ffb743;
+  font-size: 20px;
+  text-align: center;
+  padding: 2px 36px;
+}
 .donghua-bg{
   background: url(http://image.didayundong.com/4b61437a-e8a0-4004-a058-248acded07c4) no-repeat center;
   background-size: 375px 84px;

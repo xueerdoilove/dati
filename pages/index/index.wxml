@@ -52,12 +52,14 @@
       </view>
       <view class='gonggao'>
         <view class='gonggao-title'>公告</view>
+        <view style='color:#0068b7;font-size:16px;padding:0 12px;line-height:25px;'><text>欢迎大家踊跃答题,不定期有红包活动奖励哦!</text></view>
+        
       </view>
       <view><text class='closed icon icon-guanbi ' bindtap='closedsz'></text></view>
       
     </view>
   </view>
-  <view>
+  <view >
     <view class='left'>
       <view class='challenge' bindtap='gotopage'>
         <text class='lg wz1'>周挑战赛</text>
@@ -88,18 +90,24 @@
       <view class='set' bindtap='showshezhi' data-aa="putmyconfig">
 
       </view>
-      <image wx:if="{{hbdata.id!=0}}" animation="{{animationData}}" src='../../images/index/hongbao.png' class='hongbao' bindtap='showhb'></image>
+      <image wx:if="{{hbdata.id!=0}}" animation="{{animationData}}" src='../../images/index/hongbao.png' class='hongbao' bindtap='gethongbaozg'></image>
     </view>
   </view>
   <view class='shezhi' wx:if="{{hongbaoshow}}">
     <view class='shezhihb'>
       <text class='closedd' bindtap='closedhb'>.</text>
       <view class='hbjieshi'>
-        本周答题数量达到{{hbdata.packCnt}}即可瓜分<text style='color:#fff67f;font-size:20px;'>{{hbdata.amount}}元</text>红包
+        本周答题数量达到{{hbdata.packCnt}}即可瓜分 <text style='color:#fff67f;font-size:20px;'>{{hbdata.amount}}元</text> 红包
       </view>
-      <view class='hbdedao'>恭喜你</view>
-      <view class='hbdedao'>获得红包</view>
-      <view style='margin-top:24px;'><button class='btn-mid' style="background-color:#fff67f;color:red;width:180px;font-size:23px;" bindtap='lingquhb'>领取红包</button></view>
+      <view wx:if="{{amount!=-1}}" class='hbdedao'>恭喜你</view>
+      <view wx:if="{{amount!=-1}}" class='hbdedao'>获得红包</view>
+      <view wx:if="{{amount!=-1}}" style='margin-top:24px;'><button class='btn-mid' style="background-color:#fff67f;color:red;width:180px;font-size:23px;" bindtap='lingquhb'>领取红包</button></view>
+      <view wx:if="{{amount!=-1}}" style='text-align:center;font-size:13px;color:#fff;padding-top:5px;'>试试你的手气,金额随机</view>
+      <view wx:if="{{amount==-1}}" class='hbjieshi' style='color:#fff67f;padding-top:5px;text-align:center;margin-bottom:5px;height:55px;'>{{hongbaomessage}}</view>
+      <view wx:if="{{amount==-1}}" style='margin-top:24px;'><button class='btn-mid' style="background-color:#ffffff;color:red;width:180px;font-size:23px;" bindtap='closedhb'>继续答题</button></view>
+      <view wx:if="{{amount==-1}}"  style='text-align:center;font-size:13px;color:#fff;padding-top:5px;'>金额有限先到先得</view>
+      
     </view>
   </view>
+  
 </view>

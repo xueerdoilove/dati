@@ -2,10 +2,15 @@
 page{
   background: url(http://image.didayundong.com/b8952cd9-ab5a-4181-88b1-c3ccab59408e) no-repeat center;
   background-size: 100% 100%;
+  background-attachment:fixed;
+
+}
+.body{
+  padding-top:70px;
 }
 
 .shujia{
-  height: 140px;
+  height: 120px;
   position: relative;
 }
 .shujia-b{
@@ -26,7 +31,7 @@ page{
 }
 .books{
   height: 125px;
-  padding: 25px 0 0;
+  padding: 10px 0 0;
   text-align: center;
 }
 .book{
@@ -40,7 +45,7 @@ page{
   position: relative;
 }
 .bookip5 .book{
-  margin-right: 2px;
+  margin-right: 2px!important;
 }
 .bookname{
   position: absolute;
@@ -81,13 +86,4 @@ page{
   background:#0092BA url(http://image.didayundong.com/fb2776db-2b67-4c9e-b2eb-35eb07070329) no-repeat center;
   background-size: 100% 100%;
 }
-.bfinish:after{
-  content: '';
-  display: inline-block;
-  height: 30px;width: 30px;
-  background: url(http://image.didayundong.com/2c33b4d9-98be-46ad-a10c-0669f8133814) no-repeat center;
-  background-size: 100% 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+

@@ -1,6 +1,6 @@
 <template name="navigation">
-  <view class='navigation flex-wrp' style="background-color:{{nav.backcolor}}">
-    <view class="flex-item backzw {{nav.isback ? 'back' : 'backzw'}}" >
+  <view class='navigation flex-wrp {{nav.isIphoneX ? "iphonex" : ""}}' style="background-color:{{nav.backcolor}}">
+    <view class="flex-item backzw {{nav.isback ? 'back' : 'backzw'}} " >
       <navigator open-type='navigateBack' delta='1' wx:if='{{nav.isback}}'>
         <text class='icon icon-left white' style='color:{{nav.color ? nav.color : "#fff"}}'></text>
       </navigator>

@@ -1,8 +1,8 @@
 <!--pages/challenge/answer/answer.wxml-->
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
-<view class='bHead' style='background-color:#5FB882'></view>
-<view style='height:70px;'></view>
+<view class='bHead' ></view>
+<view class='body'>
 <view style="margin-bottom:10px;"  wx:for="{{list}}" wx:key>
   <view class='timu' data-index="{{index}}" catchtap='showjieshi'>
     <text class='tt'>{{item.title}}</text>
@@ -12,5 +12,6 @@
     <text style="{{item.wenzimovie}}">{{item.jieshi}}</text>
     <button data-topicsetid="{{item.topicSetId}}" data-topicid="{{item.topicid}}" wx:if="{{item.jieshi.length==0}}" data-page="{{item.page}}" bindtap='maiti' style="{{item.xialamovie}}">花{{cionxf}}金币查看答案解释</button>
   </view>
+</view>
 </view>
   

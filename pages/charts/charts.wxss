@@ -1,5 +1,5 @@
 /* pages/charts/charts.wxss */
-.bHead {
+.bHeadd {
   height: 30px;
   background-color: #009199;
   position: fixed;
@@ -8,6 +8,9 @@
   width: 100%;
   z-index: -10;
   overflow: hidden;
+}
+.body{
+  padding-top:70px;
 }
 .booktop {
   height: 60px;

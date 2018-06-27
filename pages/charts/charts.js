@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '排行榜', backcolor: '#01919A' },
+    nav: { isback: true, text: '排行榜', backcolor: '#01919A', isIphoneX: false},
     paihanglist:[],
     myrankno:'',
     zhounumber:0,
@@ -28,7 +28,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
   },
 
   /**

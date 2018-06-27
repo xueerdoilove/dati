@@ -3,6 +3,10 @@ page{
    background:#123162 url(http://image.didayundong.com/91317512-1d88-4892-a4c8-7c683598ed2b) no-repeat fixed center; 
   background-size: 100% 100%;
 }
+.hgeren{
+  height: 80px;
+}
+
 .p-circle{
   height: 140px;
   width: 140px;
@@ -90,6 +94,19 @@ page{
   background-size: 100% 100%;
   position: relative;
 }
+.mar10{
+  margin-right: 10px;
+}
+.mar2{
+  margin-right: 2px;
+}
+.mar0{
+  margin-right: 0;
+}
+.pad0{
+  padding:15px 0 0 ; 
+}
+
 .bookname{
   position: absolute;
   font-size: 14px;

@@ -9,6 +9,9 @@
   font-size: 15px;
   z-index:101;
 }
+.body{
+  padding-top:70px;
+}
 .tt{
   display: inline-block;
   width: 90%;

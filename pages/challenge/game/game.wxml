@@ -1,6 +1,8 @@
 <!--pages/challenge/game/game.wxml-->
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
+<view class='bHead'></view>
+<view class='body'>
 <view animation="{{jiazai}}" style="padding-top:70px;" wx:if="{{donghuaView}}">
   <view class='gamedonghua' >
     <image src='../../../images/pic.png' class='img-b0'></image>
@@ -21,7 +23,7 @@
   </view>
 </view>
 
-<view wx:if="{{!donghuaView&&!datijieend}}" style='padding-top:80px;'>
+<view wx:if="{{!donghuaView&&!datijieend&&!meitile}}" class='padtop'>
   <view class='donghua-bg' animation="{{bgmovie}}" style='transition: transform 200ms ease-in-out 0ms; transform: scale(0, 0); transform-origin: 50% 50% 0px;'></view>
   <view class='donghua-bg-btm'></view>
   <modalCircle  id="componentId" modal-num="{{10}}" modal-width="{{80}}"/>  
@@ -87,8 +89,20 @@
     </view>
   </view>
 </view>
+<view class='shezhi' wx:if="{{jibieshow}}">
+  <view class='shezhihb'>
+    <text class='closedd' bindtap='closeshengji'>.</text>
+    <view class='hbjieshi'>
+      恭喜升级
+    </view>
+    <view  class='hbdedao'>{{jibie}}</view>
+    
+  </view>
+</view>
+</view>
   <image src="http://image.didayundong.com/3ddbb780-d786-4a0d-95e9-f48b1dfd6ae2" style='display:none' s></image>  
-  <image src="http://image.didayundong.com/94a23aa9-7e91-406b-a359-d869da121aa4" style='display:none'></image> 
+  <image src="http://image.didayundong.com/94a23aa9-7e91-406b-a359-d869da121aa4" style='display:none' ></image> 
 
   <image src="http://image.didayundong.com/00590b3d-50b4-475b-a88a-fe6d7e6962fe" style='display:none' y></image>  
-  <image src="http://image.didayundong.com/a5513882-a7e4-4eb1-9892-06318262c5a4" style='display:none'></image> 
+  <image src="http://image.didayundong.com/a5513882-a7e4-4eb1-9892-06318262c5a4" style='display:none' ></image> 
+  <image src="http://image.didayundong.com/b0816cd6-da13-42eb-90bf-5c3794eafbd4" style='display:none' shengji></image>

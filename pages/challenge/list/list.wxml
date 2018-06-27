@@ -1,7 +1,7 @@
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}"/>
 <view class='bHead'></view>
-<scroll-view scroll-y  >
+<view class='body'>
   <view class='booktop'>
     <view style='padding-top:22px;'>
       <text style='display:inline-block;max-height:2.4em;overflow:hidden;padding:0 1em;line-height:1.2em;font-size:1.2em;'>{{bookdetail.name}}</text>
@@ -50,4 +50,4 @@
     <image src='http://image.didayundong.com/e57af867-54c7-48c9-830f-939ee422077f' style='display:none' ></image>
     <image src='http://image.didayundong.com/ee6b2985-e0c1-4a71-ad90-68412a84ed89' style='display:none' ></image>
     <image src='http://image.didayundong.com/0e31c13d-d3b0-48d9-8175-3be900aa1c9d' style='display:none' ></image>
-</scroll-view>
+</view>

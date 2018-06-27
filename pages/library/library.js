@@ -10,9 +10,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '答题书库', backcolor: '#01919A' },
+    nav: { isback: true, text: '答题书库', backcolor: '#01919A', isIphoneX: false},
     bookiphone5:'',
-    booklist:[]
+    booklist:[],
+    page:1,
+    pageSize:24,
   },
   gotopage: function (event) {
     var bookid = event.target.dataset.bookid
@@ -31,6 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getbooklist(1)
     var self = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -47,36 +50,62 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
     
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  getbooklist:function(page){
     var that = this;
     api.get({
-      url: api.get_booklist(1, 16),
+      url: api.get_booklist(page, that.data.pageSize),
       callback: function (res) {
-        var d = []
-        var f = []
-        var c = 0
-        for (var i = 0; i < res.items.length; i++) {
-          if (d.length == 4) {
-            f.push(d)
-            d = []
-            d.push(res.items[i])
-          } else {
-            d.push(res.items[i])
+        if(res.items&&res.items.length>0){
+          that.data.page = page+1
+          var a = []
+          for(var q = 0;q<that.data.booklist.length;q++){
+            a = a.concat(that.data.booklist[q])
           }
+          a = a.concat(res.items)
+          var d = []
+          var f = []
+          var c = 0
+          for (var i = 0; i < a.length; i++) {
+            if (d.length == 4) {
+              f.push(d)
+              d = []
+              d.push(a[i])
+            } else {
+              d.push(a[i])
+            }
+          }
+          f.push(d)
+          that.setData({
+            booklist: f
+          })
+        }else{
+          wx.showToast({
+            title: '没有更多书籍了',
+            icon:'none'
+          })
         }
-        f.push(d)
-        that.setData({
-          booklist: f
-        })
+        
       }
     })
+  },
+  onShow: function () {
+   
   },
 
   /**
@@ -104,7 +133,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getbooklist(this.data.page)
   },
 
  

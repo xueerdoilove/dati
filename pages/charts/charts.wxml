@@ -1,6 +1,10 @@
 <!--pages/charts/charts.wxml-->
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
+<view class='bHead'>
+  <view class='lantiaoshang'></view>
+</view>
+<view class='body'>
 <view class='booktop'>
   <view class='tabr'>
     <view class='tabli {{zhounumber==0?"tactive":""}}' bindtap='paihang' data-number='0' style='border-right:1px solid #ffffff'>
@@ -12,11 +16,11 @@
   </view>
   <view class='lantiaoxia'></view>
 </view>
-<view class='bHead'>
+<view class='bHeadd'>
   <view class='lantiaoshang'></view>
 </view>
 <scroll-view scroll-y  >
-  <view style='height:124px;'></view>
+  <view style='height:54px;'></view>
   <view class='chartlist chartlistactive' wx:for="{{paihanglist}}" wx:for-index="aa" wx:for-item="ph" wx:key="*thisd">
     <view class="shunxu">{{aa+1}}</view>
     <view class='chartimg'>
@@ -34,6 +38,7 @@
       </view>
     </view>
   </view>
+  <view style='height:40px;'></view>
 </scroll-view>
 <view class='myranks'>
   <view class="lantiaoxia"></view>
@@ -42,5 +47,6 @@
   <view class="lantiaoshang"></view>
   <text wx:if="{{myrankno}}">我当前的排名 {{myrankno}}</text>
   <text wx:if="{{!myrankno}}">暂无排名</text>
+</view>
 </view>
   

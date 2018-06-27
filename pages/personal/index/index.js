@@ -4,13 +4,13 @@ var root_path = "../../../";
 var api = require(root_path + 'api/api.js');
 Page({
   data: {
-    nav: { isback: true, text: '斗书大会', backcolor:'rgba(0,0,0,0)'},
+    nav: { isback: true, text: '斗书大会', backcolor: 'rgba(0,0,0,0)', isIphoneX: false},
     userInfo: { userimg: '../../../images/pic.png' },
-    mybook1: [{}, { }, {}, {}, {}],
-    mybook2: [{}, { }, {}, {}, {}],
-    mybook3: [{}, {}, {}, { }, {}],
+    mybook1: [{}, {}, {}, {}, {}],
+    mybook2: [{}, {}, {}, {}, {}],
+    mybook3: [{}, {}, {}, {}, {}],
+    iphone5:false,
 
-    
   },
   onLoad: function (options) {
     this.setData({
@@ -18,9 +18,23 @@ Page({
     })
   },
   onReady: function () {
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        } else if (res.model == 'iPhone 5'){
+          self.setData({
+            iphone5:true,
+          })
+        }
+      }
+    })
     var that = this;
     api.get({
-      url: api.get_mybook(),
+      url: api.get_mybook(1,15,2),
       callback:function(res){
         var aaa  = []
         for(var i=0;i<res.items.length;i++){

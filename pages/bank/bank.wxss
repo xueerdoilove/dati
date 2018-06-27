@@ -2,6 +2,9 @@
 page{
   background-color: #009199;
 }
+.body{
+  padding-top: 70px;
+}
 .yuer{
   color: #ffffff;
   padding-left: 20px;

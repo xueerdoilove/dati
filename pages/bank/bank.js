@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '银行', backcolor: '#009199' },
+    nav: { isback: true, text: '银行', backcolor: '#009199', isIphoneX: false },
     showjinbi:true,
     cionlist: [],
     userInfo:{},
@@ -35,6 +35,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

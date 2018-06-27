@@ -5,7 +5,7 @@ var api = require(root_path + 'api/api.js');
 Page({
   data: {
     // text:"这是一个页面"
-    nav: { isback: true, text: '知识升级', backcolor: '#5FB882' },
+    nav: { isback: true, text: '知识升级', backcolor: '#01919A', isIphoneX:false },
     bookdetail: {},
 
   },
@@ -13,6 +13,16 @@ Page({
 
   },
   onReady: function () {
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
     // 页面显示
     var that = this;
     api.get({

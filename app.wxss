@@ -3,7 +3,36 @@ navigator{
   height: 100%;
   width: 100%;
 }
-
+.iphonex{
+  padding-top:30px;
+}
+.iphonex+.bHead{
+  top:99px;
+}
+.iphonex+.bHead+.body{
+  padding-top:100px;
+}
+.iphonex+.hgeren{
+  height: 120px!important;
+}
+.iphonex+.bHead+.body .booktop{
+  top:100px;
+}
+.iphonex+.bHead+.body .booktop-after{
+  top:229px;
+}
+.iphonex+.bHead+.body .zhanwei{
+  height:126px;
+}
+.iphonex+.bHead+.body .bHeadd{
+  top:158px;
+}
+.iphonex+.bHead+.body .padtop{
+  padding-top:50px;
+}
+.iphonex+.bHead+.body .donghua-bg{
+  top:130px;
+}
 page {
   background-color: #c3e9ec;
   width: 100%;

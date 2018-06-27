@@ -2,6 +2,10 @@
 page{
   background: url(http://image.didayundong.com/b8952cd9-ab5a-4181-88b1-c3ccab59408e) no-repeat center;
   background-size: 100% 100%;
+  background-attachment:fixed;
+}
+.body{
+  padding-top:70px;
 }
 
 .shujia{
@@ -40,7 +44,7 @@ page{
   position: relative;
 }
 .bookip5 .book{
-  margin-right: 2px;
+  margin-right: 2px!important;
 }
 .bookname{
   position: absolute;

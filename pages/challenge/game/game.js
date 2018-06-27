@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: { isback: true, text: '周挑战赛', backcolor: '#01919A' },
+    nav: { isback: true, text: '周挑战赛', backcolor: '#01919A', isIphoneX: false},
     fanhui:false,
     daduijiti:0,// 答对几题
     animationData: {},//正转动画
@@ -54,6 +54,9 @@ Page({
     cionxf:1,// 购买题 需花多少金币
     yimaidaan:false,// 初始设置 还没买过题
     fenxiangjinbi:0,//分享 获得 多少金币
+    jibieshow:false,// 升级 显示控制 
+    jibie:'',// 升级 等级 名称
+    meitile:false,// 没有提了 控制 页面显示用
   },
 
   /**
@@ -75,7 +78,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == 'iPhone X') {
+          self.setData({
+            'nav.isIphoneX': true
+          })
+        }
+      }
+    })
     this.data.rightyinyue = wx.createInnerAudioContext();
     this.data.rightyinyue.src = 'https://doushu.kaipai.com/dati/zhengque.mp3'
     this.data.falseyinyue = wx.createInnerAudioContext();
@@ -119,6 +131,28 @@ Page({
     api.get({
       url: api.get_dati(this.options.bookId, this.options.difid),
       callback:function(res){
+        if (res.item==undefined){//------------------------------本级别题目打完了---------------------
+          that.setData({
+            donghuaView:false,
+            meitile:true
+          })
+          wx.showModal({
+            title: '本级别题已答完',
+            content: '请选择其他级别进行答题吧',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              } else if (res.cancel) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            }
+          })
+          return;
+        }
         that.data.taotiId = res.item.id;
 
         var a = { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId:'0'}
@@ -157,7 +191,6 @@ Page({
         that.setData({
           timu: list
         })
-        console.log(list)
       }
     })
   },
@@ -502,6 +535,17 @@ Page({
     }.bind(this),2000)
 
   },
+  shengji:function(str){// 等级 提升 提示
+    this.setData({
+      jibie:str,
+      jibieshow:true,
+    })
+  },
+  closeshengji:function(){// 关闭 等级 升级提示
+    this.setData({
+      jibieshow: false,
+    })
+  },
   nexttimu: function () {// 下一道题目 
     this.data.rightyinyue.stop()
     this.data.falseyinyue.stop()
@@ -516,12 +560,15 @@ Page({
     }
     if(this.data.timuindex>4){ 
       this.datijieshu()
-      // 答题结束  上传 分数 成绩
+      var st  = this;
+                          // 答题结束  上传 分数 成绩
       api.post({
         url: api.post_defen(that.data.taotiId),
         data: JSON.stringify({'answerList':that.data.answerList}),
         callback:function(res){
-          
+          if (res.item.title.length>0){
+            st.shengji(res.item.title)
+          }
         }
       })
       return;

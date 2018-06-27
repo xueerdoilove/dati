@@ -1,7 +1,7 @@
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}"/>
 <!-- <canvas style="width: 315px; height: 560px" canvas-id="mycanvas"></canvas> -->
- <view style="height:80px;"></view>
+ <view class='hgeren' ></view>
 <view class='p-circle'>
   <view class='user-img-circle'>
     <open-data type="userAvatarUrl"></open-data>
@@ -19,8 +19,8 @@
   读过的书, 每一本都是精华
 </view>
 <view class='shujia' >
-  <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook1}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thisw' bindtap='gotopage' data-bookid="{{item.id}}">
+  <view class='books {{iphone5?"pad0":""}}' >
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook1}}" wx:for-index="idx"  wx:key='*thisw' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -29,8 +29,8 @@
   <image src='../../../images/shujia2.png' class='shujia-b'></image>
 </view>
 <view class='shujia' >
-  <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook2}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thise' bindtap='gotopage' data-bookid="{{item.id}}">
+  <view class='books {{iphone5?"pad0":""}}'>
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook2}}" wx:for-index="idx" wx:key='*thise' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -39,8 +39,8 @@
   <image src='../../../images/shujia2.png' class='shujia-b'></image>
 </view>
 <view class='shujia' >
-  <view class='books'>
-    <view class='book {{item.name?"bactive":""}}' wx:for="{{mybook3}}" wx:for-index="idx" style="margin-right:{{idx==4?'0px':'10px'}};" wx:key='*thisr' bindtap='gotopage' data-bookid="{{item.id}}">
+  <view class='books {{iphone5?"pad0":""}}'>
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook3}}" wx:for-index="idx"  wx:key='*thisr' bindtap='gotopage' data-bookid="{{item.id}}">
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>

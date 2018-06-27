@@ -141,8 +141,13 @@ function get_bookdefi(bookId) {
 function get_dati(bookId,difId){
   return _host + 'topicsetWithTopic?bookId=' + bookId +'&difficultyId='+difId;
 }
-function get_mybook(){
-  return _host +'myBook?page=1&pageSize=16'
+function get_mybook(page, pageSize, bookState){
+  if (bookState){
+    var bookStated = '&bookState=' + bookState
+  }else{
+    var bookStated = ''
+  }
+  return _host + 'myBook?page=' + page + '&pageSize=' + pageSize + bookStated
 }
 function post_defen(topicSetId){
   return _host + 'topicSet/' + topicSetId+'/answer'

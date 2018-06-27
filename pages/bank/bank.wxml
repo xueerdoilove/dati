@@ -1,7 +1,8 @@
 <!--pages/bank/bank.wxml-->
 <import src="/template/navigation/nav.wxml" />
 <template is="navigation" data="{{nav:nav}}" />
-<view style="height:70px;"></view>
+<view class='bHead'></view>
+<view class='body'>
 <view class='yuer'>
   <text>账户余额:</text>
   <image src='../../images/index/jinbi.png' style='width:30px;height:30px;'></image>
@@ -37,4 +38,5 @@
 <view style='text-align:center;' wx:if="{{!qiandao}}">
   <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:25px;margin-bottom:10px;" bindtap='pqiandao'>免费领金币</button>
   <text style="font-size:15px;color:#ffffff;">每天答10道题 即可领金币</text>
+</view>
 </view>
