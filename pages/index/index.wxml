@@ -118,11 +118,4 @@
       
     </view>
   </view>
-  
-
-  <view class='shezhi' wx:if="{{shezhishow}}">
-    <view class='shezhiv'>
-     123123
-    </view>
-  </view>
 </view>
