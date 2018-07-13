@@ -176,44 +176,4 @@ image{
   width: 100%;
   
 }
-.jianjie{
-  font-size:16px;
-  text-align: right;
-  padding-right: 10px;
-  padding-top:20px;
-  color:#EAF1FF;
-  text-decoration:underline;
-}
-.jianjie-view{
-  position: fixed;
-  z-index:1100;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-color: #fff;
-}
-.jianjie-s{
-  position: absolute;
-  top:120px;
-  bottom: 130px;
-  left: 5%;
-  width:80%;
-  background-color: #009199;
-  border-radius: 15px;
-  color:#fff;
-  padding:5%;
-  font-size: 18px;
-}
-.jianjie-gb{
-  position: absolute;
-  bottom: 60px;
-  width: 100%;
-  text-align: center;
-
-}
-.jianjie-close{
-  font-size: 35px;
-  color:#009199;
-}
 /* popup 结束 */

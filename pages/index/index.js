@@ -14,57 +14,16 @@ Page({
     shezhishow:false,// 设置框 显示否
     tsvalue: true,// 推送值
     yyvalue:true,//背景音乐 值
-    yxvalue:true,// 音效 
     hbdata:{id:0},//红包数据
     hongbaoshow:false,// 红包页面 显示开关
     animationData:{},//红包 动画 
     amount: 0,
     hongbaomessage:'',
-    ztzsHeight: '',// 周挑战赛 高度
-    zssjHeight:'',// 知识升级 高度
-    dtskHeight: '',// 答题书库
-    phbHeight: '',// 排行榜
-    yhHeight: '',// 银行
-    szHeight:'',// 设置
-    ztzstmb:'',
-    left1: {},
-    left2: {},
-    right1: {},
-    right2: {},
-    right3: {},
-    right4: {},
   },
   onReady: function () {
     var self = this;
-    wx.getStorage({//  查询 音效 本地缓存 赋值 
-      key: 'yinxiao',
-      success: function (res) {
-        self.setData({
-          yxvalue: res.data
-        })
-      },
-      fail:function(res){
-        wx.setStorage({
-          key: 'yinxiao',
-          data: true,
-        })  
-      }
-    })
     wx.getSystemInfo({
       success: function (res) {
-        var divwidt = (res.screenWidth-30)*0.48// 每个小框字的 宽度
-        var divmargin = divwidt * 0.06 // 每个小框子的 间隔
-        
-        self.setData({
-          ztzsHeight: 'height:' + divwidt * 1.52 + 'px',
-          ztzstmb: 'padding-top:' + (divmargin-6) +'px',
-          zssjHeight: 'height:' +divwidt * 1.15 + 'px;margin-top:' + divmargin + 'px',
-          dtskHeight: 'height:' +divwidt * 1.09 + 'px',
-          phbHeight: 'height:' +divwidt * 0.55 + 'px;margin-top:' + divmargin + 'px',
-          yhHeight: 'height:' +divwidt * 0.55 + 'px;margin-top:' + divmargin + 'px',
-          szHeight: 'height:' +divwidt * 0.36 + 'px;margin-top:' + divmargin + 'px',
-        })
-
         if (res.model == 'iPhone X') {
           self.setData({
             'nav.isIphoneX': true
@@ -78,7 +37,6 @@ Page({
   },
   onShow: function () {
     var self = this;
-    self.gethomepagecfg()
     app.getusercode(this.getbooklist, function () {
       self.setData({
         ysq: false,
@@ -89,7 +47,7 @@ Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      // console.log(res.target)
+      console.log(res.target)
     }
     return {
       title: '快来斗书大会答题吧',
@@ -152,52 +110,6 @@ Page({
   onPageScroll: function (obj) {
     // console.log(obj)
   },
-  gethomepagecfg:function(){//获取首页图面
-    var self = this;
-    api.get({
-      url: api.get_homepagecfg(),
-      callback:function(res){
-        
-        for (var i = 0; i < res.items.length; i++) {
-          if (res.items[i].seq == 1) {
-            self.setData({
-              left1: res.items[i]
-            })
-          } else if (res.items[i].seq == 2) {
-            self.setData({
-              left2: res.items[i]
-            })
-          } else if (res.items[i].seq == 3) {
-            self.setData({
-              right1: res.items[i]
-            })
-          } else if (res.items[i].seq == 4) {
-            self.setData({
-              right2: res.items[i]
-            })
-          } else if (res.items[i].seq == 5) {
-            self.setData({
-              right3: res.items[i]
-            })
-            app.right3 = res.items[i]
-          } else if (res.items[i].seq == 6) {
-            self.setData({
-              right4: res.items[i]
-            })
-          }
-        }
-        setTimeout(function(){
-          app.homepagecfg=[]
-          app.homepagecfg.push(self.data.left1)
-          app.homepagecfg.push(self.data.left2)
-          app.homepagecfg.push(self.data.right1)
-          app.homepagecfg.push(self.data.right2)
-          app.homepagecfg.push(self.data.right3)
-          app.homepagecfg.push(self.data.right4)
-        },30)
-      }
-    })
-  },
   closedsz:function(){//关闭设置
     this.setData({
       shezhishow:false,
@@ -221,22 +133,7 @@ Page({
     wx.getStorage({
       key: 'yinyue',
       success: function (res) {
-        self.putmyconfig({ pushConfig: e.detail.value ? 1 : 0, backgroundMusic: res.data ? 1 : 0, answerMusic:0})
-      }
-    })
-  },
-  yinxiaoset: function (e) {// 音效 开管
-    var self = this;
-    this.setData({
-      yxvalue: e.detail.value
-    })
-    wx.setStorage({
-      key: "yinxiao",
-      data: e.detail.value
-    })
-    wx.getStorage({
-      key: 'yinxiao',
-      success: function (res) {
+        self.putmyconfig({ pushConfig: e.detail.value ? 1 : 0, musicConfig: res.data ? 1 : 0 })
       }
     })
   },
@@ -258,7 +155,7 @@ Page({
     wx.getStorage({
       key: 'tuisong',
       success: function (res) {
-        self.putmyconfig({ backgroundMusic: e.detail.value ? 1 : 0, pushConfig: res.data ? 1 : 0, answerMusic: 0})
+        self.putmyconfig({ musicConfig: e.detail.value ? 1 : 0, pushConfig: res.data?1:0 })
       }
     })
     
@@ -272,7 +169,7 @@ Page({
         app.myconfig = res.item
         wx.setStorage({
           key: "yinyue",
-          data: res.item.backgroundMusic==1?true:false,
+          data: res.item.musicConfig==1?true:false,
         })
         wx.setStorage({
           key: "tuisong",
@@ -298,21 +195,18 @@ Page({
                 app.bgmusic = wx.createInnerAudioContext()
                 app.bgmusic.autoplay = true
                 app.bgmusic.loop = true
-                app.bgmusic.src = 'https://doushudahui.com/dati/bj.mp3'
+                app.bgmusic.src = 'https://doushu.kaipai.com/dati/bj.mp3'
                 app.bgmusic.onPlay(() => {
                   // console.log('开始播放')
                 })
               } else {
                 app.bgmusic = wx.createInnerAudioContext()
                 app.bgmusic.loop = true
-                app.bgmusic.src = 'https://doushudahui.com/dati/bj.mp3'
+                app.bgmusic.src = 'https://doushu.kaipai.com/dati/bj.mp3'
               }
             }else{
               if (res.data) {
-                // app.bgmusic.src = 'https://doushudahui.com/dati/bj.mp3'
-                if (app.bgmusic.src !='https://doushudahui.com/dati/bj.mp3'){
-                  app.bgmusic.src = 'https://doushudahui.com/dati/bj.mp3'
-                }
+                app.bgmusic.src = 'https://doushu.kaipai.com/dati/bj.mp3'
                 app.bgmusic.play()
               }
             }
@@ -323,12 +217,12 @@ Page({
   },
   putmyconfig:function(obj){
     var self = this;
-    var data = {answerMusic:0}
+    var data = {}
     if (obj.pushConfig!=undefined){
       data.pushConfig = obj.pushConfig
     }
-    if (obj.backgroundMusic != undefined) {
-      data.backgroundMusic = obj.backgroundMusic
+    if (obj.musicConfig != undefined) {
+      data.musicConfig = obj.musicConfig
     }
     api.put({
       url: api.put_myconfig(app.myconfig.id),
@@ -473,18 +367,24 @@ Page({
   gethongbao:function(){//查询本周有红包 活动 没
     var self = this;
     api.get({
-      url: api.get_hongbao(),
-      callback:function(resd){
-        if (resd.item.id==undefined){
-          self.setData({
-            hbdata: {id:0}
-          })
-        }else{
-          self.setData({
-            hbdata:resd.item
-          })
-          self.hongbaomovie()
-        }
+      url: api.get_lastweek(),
+      callback:function(res){
+        api.get({
+          url: api.get_hongbao(res.item.id),
+          callback:function(resd){
+            if (resd.item.id==undefined){
+              self.setData({
+                hbdata: {id:0}
+              })
+            }else{
+              self.setData({
+                hbdata:resd.item
+              })
+              self.hongbaomovie()
+              
+            }
+          }
+        })
       }
     })
   }

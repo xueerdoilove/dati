@@ -46,15 +46,6 @@ page {
   display: inline-block;
 
 }
-.bHead{
-  height: 30px;
-  background-color:rgba(0,0,0,0);
-  position: fixed;
-  top:69px;
-  left: 0px;
-  width:100%;
-  z-index: -10;
-}
 .padtop{
   padding-top: 80px;
 }

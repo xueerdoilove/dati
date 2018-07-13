@@ -29,9 +29,6 @@ Page({
    */
   onReady: function () {
     var self = this;
-    self.setData({
-      'nav.text': app.homepagecfg[3].name
-    })
     wx.getSystemInfo({
       success: function (res) {
         if (res.model == 'iPhone X') {

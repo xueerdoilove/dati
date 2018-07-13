@@ -23,14 +23,9 @@
 
 .progress_text {
   position: absolute;
-  top: 25px;
-  left: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width:30px;
-  height: 30px;
-  text-align: center;
 }
 
 .progress_info {

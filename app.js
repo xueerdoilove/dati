@@ -22,7 +22,7 @@ App({
   mytoken:'',
   myId:'',
   myconfig:{},
-  homepagecfg:[],
+  
   checksessionkey:function(){
     wx.checkSession({
       success: function () {
@@ -40,7 +40,7 @@ App({
   getuserdata: function (callbackd){//从自己的 服务器获取用户信息
     var that  = this;
     wx.request({
-      url: 'https://doushudahui.com/qamini/api/myProfile',
+      url: 'https://doushu.kaipai.com/qamini/api/myProfile',
       // url: 'https://localhost:8080/qamini/api/myProfile',
       header: {
         'content-type': 'application/json',
@@ -92,7 +92,7 @@ App({
 
                 self.wxapost({
                   // url: 'https://localhost:8080/qamini/api/user',
-                  url: 'https://doushudahui.com/qamini/api/user',
+                  url: 'https://doushu.kaipai.com/qamini/api/user',
                   data: JSON.stringify({ code: code, encryptedData: resd.encryptedData,iv:resd.iv }),
                   callback: function (dd) {
                     self.mytoken = dd.item.token

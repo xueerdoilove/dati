@@ -36,9 +36,6 @@ Page({
    */
   onReady: function () {
     var self = this;
-    self.setData({
-      'nav.text': app.homepagecfg[4].name
-    })
     wx.getSystemInfo({
       success: function (res) {
         if (res.model == 'iPhone X') {
@@ -203,9 +200,6 @@ Page({
                 'signType': 'MD5',
                 'paySign': res.item.paySign,
                 'success': function (res) {
-                  wx.showToast({
-                    title: '购买金币成功',
-                  })
                   self.getinfo()
                 },
                 'fail': function (res) {

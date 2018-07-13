@@ -10,9 +10,6 @@
     <view style='padding-top:4px;'>
       <text style='font-size:16px;'>{{bookdetail.authorName}}</text>
     </view>
-    <view class="jianjie">
-      <text bindtap='showjianjie'>简介</text>
-    </view>
     <!-- <view style='padding-top:6px;'>
       <image class='qian-icon' src="../../../images/index/jinbi.png"></image>
       <text style="font-size:14px;margin:0 10px;position: relative;top:-5px;">100</text>
@@ -20,12 +17,6 @@
   </view>
   <view class='booktop-after'>
 
-  </view>
-  <view class='jianjie-view' hidden="{{jianjieshow}}">
-    <scroll-view class='jianjie-s' scroll-y>
-      {{bookdetail.introduction}}
-    </scroll-view>
-    <view class='jianjie-gb'><text class='jianjie-close icon icon-guanbi ' bindtap='closedjianjie'></text></view>
   </view>
   <view class='zhanwei'></view>
 
