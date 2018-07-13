@@ -117,11 +117,6 @@
       <view wx:if="{{amount==-1}}"  style='text-align:center;font-size:13px;color:#fff;padding-top:5px;'>金额有限先到先得</view>
       
     </view>
-  </view>
-  
-  <view class='shezhi' wx:if="{{shezhishow}}">
-    <view class='shezhiv'>
-     分支修改
-    </view>
+    123
   </view>
 </view>
