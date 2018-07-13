@@ -57,6 +57,7 @@ Page({
     jibieshow:false,// 升级 显示控制 
     jibie:'',// 升级 等级 名称
     meitile:false,// 没有提了 控制 页面显示用
+    yxvalue:true,//  音效开关
   },
 
   /**
@@ -64,6 +65,19 @@ Page({
    */
   onLoad: function (options) {
     var self = this;
+    wx.getStorage({//  查询 音效 本地缓存 赋值 
+      key: 'yinxiao',
+      success: function (res) {
+        self.setData({
+          yxvalue: res.data
+        })
+      },
+      fail: function (res) {
+        self.setData({
+          yxvalue: true
+        })
+      }
+    })
     api.get({
       url: api.get_goumaiti(),
       callback:function(res){
@@ -79,6 +93,9 @@ Page({
    */
   onReady: function () {
     var self = this;
+    self.setData({
+      'nav.text': app.homepagecfg[0].name
+    })
     wx.getSystemInfo({
       success: function (res) {
         if (res.model == 'iPhone X') {
@@ -89,15 +106,15 @@ Page({
       }
     })
     this.data.rightyinyue = wx.createInnerAudioContext();
-    this.data.rightyinyue.src = 'https://doushu.kaipai.com/dati/zhengque.mp3'
+    this.data.rightyinyue.src = 'https://doushudahui.com/dati/zhengque.mp3'
     this.data.falseyinyue = wx.createInnerAudioContext();
-    this.data.falseyinyue.src = 'https://doushu.kaipai.com/dati/cuowu.mp3'
+    this.data.falseyinyue.src = 'https://doushudahui.com/dati/cuowu.mp3'
     this.data.slyinyue = wx.createInnerAudioContext();
-    this.data.slyinyue.src = 'https://doushu.kaipai.com/dati/guoguan.mp3'
+    this.data.slyinyue.src = 'https://doushudahui.com/dati/guoguan.mp3'
     this.data.sbyinyue = wx.createInnerAudioContext();
-    this.data.sbyinyue.src = 'https://doushu.kaipai.com/dati/mguoguan.mp3'
+    this.data.sbyinyue.src = 'https://doushudahui.com/dati/mguoguan.mp3'
     this.data.sjyinyue = wx.createInnerAudioContext();
-    this.data.sjyinyue.src = 'https://doushu.kaipai.com/dati/shengji.mp3'
+    this.data.sjyinyue.src = 'https://doushudahui.com/dati/shengji.mp3'
     var animation = wx.createAnimation({
       duration: 20000,
       timingFunction: 'linear',
@@ -490,7 +507,9 @@ Page({
       [yks]: 'checked',
     })
     if (ans == this.data.timudetail.ans){// 答对了
-      this.data.rightyinyue.play()
+      if (this.data.yxvalue){
+        this.data.rightyinyue.play()
+      }
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: this.stopTime() * this.data.timudetail.fenzhi / 10}
       this.data.daduijiti++
       var bb = 'btnstate.' + btnindex
@@ -506,7 +525,10 @@ Page({
       }.bind(this),300)
       
     } else {// 答错了
-      this.data.falseyinyue.play()
+      if (this.data.yxvalue) {
+        this.data.falseyinyue.play()
+      }
+      
       var asr = { topicId: event.target.dataset.topicid, answer: event.target.dataset.idx, seconds: this.stopTime(), points: 0 }
       var bb = 'btnstate.' + btnindex
       for(var key in this.data.timudetail){
@@ -598,19 +620,23 @@ Page({
   },
   endimgdonghua:function(){//挑战结果 胜败 动画
     if (this.data.daduijiti>=3){
-      app.bgmusic.pause()
-      this.data.slyinyue.play()
-      this.data.slyinyue.onEnded(() => {
-        wx.getStorage({
-          key: 'yinyue',
-          success: function (res) {
-            if (res.data){
-              app.bgmusic.play()
+      if (this.data.yxvalue) {
+        app.bgmusic.pause()
+        this.data.slyinyue.play()
+        this.data.slyinyue.onEnded(() => {
+          wx.getStorage({
+            key: 'yinyue',
+            success: function (res) {
+              if (res.data) {
+                app.bgmusic.play()
+              }
             }
-          }
+          })
+
         })
-        
-      })
+      }
+      
+      
       this.setData({
         yssurl:'http://image.didayundong.com/00590b3d-50b4-475b-a88a-fe6d7e6962fe',
         ysscss:'victoryimg',
@@ -619,19 +645,21 @@ Page({
         daduijiti: this.data.daduijiti,
       })
     }else{
-      app.bgmusic.pause()
-      this.data.sbyinyue.play()
-      this.data.sbyinyue.onEnded(() => {
-        wx.getStorage({
-          key: 'yinyue',
-          success: function (res) {
-            if (res.data) {
-              app.bgmusic.play()
+      if (this.data.yxvalue) {
+        app.bgmusic.pause()
+        this.data.sbyinyue.play()
+        this.data.sbyinyue.onEnded(() => {
+          wx.getStorage({
+            key: 'yinyue',
+            success: function (res) {
+              if (res.data) {
+                app.bgmusic.play()
 
+              }
             }
-          }
+          })
         })
-      })
+      }
       this.setData({
         yssurl: 'http://image.didayundong.com/3ddbb780-d786-4a0d-95e9-f48b1dfd6ae2',
         ysscss: 'lostimg',

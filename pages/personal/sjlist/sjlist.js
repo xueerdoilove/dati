@@ -7,6 +7,7 @@ Page({
     // text:"这是一个页面"
     nav: { isback: true, text: '知识升级', backcolor: '#01919A', isIphoneX:false },
     bookdetail: {},
+    jianjieshow: true,
 
   },
   onLoad: function (options) {
@@ -14,6 +15,9 @@ Page({
   },
   onReady: function () {
     var self = this;
+    self.setData({
+      'nav.text': app.homepagecfg[1].name
+    })
     wx.getSystemInfo({
       success: function (res) {
         if (res.model == 'iPhone X') {
@@ -53,6 +57,16 @@ Page({
   },
   onReachBottom: function () {
     // console.log('触底了')
+  },
+  showjianjie: function () {// 查看书简介
+    this.setData({
+      jianjieshow: false
+    })
+  },
+  closedjianjie: function () {
+    this.setData({
+      jianjieshow: true
+    })
   },
   gotopage: function (event) {
     var difficultyId = event.currentTarget.dataset.difid

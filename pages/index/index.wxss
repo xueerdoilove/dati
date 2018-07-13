@@ -6,7 +6,6 @@ page {
   background: url(http://image.didayundong.com/ee1caf0b-dbf6-4fd3-bf07-9b8a41fb3bfa) no-repeat fixed center;
   background-size: 100% 100%;
 }
-
 .body {
   margin: 0 15px;
   padding-top: 70px;
@@ -21,12 +20,13 @@ page {
   z-index: 1001;
 
 }
+
 .shezhiv{
   width: 70%;
-  height: 350px;
+  height: 245px;/*350  */
   border-radius: 20px;
   background-color: #fff;
-  margin: 120px auto;
+  margin: 180px auto 0 ;
   position: relative;
   text-align: center;
 }
@@ -55,7 +55,7 @@ page {
 .closed{
   font-size: 35px;
   position: relative;
-  bottom: -65px;
+  bottom: -105px;
   color: #fff;
 }
 .closedd{
@@ -236,53 +236,69 @@ page {
 }
 
 .challenge {
-  margin-top: 15px;
+  margin-top: 15px!important;
   border-radius: 10px;
   height: 250px;
-  background-color: #49cedf;
-  background: url(http://image.didayundong.com/b97a079c-4c57-4504-b390-64a98a91ca40) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/b97a079c-4c57-4504-b390-64a98a91ca40) no-repeat center; */
+  /* background-size: 100% 100%; */
+  position: relative;
+  overflow: hidden;
 }
-
+.homeimg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .stacks {
-  margin-top: 15px;
+  margin-top: 15px!important;
   border-radius: 10px;
   height: 180px;
-  background: url(http://image.didayundong.com/7939efda-e97b-4698-9161-303001609b47) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/7939efda-e97b-4698-9161-303001609b47) no-repeat center; */
+  /* background-size: 100% 100%; */
+  position: relative;
+  overflow: hidden;
 }
 
 .upgrade {
   margin-top: 10px;
   border-radius: 10px;
   height: 190px;
-  background: url(http://image.didayundong.com/e88c2c52-0a64-4410-8d1d-a70cfb38267c) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/e88c2c52-0a64-4410-8d1d-a70cfb38267c) no-repeat center; */
+  /* background-size: 100% 100%; */
+  position: relative;
+  overflow: hidden;
 }
 
 .ranking {
   margin-top: 10px;
   border-radius: 10px;
   height: 90px;
-  background: url(http://image.didayundong.com/51b41a91-927f-4d48-8d29-2b67114cd33d) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/51b41a91-927f-4d48-8d29-2b67114cd33d) no-repeat center; */
+  /* background-size: 100% 100%; */
+  position: relative;
+  overflow: hidden;
 }
 
 .bank {
   margin-top: 10px;
   border-radius: 10px;
   height: 90px;
-  background: url(http://image.didayundong.com/0c9771ad-247b-4973-b4fd-81f3a5549457) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/dbc8855c-bf7a-4b76-bca9-29884397bfc6) no-repeat center; */
+  /* background-size: 100% 100%; */
   position: relative;
+  overflow: hidden;
 }
 
 .set {
   margin-top: 10px;
   border-radius: 10px;
   height: 60px;
-  background: url(http://image.didayundong.com/ad7214fe-e082-4f45-8400-6e0f763a44e1) no-repeat center;
-  background-size: 100% 100%;
+  /* background: url(http://image.didayundong.com/ad7214fe-e082-4f45-8400-6e0f763a44e1) no-repeat center; */
+  /* background-size: 100% 100%; */
+  position: relative;
+  overflow: hidden;
 }
 
 .lg {

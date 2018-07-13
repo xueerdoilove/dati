@@ -20,7 +20,7 @@ Page({
     var bookid = event.target.dataset.bookid
     if(bookid==undefined){
       wx.showToast({
-        title: '错误101',
+        title: '再试一次',
         icon:'none'
       })
       return
@@ -52,6 +52,9 @@ Page({
    */
   onReady: function () {
     var self = this;
+    self.setData({
+      'nav.text': app.homepagecfg[1].name
+    })
     wx.getSystemInfo({
       success: function (res) {
         if (res.model == 'iPhone X') {

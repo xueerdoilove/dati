@@ -49,46 +49,55 @@
           <text>音乐</text>
           <switch checked="{{yyvalue}}" bindchange="yinyueset" width="100px;" color="#08BBA8" />
         </view>
+        <view class='anniuzu'>
+          <text>音效</text>
+          <switch checked="{{yxvalue}}" bindchange="yinxiaoset" width="100px;" color="#08BBA8" />
+        </view>
       </view>
-      <view class='gonggao'>
+      <!-- <view class='gonggao'>
         <view class='gonggao-title'>公告</view>
         <view style='color:#0068b7;font-size:16px;padding:0 12px;line-height:25px;'><text>欢迎大家踊跃答题,不定期有红包活动奖励哦!</text></view>
         
-      </view>
+      </view> -->
       <view><text class='closed icon icon-guanbi ' bindtap='closedsz'></text></view>
       
     </view>
   </view>
   <view >
     <view class='left'>
-      <view class='challenge' bindtap='gotopage'>
-        <text class='lg wz1'>周挑战赛</text>
-        <view style='position:relative'>
+      <view class='challenge' style="{{ztzsHeight?ztzsHeight:''}}"  bindtap='gotopage'>
+        <image src="{{left1.picture}}" class='homeimg'></image>
+        <text class='lg wz1' >{{left1.name}}</text>
+        <view style='position:relative; {{ztzstmb}}'>
           <text class='bookname'>{{hotbook.name}}</text>
         </view>
         <view>
           <text class='bookauther'>{{hotbook.authorName}}</text>
         </view>
       </view>
-      <view class='upgrade' bindtap='gotopage2'>
-        <text class='lg wz2'>知识升级</text>
+      <view class='upgrade' style="{{zssjHeight?zssjHeight:''}}" bindtap='gotopage2'>
+        <image src="{{left2.picture}}" class='homeimg'></image>
+        <text class='lg wz2'>{{left2.name}}</text>
 
       </view>
     </view>
     <view class='right'>
-      <view class='stacks' bindtap='gotoshuku'>
-        <text class='lg wz1'>答题书库</text>
+      <view class='stacks' style="{{dtskHeight?dtskHeight:''}}" bindtap='gotoshuku'>
+        <image src="{{right1.picture}}" class='homeimg'></image>
+        <text class='lg wz1'>{{right1.name}}</text>
       </view>
-      <view class='ranking' bindtap='gotopaihang'>
-        <text class='lg wz2'>排行榜</text>
+      <view class='ranking' style="{{phbHeight?phbHeight:''}}" bindtap='gotopaihang'>
+        <image src="{{right2.picture}}" class='homeimg'></image>
+        <text class='lg wz2'>{{right2.name}}</text>
 
       </view>
-      <view class='bank' bindtap='gotobank'>
-        <text class='lg wz1'>银行</text>
+      <view class='bank' style="{{yhHeight?yhHeight:''}}" bindtap='gotobank'>
+        <image src="{{right3.picture}}" class='homeimg'></image>
+        <text class='lg wz1'>{{right3.name}}</text>
         <button class='free'>免费领取</button>
       </view>
-      <view class='set' bindtap='showshezhi' data-aa="putmyconfig">
-
+      <view class='set' style="{{szHeight?szHeight:''}}" bindtap='showshezhi' data-aa="putmyconfig">
+        <image src="{{right4.picture}}" class='homeimg'></image>
       </view>
       <image wx:if="{{hbdata.id!=0}}" animation="{{animationData}}" src='../../images/index/hongbao.png' class='hongbao' bindtap='gethongbaozg'></image>
     </view>
