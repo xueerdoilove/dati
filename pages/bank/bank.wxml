@@ -12,7 +12,7 @@
   <view class='jinbiitem' wx:for="{{cionlist}}" wx:key="*thisq">
     <text class='geshu'>{{item.name}}</text>
     <view><image src="../../images/index/jinbi.png" class='jinbiicon'></image></view>
-    <text class='jiage'>{{item.cost}}</text>
+    <text class='jiage'>￥{{item.cost}}</text>
     <view class='jbtapzz' bindtap='showjinbibao' data-detail="{{item.bundleCoinCnt+item.coinCnt}}" data-cost="{{item.cost}}" data-name="{{item.name}}" data-coinid="{{item.id}}"></view>
   </view>
    <view style='color:#c51f1f;font-size:14px;text-align:center;'>注:每天答10道题即可领{{datijinbi}}金币</view> 

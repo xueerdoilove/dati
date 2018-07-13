@@ -1,5 +1,5 @@
 // var _host = 'http://localhost:8080/qamini/api/';
-var _host = 'https://doushu.kaipai.com/qamini/api/';
+var _host = 'https://doushudahui.com/qamini/api/';
 var app1 = getApp();
 
 
@@ -208,17 +208,17 @@ function get_myconfig(){
 function put_myconfig(id) {
   return _host + 'userConfig/'+id
 }
-function get_lastweek(){
-  return _host + 'latestWeek'
-}
-function get_hongbao(weekId){
-  return _host + 'weekRedPackAct/' + weekId
+function get_hongbao(){
+  return _host + 'redPackActByDate/'
 }
 function post_hongbaozg(id){
   return _host + 'redPackAct/'+id+'/userRedPack'
 }
 function put_hongbao(id){
   return _host + 'userRedPack/'+id
+}
+function get_homepagecfg(){
+  return _host + 'homePageCfg'
 }
 module.exports = {
   get_booklist: get_booklist,//书库列表
@@ -243,10 +243,10 @@ module.exports = {
   get_myconfig: get_myconfig,// 查询自己的 配置
   put_myconfig: put_myconfig,// 修改 自己的 配置
   get_fenxiangjinbi: get_fenxiangjinbi,// 分享 获得 金币数
-  get_lastweek: get_lastweek,// 获得 本周 weekid
-  get_hongbao: get_hongbao,// 获取 某周期 的 红包活动
+  get_hongbao: get_hongbao,// 获取 当前时间的 红包活动
   post_hongbaozg: post_hongbaozg,// 查询 领取红包 资格 注意id为红包活动的id
   put_hongbao: put_hongbao,//领取 红包 奖金
+  get_homepagecfg: get_homepagecfg,// 首页图片获取
   get: wxget,
   post: wxpost,
   put: wxput,
