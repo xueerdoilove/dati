@@ -117,8 +117,5 @@
       <view wx:if="{{amount==-1}}"  style='text-align:center;font-size:13px;color:#fff;padding-top:5px;'>金额有限先到先得</view>
       
     </view>
-    123
-    456
-    789
   </view>
 </view>
