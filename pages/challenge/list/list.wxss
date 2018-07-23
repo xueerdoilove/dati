@@ -144,6 +144,8 @@ page {
   overflow: hidden;
   padding: 0 12px;
 }
+
+
 .qizi{
   height: 24px;
   width: 15px;
@@ -155,10 +157,8 @@ page {
   align-items: center;
   margin: 2px 5px 0;
 }
-.active{
-  background-color: #fff100;
-}
-.qizi-zd1{
+
+.qizi .qizi-zd1{
   position: absolute;
   height: 23px;
   width: 10px;
@@ -166,11 +166,42 @@ page {
   background-color: #169DAE;
   border-top-left-radius: 6px;
 }
-.qizi-zd2{
+.qizi .qizi-zd2{
   position: absolute;
   height: 0px;
   width: 0px;
   border-width:5px;
+  border-color:#206b6f  #206b6f #169DAE #206b6f;
+  border-style: solid;
+  left: 0px;bottom: 0;
+}
+.qiziip5{
+  height: 20px;
+  width: 12px;
+  background-color: #206b6f;
+  border-top-left-radius: 4px;
+  margin-top: 2px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 2px 0;
+}
+.active{
+  background-color: #fff100;
+}
+.qiziip5 .qizi-zd1{
+  position: absolute;
+  height: 19px;
+  width: 8px;
+  right: -4px;bottom: 0;
+  background-color: #169DAE;
+  border-top-left-radius: 4px;
+}
+.qiziip5 .qizi-zd2{
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  border-width:4px;
   border-color:#206b6f  #206b6f #169DAE #206b6f;
   border-style: solid;
   left: 0px;bottom: 0;

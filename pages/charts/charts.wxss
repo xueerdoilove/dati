@@ -118,7 +118,7 @@
   position: relative;
 }
 .defen{
-  width: 40%;
+  min-width: 40%;
   height: 23px;
   border-radius: 13px;
   color: #fff100;
@@ -129,6 +129,7 @@
   position: absolute;
   bottom: 5px;
   right: 15px;
+  padding:0 5px;
 }
 .tabr{
   display: flex;

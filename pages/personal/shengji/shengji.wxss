@@ -8,7 +8,16 @@ page{
 .body{
   padding-top:70px;
 }
-
+.dianjishijian{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
 .shujia{
   height: 120px;
   position: relative;

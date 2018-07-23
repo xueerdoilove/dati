@@ -301,6 +301,10 @@ page {
   left: -95px;
   z-index: 10;
 }
+.zz{
+  height: 50px;
+  line-height: 50px;
+}
 .endimgzz{
   height: 30px;
   width: 305px;

@@ -29,7 +29,7 @@
   </view>
   <view class='zhanwei'></view>
 
-  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
+  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{dif.show}}'>
     <view class='level-img'>
       <image class='level-img-bg' src='http://image.didayundong.com/1bc0ba4c-c964-40bd-a7e1-596c4ef3e92b'></image>
       <view class='level-img-num'>

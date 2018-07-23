@@ -54,21 +54,21 @@
   </view>
   <view style='text-align:center'>
     <text class='daduijiti'>答对 {{daduijiti}} 题</text>
-    <view class='user-synopsis-f' style="margin-top:10px;">
+    <view class='user-synopsis-f' style="margin-top:2px;">
       <image class='qian-icon' src="../../../images/index/jinbi.png" style="width:30px;height:30px;top:8px;"></image>
       <text >+{{huodejinbi}}</text>
     </view>
-    <view style="height:0px;width:80%;margin-left:10%;margin-top:20px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
-    <view class='user-synopsis-f' style="margin-top:10px;">
+    <view style="height:0px;width:80%;margin-left:10%;margin-top:10px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
+    <view class='user-synopsis-f' style="margin-top:3px;">
       <text style="font-size:20px;">得分: </text>
       <text >+{{zuihoudefen}}</text>
     </view>
-    <view style="height:0px;width:80%;margin-left:10%;margin-top:10px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
-    <view style='margin-top:15px;'>
-      <button class='btn-mid' style="background-color:#b3d465" bindtap='centinue'>继续挑战</button>
+    <view style="height:0px;width:80%;margin-left:10%;margin-top:6px;border:1px solid rgba(255,255,255,.5);border-radius:50%;"></view>
+    <view style='margin-top:10px;'>
+      <button class='btn-mid zz' style="background-color:#b3d465" bindtap='centinue'>继续挑战</button>
     </view>
-    <view style='margin-top:10px;' wx:if="{{fxzj}}">
-      <button class='btn-mid' style="background-color:#f06262" open-type="share" >分享战绩</button>
+    <view style='margin-top:7px;' wx:if="{{fxzj}}">
+      <button class='btn-mid zz' style="background-color:#f06262" open-type="share" >分享战绩</button>
     </view>
     <view style='margin-top:5px;'  wx:if="{{fxzj}}">
       <text style='color:#ffffff;font-size:12px;'>分享战绩可得{{fenxiangjinbi}}</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:4px;margin-right:0;"></image>

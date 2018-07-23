@@ -20,7 +20,8 @@
 </view>
 <view class='shujia' >
   <view class='books {{iphone5?"pad0":""}}' >
-    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook1}}" wx:for-index="idx"  wx:key='*thisw' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook1}}" wx:for-index="idx"  wx:key='*thisw' bindtap='gotopage' >
+      <view class='dianjishijian' data-bookid="{{item.id}}" bindtap='gotopage' ></view>
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -30,7 +31,8 @@
 </view>
 <view class='shujia' >
   <view class='books {{iphone5?"pad0":""}}'>
-    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook2}}" wx:for-index="idx" wx:key='*thise' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook2}}" wx:for-index="idx" wx:key='*thise'>
+      <view class='dianjishijian' data-bookid="{{item.id}}" bindtap='gotopage' ></view>
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>
@@ -40,7 +42,8 @@
 </view>
 <view class='shujia' >
   <view class='books {{iphone5?"pad0":""}}'>
-    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook3}}" wx:for-index="idx"  wx:key='*thisr' bindtap='gotopage' data-bookid="{{item.id}}">
+    <view class='book {{item.name?"bactive":""}} {{idx==4?"mar0":"mar10"}} {{iphone5?"mar2":""}}' wx:for="{{mybook3}}" wx:for-index="idx"  wx:key='*thisr'>
+      <view class='dianjishijian' data-bookid="{{item.id}}" bindtap='gotopage' ></view>
       <text class='bookname'>{{item.name}}</text>
       <text class='bookauther'>{{item.authorName}}</text>
     </view>

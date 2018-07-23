@@ -6,7 +6,16 @@ page{
 .hgeren{
   height: 80px;
 }
-
+.dianjishijian{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
 .p-circle{
   height: 140px;
   width: 140px;

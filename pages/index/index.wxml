@@ -15,7 +15,7 @@
       <view class='user-img-circle'>
         <open-data type="userAvatarUrl"></open-data>
       </view>
-      <view>
+      <view style='overflow:hidden'>
         <text style='display:inline-block;height:1.2em;overflow:hidden;line-heigth:1em;'>{{userInfo.nickName}}</text>
       </view>
     </view>
@@ -24,12 +24,12 @@
         <text class='user-level'>等级</text>
         <text class='user-level-text'>{{userInfo.rankName}}</text>
       </view>
-      <view class='user-synopsis-f'>
+      <scroll-view scroll-x="true" class='user-synopsis-f'>
         <image src="../../images/index/jinbi.png" class='qian-icon'></image>
         <text style='margin-right:.5em;'>{{userInfo.coinCnt}}</text>
         <text>得分: </text>
         <text>{{userInfo.points}}</text>
-      </view>
+      </scroll-view>
     </view>
     <view class='jiantou' style="transform: rotate(180deg);">
       <text class='icon icon-left'></text>
@@ -121,7 +121,7 @@
 
   <view class='shezhi' wx:if="{{tuisongshow}}" >
     <view class='shezhits'>
-      <text class='closedd' bindtap='closedts' style="font-size:24px;">x</text>
+      <view class='closedd' bindtap='closedts' style="font-size:24px;">×</view>
       <image src="{{tuisongdata.post}}" class="tsimg"></image>
     </view>
   </view>

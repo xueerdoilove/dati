@@ -33,8 +33,27 @@ Page({
       // url: api.get_bookdefi(that.options.bookId),
       url: api.get_bookdefi(that.options.bookId),
       callback: function (res) {
+        var a = res.item;
+        var b = res.item.difficultyId;
+
+        for (var i = a.difficultyList.length - 1; i >= 0; i--) {
+          a.difficultyList[i].show = false;
+          if (a.difficultyList[i].id == b) {
+            if (i == a.difficultyList.length - 1) {
+            } else {
+              a.difficultyList[i + 1].show = true;
+            }
+          }
+        }
+        for (var i = 0; i < a.difficultyList.length; i++) {
+          if (!a.difficultyList[i].show) {
+            a.difficultyList[i].show = true;
+          } else {
+            break
+          }
+        }
         that.setData({
-          bookdetail: res.item
+          bookdetail: a
         })
       }
     })

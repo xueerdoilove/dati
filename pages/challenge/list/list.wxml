@@ -28,7 +28,7 @@
   </view>
   <view class='zhanwei'></view>
 
-  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{bookdetail.difficultyId+1>=dif.id}}' p="这里有bug,还未解决">
+  <view class='book-level {{bookdetail.difficultyId>=dif.id?"":"lock"}}' data-lock='{{bookdetail.difficultyId>=dif.id?"":"lock"}}' bindtap='gotopage'  wx:for="{{bookdetail.difficultyList}}" data-difid="{{dif.id}}" data-jinbi="{{dif.awardCoin}}" data-coin="{{dif.costCoin}}" wx:for-item="dif" wx:key="*this" wx:for-index='idx' wx-if='{{dif.show}}' p="这里有bug,还未解决">
     <view class='level-img'>
       <image class='level-img-bg' src='http://image.didayundong.com/1bc0ba4c-c964-40bd-a7e1-596c4ef3e92b'></image>
       <view class='level-img-num'>
@@ -46,7 +46,7 @@
       <view class='level-bottom'>
         <text class='qian-dedao'>奖金：{{dif.awardCoin}}</text>
         <view class='stage' wx-if="{{bookdetail.difficultyId>=dif.id}}">
-          <view class='qizi {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} {{bookdetail.bookState==2?"active":""}} {{bookdetail.difficultyId>dif.id?"active":""}}' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
+          <view class='qizi {{isIphone5?"qiziip5":""}} {{dif.levelCnt-bookdetail.levelCnt>idx?"":"active"}} {{bookdetail.bookState==2?"active":""}} {{bookdetail.difficultyId>dif.id?"active":""}}' wx:key="*this"  wx:for-index="idx" wx:for="{{dif.levelCnt}}">
             <view class='qizi-zd1'></view>
             <view class='qizi-zd2'></view>
           </view>
