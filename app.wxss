@@ -55,6 +55,10 @@ page {
   url('https://at.alicdn.com/t/font_193016_sy0auq6u5deipb9.woff') format('woff'),
   url('https://at.alicdn.com/t/font_193016_sy0auq6u5deipb9.ttf') format('truetype');    
 }
+page {
+  width: 100%;
+  font-family: 'iconfont'!important;
+}
 .icon{font-family: 'iconfont';font-size: 1.1em;padding: 3px;}
 .icon-left:before { content: "\e623"; }
 .icon-up:before { content: "\e601"; }
@@ -204,6 +208,8 @@ image{
   color:#fff;
   padding:5%;
   font-size: 18px;
+  text-align: justify;
+  line-height: 26px;
 }
 .jianjie-gb{
   position: absolute;

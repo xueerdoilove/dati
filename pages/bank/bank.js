@@ -84,7 +84,7 @@ Page({
         console.log(res)
         that.setData({
           qiandao: res.item.isQualify,// true 领过了 false 没领过
-          duoshaoti: res.item.topicSetCnt
+          duoshaoti: res.item.topicCnt
         })
       }
     })

@@ -171,7 +171,10 @@ Page({
           return;
         }
         that.data.taotiId = res.item.id;
-
+        wx.setStorage({// 储存本次答的 套题 , 用来给 查看答案页面用
+          key: 'taoti',
+          data: JSON.stringify(res.item),
+        })
         var a = { q: '1+2=', a1: '1', a2: '2', a3: '3', a4: '4', index: '一', fenzhi: 20, ans: '3', topicId:'0'}
         var list = []
         var b = res.item.topicList
@@ -281,12 +284,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
+    var title = app.wxsharemsg.filter(function (elmt) {
+      return elmt.seq == 4
+    })[0].content
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
+      
     }
     return {
-      title: '我在斗书大会答题中获得了' + this.data.zuihoudefen +'分',
+      title: title,
       path: '/pages/index/index',
       success: function (res) {
         // 转发成功
@@ -326,48 +332,51 @@ Page({
     })
   },
   gotodaan:function(){
-
     var id = this.data.taotiId;
-    var myjinbi 
-    var self = this;
-    if (self.data.yimaidaan){
+    wx.navigateTo({
+      url: '../answer/answer?topicsetid=' + id,
+    })
+    // var id = this.data.taotiId;
+    // var myjinbi 
+    // var self = this;
+    // if (self.data.yimaidaan){
       
-      wx.navigateTo({
-        url: '../answer/answer?topicsetid=' + id,
-      })
-    }else{
-      app.getuserdata(function () {
-        myjinbi = app.globalData.userInfo.coinCnt - self.data.cionxf
-        if (myjinbi > 0) {// 如果 余额大于 支付 金币
-          api.post({
-            url: api.post_maiti(id),
-            callback: function (res) {
-              self.setData({
-                yimaidaan:true
-              })
-              wx.navigateTo({
-                url: '../answer/answer?topicsetid=' + id,
-              })
-            }
-          })
+    //   wx.navigateTo({
+    //     url: '../answer/answer?topicsetid=' + id,
+    //   })
+    // }else{
+    //   app.getuserdata(function () {
+    //     myjinbi = app.globalData.userInfo.coinCnt - self.data.cionxf
+    //     if (myjinbi > 0) {// 如果 余额大于 支付 金币
+    //       api.post({
+    //         url: api.post_maiti(id),
+    //         callback: function (res) {
+    //           self.setData({
+    //             yimaidaan:true
+    //           })
+    //           wx.navigateTo({
+    //             url: '../answer/answer?topicsetid=' + id,
+    //           })
+    //         }
+    //       })
 
-        } else {
-          wx.showModal({
-            title: '金币不足,需要购买金币吗',
-            content: '当前金币为' + app.globalData.userInfo.coinCnt + ',还需' + (-1 * myjinbi) + '金币',
-            success: function (res) {
-              if (res.confirm) {
-                wx.navigateTo({
-                  url: '/pages/bank/bank',
-                })
-              } else if (res.cancel) {
+    //     } else {
+    //       wx.showModal({
+    //         title: '金币不足,需要购买金币吗',
+    //         content: '当前金币为' + app.globalData.userInfo.coinCnt + ',还需' + (-1 * myjinbi) + '金币',
+    //         success: function (res) {
+    //           if (res.confirm) {
+    //             wx.navigateTo({
+    //               url: '/pages/bank/bank',
+    //             })
+    //           } else if (res.cancel) {
 
-              }
-            }
-          })
-        }
-      })
-    }
+    //           }
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
     
    
     
@@ -588,7 +597,7 @@ Page({
         url: api.post_defen(that.data.taotiId),
         data: JSON.stringify({'answerList':that.data.answerList}),
         callback:function(res){
-          if (res.item.title.length>0){
+          if (res&&(res.item.title.length>0)){
             st.shengji(res.item.title)
           }
         }

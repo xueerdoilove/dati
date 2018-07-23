@@ -5,7 +5,7 @@
 <view class='body'>
   <view class='shujia' wx:for="{{booklist}}" wx:for-item="bookd" wx:key="*this">
     <view class='books {{bookiphone5}}' >
-      <view class='book {{book.bookState==1?"bactive":""}} {{book.bookState==2?"bfinish":""}}' wx:key="*thisa" wx:for="{{bookd}}" wx:for-index="idx"  wx:for-item="book" style="margin-right:{{idx==3?'0px':'10px'}};" bindtap='gotopage' data-bookid="{{book.id}}">
+      <view class='book {{book.bookState==1?"bactive":""}} {{book.bookState==2?"bfinish":""}}' wx:key="*thisa" wx:for="{{bookd}}" data-bookid="{{book.id}}"   style="margin-right:{{idx==3?'0px':'10px'}};" wx:for-index="idx" wx:for-item="book" bindtap='gotopage' >
         <text class='bookname'>{{book.name}}</text>
         <text class='bookauther'>{{book.authorName}}</text>
       </view>

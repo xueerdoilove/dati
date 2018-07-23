@@ -16,19 +16,18 @@ Page({
     cionxf:1,//该买套题需要的 金币数
     topicid:0,
     page:1,
-    pageSize:3,
+    pageSize:15,
     notapi:true,
   },
   maiti:function(event){
     var self = this;
-    var tagetid = event.target.dataset.topicsetid
     var page = event.target.dataset.page
     self.data.topicid = event.target.dataset.topicid
     app.getuserdata(function () {
       var myjinbi = app.globalData.userInfo.coinCnt - self.data.cionxf
       if (myjinbi > 0) {// 如果 余额大于 支付 金币
         api.post({
-          url: api.post_maiti(tagetid),//topicSetId
+          url: api.post_maiti(self.data.topicid),//topicid
           callback: function (res) {
             self.getonebookti(page)
             wx.showToast({
@@ -89,25 +88,24 @@ Page({
         if(arr.length==0){return}
         var arr1 = []
         for (var i = 0; i < arr.length; i++) {
-          for (var z = 0; z < arr[i].topicList.length; z++) {
             var a1 = {
-              'title': arr[i].topicList[z].title,
-              'jieshi': arr[i].topicList[z].answerExplanation || '',
+              'title': arr[i].title,
+              'jieshi': arr[i].answerExplanation || '',
               'active': '',
               'jiantoumovie': {},
               'xialamovie': 'height:0;',
               'wenzimovie': '',
-              'topicSetId': arr[i].id,
-              'topicid': arr[i].topicList[z].topicId,
+              'topicid': arr[i].id,
+              'buyState': arr[i].buyState,
+              // 'topicSetId': arr[i].topicId,
               'page': page
             }
-            if (that.data.topicid == arr[i].topicList[z].topicId){
+            if (that.data.topicid == arr[i].id){
               a1.xialamovie = 'height:auto;'
               a1.wenzimovie = 'opacity:1;'
               a1.active = 'active'
             }
             arr1.push(a1)
-          }
         }
         var listlength = that.data.list.length;
         if(listlength==0){
@@ -115,7 +113,7 @@ Page({
             list: arr1
           })
         }else{
-          if((that.data.page-2)*that.data.pageSize*5==listlength){
+          if((that.data.page-2)*that.data.pageSize==listlength){
             var dd = that.data.list.concat(arr1)
             that.setData({
               list: dd
@@ -123,10 +121,9 @@ Page({
           }else{
             var dd = JSON.parse(JSON.stringify(that.data.list));
             for(var ee = 0;ee<arr1.length;ee++){
-              dd.splice((page - 1) * that.data.pageSize * 5+ee, 1, arr1[ee])
+              dd.splice((page - 1) * that.data.pageSize +ee, 1, arr1[ee])
             }
             
-            console.log(dd)
             that.data.notapi = false;
             setTimeout(function(){
               that.data.notapi = true;

@@ -19,10 +19,10 @@ Page({
   gotopage: function (event) {
     var bookid = event.target.dataset.bookid
     if(bookid==undefined){
-      wx.showToast({
-        title: '错误101',
-        icon:'none'
-      })
+      // wx.showToast({
+      //   title: '再试一次',
+      //   icon:'none'
+      // })
       return
     }
     wx.navigateTo({

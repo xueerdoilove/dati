@@ -94,7 +94,7 @@
       <view class='bank' style="{{yhHeight?yhHeight:''}}" bindtap='gotobank'>
         <image src="{{right3.picture}}" class='homeimg'></image>
         <text class='lg wz1'>{{right3.name}}</text>
-        <button class='free'>免费领取</button>
+        <!-- <button class='free'>免费领取</button> -->
       </view>
       <view class='set' style="{{szHeight?szHeight:''}}" bindtap='showshezhi' data-aa="putmyconfig">
         <image src="{{right4.picture}}" class='homeimg'></image>
@@ -116,6 +116,13 @@
       <view wx:if="{{amount==-1}}" style='margin-top:24px;'><button class='btn-mid' style="background-color:#ffffff;color:red;width:180px;font-size:23px;" bindtap='closedhb'>继续答题</button></view>
       <view wx:if="{{amount==-1}}"  style='text-align:center;font-size:13px;color:#fff;padding-top:5px;'>金额有限先到先得</view>
       
+    </view>
+  </view>
+
+  <view class='shezhi' wx:if="{{tuisongshow}}" >
+    <view class='shezhits'>
+      <text class='closedd' bindtap='closedts' style="font-size:24px;">x</text>
+      <image src="{{tuisongdata.post}}" class="tsimg"></image>
     </view>
   </view>
 </view>

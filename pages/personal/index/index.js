@@ -68,12 +68,15 @@ Page({
     // this.drawimg()
   },
   onShareAppMessage: function (res) {
+    var title = app.wxsharemsg.filter(function (elmt) {
+      return elmt.seq == 2
+    })[0].content
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      title: '快来斗书大会答题吧',
+      title: title,
       path: '/pages/index/index',
       success: function (res) {
         // 转发成功

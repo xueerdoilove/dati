@@ -2,7 +2,7 @@
 
 page {
   width: 100%;
-  font-family: '黑体';
+  /* font-family: 'iconfont'; */
   background: url(http://image.didayundong.com/ee1caf0b-dbf6-4fd3-bf07-9b8a41fb3bfa) no-repeat fixed center;
   background-size: 100% 100%;
 }
@@ -18,23 +18,37 @@ page {
   right: 0;
   background-color: rgba(100,100,100,.5);
   z-index: 1001;
-
+  display: -webkit-flex;
+  align-items:center; 
+  justify-content:center; 
 }
 
+.tsimg{
+  height: 100%;
+  width: 100%;
+}
 .shezhiv{
   width: 70%;
   height: 245px;/*350  */
   border-radius: 20px;
   background-color: #fff;
-  margin: 180px auto 0 ;
   position: relative;
   text-align: center;
+}
+.shezhits{
+  width: 280px;
+  height: 400px;/*350  */
+  border-radius: 20px;
+  background-color: #fff;
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+  position: relative;
 }
 .shezhihb{
   width: 247px;
   height: 395px;
   background-color: #fff;
-  margin: 120px auto;
   position: relative;
   background: url(http://image.didayundong.com/aa9c5bb5-ae60-4eee-a39c-e31eee83d7b7) no-repeat;
   background-position: center center;

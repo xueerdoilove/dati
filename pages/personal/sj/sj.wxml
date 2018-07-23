@@ -4,13 +4,13 @@
 <view class='bHead' ></view>
 <view class='body'>
 <view style="margin-bottom:10px;"  wx:for="{{list}}" wx:key>
-  <view class='timu' data-index="{{index}}" catchtap='showjieshi'>
+  <view class='timu {{item.buyState==0?"meimai":""}}' data-index="{{index}}" catchtap='showjieshi'>
     <text class='tt'>{{item.title}}</text>
     <text class='icon icon-up white' style='float:right;padding:0;font-size:20px; transform: rotate(-90deg); transform-origin: 50% 50% 0px;' animation="{{item.jiantoumovie}}"></text>
   </view>
   <view class='jieshi {{item.active}}' style="{{item.xialamovie}}" >
     <text style="{{item.wenzimovie}}">{{item.jieshi}}</text>
-    <button data-topicsetid="{{item.topicSetId}}" data-topicid="{{item.topicid}}" wx:if="{{item.jieshi.length==0}}" data-page="{{item.page}}" bindtap='maiti' style="{{item.xialamovie}}">花{{cionxf}}金币查看答案解释</button>
+    <button  data-topicid="{{item.topicid}}" wx:if="{{item.jieshi.length==0}}" data-page="{{item.page}}" bindtap='maiti' style="{{item.xialamovie}}">花{{cionxf}}金币查看答案解释</button>
   </view>
 </view>
 </view>

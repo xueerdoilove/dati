@@ -2,6 +2,7 @@
 
 var root_path = "../../";
 var api = require(root_path + 'api/api.js');
+var util = require(root_path + 'utils/util.js');
 
 var app = getApp();
 Page({
@@ -13,6 +14,8 @@ Page({
     hotbook: { id: 0, authorName: "", name: "", introduction: "" },
     shezhishow:false,// 设置框 显示否
     tsvalue: true,// 推送值
+    tuisongdata:{},//推送数据
+    tuisongshow:false,//推送 显示开关
     yyvalue:true,//背景音乐 值
     yxvalue:true,// 音效 
     hbdata:{id:0},//红包数据
@@ -87,12 +90,15 @@ Page({
     
   },
   onShareAppMessage: function (res) {
+    var title = app.wxsharemsg.filter(function(elmt){
+      return elmt.seq==1
+    })[0].content
     if (res.from === 'button') {
       // 来自页面内转发按钮
       // console.log(res.target)
     }
     return {
-      title: '快来斗书大会答题吧',
+      title: title,
       path: '/pages/index/index',
       success: function (res) {
         // 转发成功
@@ -100,7 +106,7 @@ Page({
           url: api.post_fenxiang(),
           data: {},
           callback: function (res) {
-            
+
             if (res.item.coinCnt > 0) {
               wx.showToast({
                 title: '分享成功,获得' + res.item.coinCnt + '金币',
@@ -151,6 +157,18 @@ Page({
   },
   onPageScroll: function (obj) {
     // console.log(obj)
+  },
+  getwxsharemsg: function () {// 查询分享 文案
+    api.get({
+      url: api.get_wxsharemsg(),
+      callback:function(res){
+        app.wxsharemsg = res.items
+        var title = app.wxsharemsg.filter(function (elmt) {
+          return elmt.seq == 1
+        })[0].content
+        console.log(title)
+      }
+    })
   },
   gethomepagecfg:function(){//获取首页图面
     var self = this;
@@ -263,7 +281,26 @@ Page({
     })
     
   },
-  
+  closedts: function () {
+    this.setData({
+      tuisongshow: false
+    })
+  },
+  gettuisong: function () {// 查询广告
+    var self = this;
+    api.get({
+      url: api.get_latestAds,
+      callback: function (res) {
+        if (res.item.name) {
+          self.setData({
+            tuisongdata: res.item,
+            tuisongshow: true
+          })
+        }
+
+      }
+    })
+  },
   getmyconfig: function () {
     var self = this;
     api.get({
@@ -278,6 +315,7 @@ Page({
           key: "tuisong",
           data: res.item.pushConfig == 1 ? true : false,
         })
+        
         wx.getStorage({
           key: 'tuisong',
           success: function (res) {
@@ -285,6 +323,27 @@ Page({
             self.setData({
               tsvalue: res.data
             })
+            if (res.data){
+              wx.getStorage({
+                key: 'tuisongnum',
+                success: function(res) {
+                  if (res.data != util.formatDate()){
+                    wx.setStorage({
+                      key: 'tuisongnum',
+                      data: util.formatDate(),
+                    })
+                    self.gettuisong()
+                  }
+                },
+                fail:function(res){
+                  wx.setStorage({
+                    key: 'tuisongnum',
+                    data: util.formatDate(),
+                  })
+                  self.gettuisong()
+                }
+              })
+            }
           }
         })
         wx.getStorage({
@@ -394,7 +453,7 @@ Page({
     })
     that.getmyconfig()// 获取用户 配置信息
     that.gethongbao()//获取红包
-    
+    that.getwxsharemsg()// 调用 查询分享文案
   },
   hongbaomovie: function () {// 红包 动画 方法
     var animation = wx.createAnimation({

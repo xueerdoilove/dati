@@ -11,6 +11,7 @@ Page({
    */
   data: {
     nav: { isback: true, text: '知识升级', backcolor: '#01919A', isIphoneX: false},
+    cionxf:0,
     list:[
       {
         title: '',
@@ -59,33 +60,45 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    this.gettaotidaan()
     
+  },
+  gettaotidaan:function(iddd){
     var that = this;
     var topicsetid = that.options.topicsetid
     api.get({
       url: api.get_myTopicSet(topicsetid),
-      callback:function(res){
-        var arr = res.item.topicList;
-        var arr1  = []
-        for(var i=0;i<arr.length;i++){
+      callback: function (res) {
+        var arr = res.items;
+        var arr1 = []
+        for (var i = 0; i < arr.length; i++) {
           var a1 = {
             'title': arr[i].title,
-            'jieshi': arr[i].answerExplanation,
-            'active':'',
-            'jiantoumovie':{},
-            'xialamovie':'',
-            'wenzimovie':'',
+            'jieshi': arr[i].answerExplanation || '',
+            'active': '',
+            'jiantoumovie': {},
+            'xialamovie': '',
+            'wenzimovie': '',
+            'id': arr[i].id,
+            'buyState': arr[i].buyState
+          }
+          if(iddd){
+            if (iddd == a1.id){
+              a1.xialamovie = 'height:auto;'
+              a1.wenzimovie = 'opacity:1;'
+              a1.active = 'active'
+            }
           }
           arr1.push(a1)
         }
+
         that.setData({
-          list:arr1
+          list: arr1
         })
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -93,6 +106,14 @@ Page({
     var self = this;
     self.setData({
       'nav.text': app.homepagecfg[0].name
+    })
+    api.get({
+      url: api.get_goumaiti(),
+      callback: function (res) {
+        self.setData({
+          cionxf: res.item.configValue
+        })
+      }
     })
     wx.getSystemInfo({
       success: function (res) {
@@ -145,6 +166,39 @@ Page({
    */
   onReachBottom: function () {
   
+  },
+  payoneti:function(event){
+    var self = this;
+    var id = event.currentTarget.dataset.topicid
+    app.getuserdata(function () {
+      var myjinbi = app.globalData.userInfo.coinCnt - self.data.cionxf
+      if (myjinbi > 0) {// 如果 余额大于 支付 金币
+        api.post({
+          url: api.post_maiti(id),//topicid
+          callback: function (res) {
+            self.gettaotidaan(id)
+            wx.showToast({
+              title: '消费' + self.data.cionxf + '金币',
+              icon: 'none'
+            })
+          }
+        })
+      } else {
+        wx.showModal({
+          title: '金币不足,需要购买金币吗',
+          content: '当前金币为' + app.globalData.userInfo.coinCnt + ',还需' + (-1 * myjinbi) + '金币',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/bank/bank',
+              })
+            } else if (res.cancel) {
+
+            }
+          }
+        })
+      }
+    })
   },
   showjieshi: function (event){
     var btnindex = event.currentTarget.dataset.index

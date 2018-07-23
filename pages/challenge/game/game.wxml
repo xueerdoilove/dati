@@ -78,11 +78,14 @@
   <view class='chakandaan'>
     <view class='banyuan' animation="{{chakandn}}" bindtap='gotodaan'>
       <view class='user-synopsis-f' style="text-align:center;">
-        <view wx:if="{{!yimaidaan}}">
+        <!-- <view wx:if="{{!yimaidaan}}">
           <text style="font-size:14px;">花费{{cionxf}}</text><image class='qian-icon' src="../../../images/index/jinbi.png" style="width:15px;height:15px;top:3px;margin-right:0;"></image>
-        </view>
-        <view wx:if="{{yimaidaan}}">
+        </view> -->
+        <!-- <view wx:if="{{yimaidaan}}">
           <text style="font-size:14px;">已购买</text>
+        </view> -->
+        <view >
+          <text style="font-size:14px;">花金币</text>
         </view>
         <text style="font-size:14px;">看答案解释</text>
       </view>

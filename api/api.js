@@ -139,7 +139,7 @@ function get_bookdefi(bookId) {
   return _host + 'bookByReader/' + bookId
 }
 function get_dati(bookId,difId){
-  return _host + 'topicsetWithTopic?bookId=' + bookId +'&difficultyId='+difId;
+  return _host + 'book/' + bookId + '/difficulty/' + difId +'/topicSet';
 }
 function get_mybook(page, pageSize, bookState){
   if (bookState){
@@ -161,11 +161,14 @@ function get_bank(){
 function get_weekrank(no,page,pageSize){
   return _host + 'weekRank?page='+page+'&pageSize='+pageSize+'&weekNo='+no
 }
+function get_allrank(page, pageSize){
+  return _host + 'user?page=' + page + '&pageSize=' + pageSize + '&sk=points&so=desc'
+}
 function post_goumaijinbi(id){
   return _host + 'coinPacket/' + id +'/wxPrepay'
 }
-function post_maiti(topicSetId){
-  return _host + 'topicSet/' + topicSetId+'/buy'
+function post_maiti(topicid){
+  return _host + 'topic/' + topicid+'/buy'
 }
 function get_goumaiti(){
   return _host + 'baseConfig/1'
@@ -187,7 +190,7 @@ function get_myTopicSet(id){
   return _host + 'myTopicSet/'+id
 }
 function get_mydaguodeti(bookid, difficultyId,page,pageSize){
-  return _host + 'book/' + bookid + '/myTopicSet?difficultyId=' + difficultyId+'&page='+page+'&pageSize='+pageSize
+  return _host + 'book/' + bookid + '/myTopic?difficultyId=' + difficultyId+'&page='+page+'&pageSize='+pageSize
 }
 function post_fenxiang(){
   return _host + 'sharewx'
@@ -199,6 +202,7 @@ function _myCoinTask(){
 function get_myrank(weekid){
   return _host + 'myRanking?weekId='+weekid
 }
+var get_myrk = _host +'myRank'
 ///myRanking
 //{ item: { ranking: 3 } }
 
@@ -220,6 +224,13 @@ function put_hongbao(id){
 function get_homepagecfg(){
   return _host + 'homePageCfg'
 }
+function get_onetidaan(id){
+  return _host + 'topic/'+id
+}
+function get_wxsharemsg(){
+  return _host + 'wxShareMsg'
+}
+var get_latestAds = _host + 'latestAds'
 module.exports = {
   get_booklist: get_booklist,//书库列表
   get_bookdefi: get_bookdefi,//某本书的难度等级
@@ -229,8 +240,11 @@ module.exports = {
   get_bookf: get_bookf,//根据权重查询书list
   get_bank: get_bank,//银行 金币包
   get_weekrank: get_weekrank,//周排行
+  get_allrank: get_allrank,//总排行
+  get_myrk: get_myrk,//我在总排行位置
   post_goumaijinbi: post_goumaijinbi,//下单
-  post_maiti: post_maiti,//消费金币 买题
+  post_maiti: post_maiti,//消费金币 买题  买单个 题
+  get_onetidaan: get_onetidaan,// 买完题后查看单个题--暂不用
   get_goumaiti: get_goumaiti,//购买题目 需要花多少钱
   get_qiandao: get_qiandao,// 查看是否签到
   post_qiandao: post_qiandao,// 签到 领金币
@@ -247,6 +261,8 @@ module.exports = {
   post_hongbaozg: post_hongbaozg,// 查询 领取红包 资格 注意id为红包活动的id
   put_hongbao: put_hongbao,//领取 红包 奖金
   get_homepagecfg: get_homepagecfg,// 首页图片获取
+  get_wxsharemsg: get_wxsharemsg,//获取分享文案
+  get_latestAds: get_latestAds,//获取 广告推送
   get: wxget,
   post: wxpost,
   put: wxput,

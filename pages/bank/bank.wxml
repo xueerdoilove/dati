@@ -15,7 +15,7 @@
     <text class='jiage'>￥{{item.cost}}</text>
     <view class='jbtapzz' bindtap='showjinbibao' data-detail="{{item.bundleCoinCnt+item.coinCnt}}" data-cost="{{item.cost}}" data-name="{{item.name}}" data-coinid="{{item.id}}"></view>
   </view>
-   <view style='color:#c51f1f;font-size:14px;text-align:center;'>注:每天答10道题即可领{{datijinbi}}金币</view> 
+   <view style='color:#c51f1f;font-size:14px;text-align:center;'>注:每天答10套题即可领{{datijinbi}}金币</view> 
 </view>
 <view class='jinbicontent' hidden="{{!showjinbi}}" style='background-color:rgba(0,0,0,0);text-align:center;'>
   <image style='width:183px;height:260px;margin:0 auto;' src='http://image.didayundong.com/a5f0a198-54cb-4ba0-8ffa-e06af17413a1'></image>
@@ -37,6 +37,6 @@
 </view>
 <view style='text-align:center;' wx:if="{{!qiandao}}">
   <button class='btn-mid' style="color:#c51f1f;background-color:#fada8d;font-weight:600;font-size:25px;margin-bottom:10px;" bindtap='pqiandao'>免费领金币</button>
-  <text style="font-size:15px;color:#ffffff;">每天答10道题 即可领金币</text>
+  <text style="font-size:15px;color:#ffffff;">每天答10套题 即可领金币</text>
 </view>
 </view>
